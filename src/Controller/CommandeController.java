@@ -26,7 +26,7 @@ public class CommandeController implements IcommandeController{
     @Override
     public void ajouterCommande(Commande c) {
         try {
-            String req = "INSERT INTO `commande`( `totale`, `dateCommande`) VALUES ('" + c.getTotale()+ "','" + c.getDateCommande()+ "')";
+            String req = "INSERT INTO `commande`( `totale`, `dateCommande`,`id_user`) VALUES ('" + c.getTotale()+ "','" + c.getDateCommande()+ "','" + c.getId_user()+ "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Commande ajouté!!!");
@@ -61,7 +61,7 @@ public class CommandeController implements IcommandeController{
 
     @Override
     public List<Commande> afficherCommande() {
-        List<Commande> list = new ArrayList<>();
+            List<Commande> list = new ArrayList<>();
         try {
             String req = "Select * from commande";
             Statement st = conn.createStatement();
@@ -70,14 +70,17 @@ public class CommandeController implements IcommandeController{
             while (RS.next()) {
                 Commande c = new Commande();
                 c.setTotale(RS.getInt("totale"));
+                c.setDateCommande(RS.getDate("dateCommande"));
+                c.setId_user(RS.getInt("id_user"));
+               
+               
                 c.setId(RS.getInt(1));
-                c.getId_user(RS.getInt(1));
+
                 list.add(c);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
         return list;
     }
 
@@ -88,8 +91,11 @@ public class CommandeController implements IcommandeController{
             String req = "Select * from commande where id ="+id;
             Statement st = conn.createStatement();
 
-            ResultSet RS = st.executeQuery(req);                      
+            ResultSet RS = st.executeQuery(req);
+            RS.first();
             c.setTotale(RS.getInt("totale"));
+            c.setDateCommande(RS.getDate("dateCommande"));
+            c.setId_user(RS.getInt("id_user"));
             c.setId(RS.getInt(1));
             
             
