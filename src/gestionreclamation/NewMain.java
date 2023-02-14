@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev;
+package gestionreclamation;
 
 import Entities.EtatEnum;
 import Entities.Reclamation;
@@ -11,19 +11,19 @@ import Entities.Reponse;
 import Entities.TypeEnum;
 import Service.ServiceReclamation;
 import Service.ServiceReponse;
-import utils.connexionDB;
+import java.sql.Date;
 
 /**
  *
- * @author Siwar Ahmadi
+ * @author houss
  */
-public class Pidev {
+public class NewMain {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Reclamation r= new Reclamation("tesssssssst",EtatEnum.En_Cours,TypeEnum.Song,1);
+        Reclamation r= new Reclamation("tesssssssst",EtatEnum.En_Cours,TypeEnum.Song,1);
         ServiceReclamation sr=new ServiceReclamation();
        // sr.add(r);
         
@@ -73,9 +73,6 @@ public class Pidev {
         } 
 
         
-        
-        
-         
     }
     
 }
