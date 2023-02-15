@@ -25,7 +25,7 @@ public class Pidev {
     public static void main(String[] args) {
          Reclamation r= new Reclamation("tesssssssst",EtatEnum.En_Cours,TypeEnum.Song,1);
         ServiceReclamation sr=new ServiceReclamation();
-       // sr.add(r);
+        sr.add(r);
         
         
         
@@ -51,27 +51,27 @@ public class Pidev {
        */
         
         
-        /*
-        r.setId(1);
+       
+        /*r.setId(1);
       sr.Delete(r);
       */
         
         
        
-       Reclamation rec=sr.getById(2);
+      // Reclamation rec=sr.getById(2);
       //  Reponse rep=new Reponse("test",rec);
-        ServiceReponse serp=new ServiceReponse();
+      // ServiceReponse serp=new ServiceReponse();
        // serp.add(rep);
        
-       Reponse rep=serp.getById(1);
+      // Reponse rep=serp.getById(1);
       // rep.setMessage("noooooo");
        // serp.update(rep);
        
-       serp.Delete(rep);
+      /* serp.Delete(rep);
         for(int i = 0 ;i<serp.Show().size();i++){
             System.out.println(serp.Show().get(i).toString());
         } 
-
+*/
         
         
         

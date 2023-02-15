@@ -9,6 +9,7 @@ import Entities.EtatEnum;
 import Entities.Reclamation;
 import Entities.TypeEnum;
 import Utils.MyConnection;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
