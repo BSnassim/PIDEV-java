@@ -5,7 +5,10 @@
  */
 package pidev;
 
-import utils.connexionDB;
+import java.sql.Date;
+
+import controller.MusiqueController;
+import model.Musique;
 
 /**
  *
@@ -17,11 +20,6 @@ public class Pidev {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        connexionDB db1 = connexionDB.getInstance(); 
-        connexionDB db2 = connexionDB.getInstance(); 
-        
-        
-         
     }
     
 }
