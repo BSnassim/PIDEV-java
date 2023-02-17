@@ -5,14 +5,12 @@
  */
 package model;
 
-
-
 /**
  *
  * @author Siwar Ahmadi
  */
-public class Catalogue { 
-    private int id ;
+public class Catalogue {
+      private int id ;
     private String nom;
     private  int id_categorie;
 
@@ -57,11 +55,6 @@ public class Catalogue {
     public String toString() {
         return "Catalogue{" + "id=" + id + ", nom=" + nom + ", id_categorie=" + id_categorie + '}';
     }
-    
-    
-    
-    
-    
     
     
 }

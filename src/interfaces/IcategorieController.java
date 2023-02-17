@@ -8,17 +8,17 @@ package interfaces;
 import java.util.List;
 import model.Categorie;
 
-
 /**
  *
  * @author Siwar Ahmadi
  */
-public interface IcategorieController { 
-    
-    public void ajouterCategorie(Categorie ca);
+public interface IcategorieController {
+     public void ajouterCategorie(Categorie ca);
     public void modifierCategorie(Categorie ca, int id);
     public void supprimerCategorie(int id) ;
     public List<Categorie> afficherCategorie();
-    public List<Categorie> rechCatalogue(int id);
+    public Categorie rechCatalogue(int id); 
+   
+    
     
 }

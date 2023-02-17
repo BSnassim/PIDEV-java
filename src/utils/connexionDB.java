@@ -13,15 +13,16 @@ import java.sql.SQLException;
  *
  * @author Siwar Ahmadi
  */
-public class connexionDB { 
-    final String url ="jdbc:mysql://localhost:3306/soundon";
+public class ConnexionDB { 
+    
+     final String url ="jdbc:mysql://localhost:3306/soundon";
     final String login ="root";
     final String pwd="";
-    private static connexionDB instance;
+    private static ConnexionDB instance;
     Connection connexion;
     
     
-    private connexionDB(){
+    private ConnexionDB(){
         
         try {
             connexion =  DriverManager.getConnection(url, login, pwd);
@@ -32,9 +33,9 @@ public class connexionDB {
 
     }
     
-    public static connexionDB getInstance(){
+    public static ConnexionDB getInstance(){
     if (instance == null)
-        instance = new connexionDB();
+        instance = new ConnexionDB();
     return instance;
     }
 

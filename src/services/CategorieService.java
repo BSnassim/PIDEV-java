@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package services;
 
 import interfaces.IcategorieController;
 import java.sql.Connection;
@@ -13,16 +13,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.Categorie;
-import utils.connexionDB;
+import utils.ConnexionDB;
 
 /**
  *
  * @author Siwar Ahmadi
  */
-public class CategorieController implements IcategorieController {
-
-    Statement ste;
-    Connection conn = connexionDB.getInstance().getConnexion();
+public class CategorieService implements IcategorieController { 
+     Statement ste;
+    Connection conn = ConnexionDB.getInstance().getConnexion();
 
     @Override
     public void ajouterCategorie(Categorie ca) {
@@ -39,7 +38,7 @@ public class CategorieController implements IcategorieController {
     }
 
     @Override
-    public void modifierCategorie(Categorie ca,int id) {
+    public void modifierCategorie(Categorie ca, int id) {
         try {
             String req = "UPDATE `categorie` SET `nom` = '" + ca.getNom() + "' WHERE `id` = " + id;
             Statement st = conn.createStatement();
@@ -87,24 +86,29 @@ public class CategorieController implements IcategorieController {
     }
 
     @Override
-    public List<Categorie> rechCatalogue(int id) {
-       List<Categorie> list = new ArrayList<>();
+    public Categorie rechCatalogue(int id) {
+       Categorie cat = new Categorie();
         try {
             String req = "Select * from categorie where id ="+id;
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
-            while (RS.next()) {
-                Categorie ca = new Categorie();
-                ca.setNom(RS.getString("nom"));
-                ca.setId(RS.getInt(1));
-                list.add(ca);
-            }
+            RS.first();
+            
+                
+                cat.setNom(RS.getString("nom"));
+                cat.setId(RS.getInt(1));
+               
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-        return list;
-    }    }
-    
+        return cat;
+    }
 
+   
+
+
+    
+}

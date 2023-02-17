@@ -12,9 +12,8 @@ import model.Catalogue;
  *
  * @author Siwar Ahmadi
  */
-public interface IcatalogueController {
-
-    public void ajouterCatalogue(Catalogue c);
+public interface IcatalogueController { 
+     public void ajouterCatalogue(Catalogue c);
 
     public void modifierCatalogue(Catalogue c, int id);
 
@@ -22,6 +21,9 @@ public interface IcatalogueController {
 
     public List<Catalogue> afficherCatalogue();
 
-    public List<Catalogue> rechCatalogue(int id);
+    public Catalogue rechCatalogue(int id); 
+    
+    public List<Catalogue> filterCatalogue(String S,String SS);
 
+    
 }

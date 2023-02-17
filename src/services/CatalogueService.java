@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package services;
 
 import interfaces.IcatalogueController;
 import java.sql.Connection;
@@ -13,17 +13,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.Catalogue;
-import utils.connexionDB;
-
+import utils.ConnexionDB;
 
 /**
  *
  * @author Siwar Ahmadi
  */
-public class CatalogueController implements IcatalogueController {
-
+public class CatalogueService implements IcatalogueController { 
     Statement ste;
-    Connection conn = connexionDB.getInstance().getConnexion();
+    Connection conn = ConnexionDB.getInstance().getConnexion();
 
     @Override
     public void ajouterCatalogue(Catalogue c) {
@@ -83,21 +81,58 @@ public class CatalogueController implements IcatalogueController {
 
         return list;
     }
-    
+
     @Override
-        public List<Catalogue> rechCatalogue(int id) {
-        List<Catalogue> list = new ArrayList<>();
+    public Catalogue rechCatalogue(int id) {
+        Catalogue ca = new Catalogue();
         try {
-            String req = "Select * from catalogue where id ="+id;
+            String req = "Select * from catalogue where id =" + id;
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
-            while (RS.next()) {
-                Catalogue c = new Catalogue();
-                c.setNom(RS.getString("nom"));
-                c.setId(RS.getInt(1));
-                c.setId_categorie(RS.getInt(1));
-                list.add(c);
+            RS.first();
+
+            ca.setNom(RS.getString("nom"));
+            ca.setId(RS.getInt(1));
+            ca.setId_categorie(RS.getInt(1));
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return ca;
+    }
+
+    @Override
+    public List<Catalogue> filterCatalogue(String S, String SS) {
+        List<Catalogue> list = new ArrayList<>();
+        try {
+            if (S.equals("id") || S.equals("id_categorie")) {
+                int temp = Integer.parseInt(SS);
+                String req = "SELECT * FROM catalogue WHERE " + S + " =" + temp;
+                Statement st = conn.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                while (RS.next()) {
+                    Catalogue c = new Catalogue();
+                    c.setNom(RS.getString("nom"));
+                    c.setId(RS.getInt(1));
+                    c.setId_categorie(RS.getInt(1));
+
+                    list.add(c);
+                }
+            } else {
+                String req = "SELECT * FROM catalogue WHERE " + S + " =" + "\"" + SS + "\"";
+                Statement st = conn.createStatement();
+                ResultSet RS = st.executeQuery(req);
+                while (RS.next()) {
+                    Catalogue c = new Catalogue();
+                    c.setNom(RS.getString("nom"));
+                    c.setId(RS.getInt(1));
+                    c.setId_categorie(RS.getInt(1));
+
+                    list.add(c);
+                } 
+               
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -105,5 +140,5 @@ public class CatalogueController implements IcatalogueController {
 
         return list;
     }
-
+    
 }

@@ -10,7 +10,7 @@ package model;
  * @author Siwar Ahmadi
  */
 public class Categorie { 
-    private int id;
+      private int id;
     private String nom; 
 
     public Categorie(String nom) {
@@ -41,7 +41,6 @@ public class Categorie {
     public String toString() {
         return "Categorie{" + "id=" + id + ", nom=" + nom + '}';
     }
-    
     
     
 }
