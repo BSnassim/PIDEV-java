@@ -39,7 +39,7 @@ public class CategorieController implements IcategorieController {
     }
 
     @Override
-    public void modifierCategorie(Categorie ca, int id) {
+    public void modifierCategorie(Categorie ca,int id) {
         try {
             String req = "UPDATE `categorie` SET `nom` = '" + ca.getNom() + "' WHERE `id` = " + id;
             Statement st = conn.createStatement();

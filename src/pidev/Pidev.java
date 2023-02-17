@@ -31,14 +31,14 @@ public class Pidev {
         CategorieController cc = new CategorieController();
         CatalogueController cc1 = new CatalogueController();
 
-        // cc.ajouterCategorie(ca2);
-        // System.out.println(cc.afficherCategorie());
-        //cc1.ajouterCatalogue(c3);
-        //cc.modifierCategorie(ca, 6);
-        // System.out.println(cc1.afficherCatalogue());
-        // cc1.modifierCatalogue(c3, 6);
+        cc.ajouterCategorie(ca2);
+         System.out.println(cc.afficherCategorie());
+        cc1.ajouterCatalogue(c3);
+        cc.modifierCategorie(ca, 6);
+         System.out.println(cc1.afficherCatalogue());
+         cc1.modifierCatalogue(c3, 6);
         
-        //cc1.supprimerCatalogue(6);
+        cc1.supprimerCatalogue(6);
         System.out.println(cc1.afficherCatalogue());
         System.out.println(cc.afficherCategorie());
         System.out.println(cc1.rechCatalogue(10)); 
