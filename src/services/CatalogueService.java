@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Catalogue;
 import utils.ConnexionDB;
 
@@ -27,12 +29,23 @@ public class CatalogueService implements IcatalogueController {
     public void ajouterCatalogue(Catalogue c) {
         try {
             String req = "INSERT INTO `catalogue`( `nom`, `id_categorie`) VALUES ('" + c.getNom() + "','" + c.getId_categorie() + "')";
+            //verifier que le champ nom n'est pas vide
+           if (c.getNom().trim().isEmpty()) {
+            throw new Exception("Le champs est obligatoires !");
+        }  
+            //verifier que le champ  id_categorie n'est pas vide
+           
+          else if (c.getId_categorie()== 0){  
+             throw new IllegalArgumentException("Le champ id_categorie ne peut pas être vide !");
+}
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Catalogue ajouté!!!");
         } catch (SQLException ex) {
             System.out.println("Catalogue non ajouté");
             System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(CatalogueService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

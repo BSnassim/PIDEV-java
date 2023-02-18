@@ -11,7 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Categorie;
 import utils.ConnexionDB;
 
@@ -27,13 +31,28 @@ public class CategorieService implements IcategorieController {
     public void ajouterCategorie(Categorie ca) {
         try {
             String req = "INSERT INTO `categorie`( `nom`) VALUES ('" + ca.getNom() + "')";
+            //verifier que le champ n'est pas vide
+             if (ca.getNom().trim().isEmpty() ) {
+            throw new Exception("Le champs est obligatoires !");
+        } 
+             //verifier que le champ est unique 
+             Set<String> nomCategorie = new HashSet<>();
+             List<Categorie> clist = new ArrayList<>();
+             clist.forEach((categorie) -> {
+                 nomCategorie.add(categorie.getNom());
+            });
+        if (nomCategorie.contains(ca.getNom())) {
+            throw new Exception("Le login est déjà utilisé !");
+        }
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Categorie ajouté!!!");
         } catch (SQLException ex) {
             System.out.println("Categorie non ajouté");
             System.out.println(ex.getMessage());
-        }
+        } catch (Exception ex) {
+             Logger.getLogger(CategorieService.class.getName()).log(Level.SEVERE, null, ex);
+         }
 
     }
 
