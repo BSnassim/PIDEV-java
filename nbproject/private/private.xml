@@ -5,11 +5,11 @@
         <group>
             <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/controller/ArtisteController.java</file>
             <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/model/Utilisateur.java</file>
-            <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/model/Artiste.java</file>
+            <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/gui/RegisterFXMLController.java</file>
             <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/controller/UtilisateurController.java</file>
             <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/pidev/Pidev.java</file>
-            <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/interfaces/IutilisateurController.java</file>
-            <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/utils/connexionDB.java</file>
+            <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/gui/RegisterFXML.fxml</file>
+            <file>file:/C:/Users/21622/Desktop/soundon/SOUND-ON-Desktop/src/controller/FavorisController.java</file>
         </group>
     </open-files>
 </project-private>
