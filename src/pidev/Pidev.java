@@ -26,10 +26,12 @@ public class Pidev {
     public static void main(String[] args) {
        // connexionDB connexionDB = new connexionDB();
        
-         //Utilisateur u1 = new Utilisateur("aa","gfrds","ahmadi","siwar","ahmadi@mail.com");
+       // Utilisateur u1 = new Utilisateur("aa","gfrds","ahmadi","siwar","ranim.ahmadi@esprit.tn");
+         Utilisateur u2 = new Utilisateur("aa","fdss","ahmdadi","sicwar","ranim.ahmadi@esprit.tn");
          // Utilisateur u2 = new Utilisateur("suzi","gfrdml","kiko","loulou","ahmadi@mail.tn");
           // Utilisateur u3 = new Utilisateur("luna","hmida","kiko","rawdha","ahmadi2@mail.tn");
-       //  UtilisateurController cc = new UtilisateurController();
+        UtilisateurController cc = new UtilisateurController();
+        cc.ajouterUtilisateur(u2);
         // ArtisteController cc1 = new ArtisteController();
        //  ArtisteController ranim = new ArtisteController();
 //         FavorisController h = new FavorisController(); 

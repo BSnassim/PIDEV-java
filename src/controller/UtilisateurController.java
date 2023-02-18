@@ -15,6 +15,10 @@ import java.util.List;
 import model.Utilisateur;
 import utils.connexionDB;
 import java.sql.PreparedStatement;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,18 +30,47 @@ public class UtilisateurController implements IutilisateurController{
     public UtilisateurController(){
         conn=connexionDB.getInstance().getConnexion();}
     
+    // Méthode pour valider une adresse email
+    public static boolean isEmailValid(String email) {
+        // Expression régulière pour valider l'adresse email
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + 
+                             "[a-zA-Z0-9_+&*-]+)*@" + 
+                             "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                             "A-Z]{2,7}$";
+                              
+        return email.matches(emailRegex);
+    }
+    
 
     @Override
     public void ajouterUtilisateur(Utilisateur u) {
          try {
             String req = "INSERT INTO `utilisateur`( `login`, `password`, `nom`, `prenom`, `email`) VALUES ('" + u.getLogin() + "','" + u.getPassword() + "','" + u.getNom() + "','" + u.getPrenom() + "','" + u.getEmail() + "')";
+            // Vérifier que les données saisies sont valides
+        if (u.getNom().trim().isEmpty() || u.getPrenom().trim().isEmpty() || u.getEmail().trim().isEmpty()) {
+            throw new Exception("Les champs sont obligatoires !");
+        }
+            if (!isEmailValid(u.getEmail())) {
+            throw new Exception("L'adresse email n'est pas valide !");
+        }
+            Set<String> loginUser = new HashSet<String>();
+             List<Utilisateur> ulist = new ArrayList<>();
+        for (Utilisateur utilisateur : ulist) {
+           loginUser.add(utilisateur.getLogin());
+        }
+        if (loginUser.contains(u.getLogin())) {
+            throw new Exception("Le login est déjà utilisé !");
+        }
+           
             ste = conn.prepareStatement(req);
             ste.executeUpdate(req);
             System.out.println("utilisateur ajouté!!!");
         } catch (SQLException ex) {
             System.out.println("utilisateur non ajouté");
             System.out.println(ex.getMessage());
-        }
+        } catch (Exception ex) {
+          Logger.getLogger(UtilisateurController.class.getName()).log(Level.SEVERE, null, ex);
+      }
     }
 
     @Override

@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import model.Artiste;
 import utils.connexionDB;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -29,13 +32,19 @@ public class ArtisteController implements IartisteController {
     public void ajouterArtiste(Artiste a) {
         try {
             String req = "INSERT INTO `artiste`( `description`, `origine`, `photo`, `id_user`) VALUES ('" + a.getDescription() + "','" + a.getOrigine() + "','" + a.getPhoto() + "','" + a.getId_user() + "')";
+            // Vérifier que les données saisies sont valides
+        if (a.getDescription().trim().isEmpty() || a.getOrigine().trim().isEmpty() || a.getPhoto().trim().isEmpty()) {
+            throw new Exception("Les champs sont obligatoires !");
+        }
             ste = (PreparedStatement) conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("artiste ajouté!!!");
         } catch (SQLException ex) {
             System.out.println("artiste non ajouté");
             System.out.println(ex.getMessage());
-        }
+        } catch (Exception ex) {
+             Logger.getLogger(ArtisteController.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
     @Override
