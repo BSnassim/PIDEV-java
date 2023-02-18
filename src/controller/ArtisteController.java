@@ -13,21 +13,23 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import model.Artiste;
 import utils.connexionDB;
+import java.sql.PreparedStatement;
 
 /**
  *
  * @author Ranim Ahmadi
  */
 public class ArtisteController implements IartisteController {
-    Statement ste ;
+     PreparedStatement ste;
     Connection conn = connexionDB.getInstance().getConnexion();
 
     @Override
     public void ajouterArtiste(Artiste a) {
         try {
-            String req = "INSERT INTO `artiste`( `description`, `origine`, `photo`, `id_user`) VALUES ('" + a.getDescription() + "','" + a.getOrigine() + "','" + a.getPhoto() + "','" + a.getId() + "')";
-            ste = conn.createStatement();
+            String req = "INSERT INTO `artiste`( `description`, `origine`, `photo`, `id_user`) VALUES ('" + a.getDescription() + "','" + a.getOrigine() + "','" + a.getPhoto() + "','" + a.getId_user() + "')";
+            ste = (PreparedStatement) conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("artiste ajouté!!!");
         } catch (SQLException ex) {
@@ -37,23 +39,73 @@ public class ArtisteController implements IartisteController {
     }
 
     @Override
-    public void modifierArtiste(Artiste a, int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modifierArtiste(Artiste a, int id_user) {
+         String req = "UPDATE artiste SET description = ? ,  origine = ? , photo = ? WHERE id_user=?";
+          try {
+            ste=conn.prepareStatement(req);
+            ste.setString(1, a.getDescription());
+            ste.setString(2, a.getOrigine());
+            ste.setString(3, a.getPhoto());
+    
+       
+         
+            ste.setInt(4, a.getId_user());
+               
+            
+            ste.executeUpdate();
+            System.out.println("artiste Updated");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } 
+
     }
 
     @Override
-    public void supprimerArtiste(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void supprimerArtiste(int id_user) {
+        try {
+            String req = "DELETE FROM `artiste` WHERE id_user = " + id_user;
+            Statement st = conn.createStatement();
+            st.executeUpdate(req);
+            System.out.println("artiste deleted !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
     public List<Artiste> afficherArtiste() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+         List<Artiste> alist = new ArrayList<>();
+        try{
+        Statement st= conn.createStatement();
+        String query = "select * from artiste";
+        
+        ResultSet rs;
+        rs = st.executeQuery(query);
+        Artiste artiste;
+        while (rs.next()) {
+           artiste = new Artiste(rs.getString("description"),rs.getString("origine")
+                   ,rs.getString("photo"),rs.getInt("id_user"));
+                   
+            alist.add(artiste);
+
+        }
+         return alist;    
+         }catch(SQLException ex){
+                         System.out.println(ex.getMessage());
+
+         }
+        return alist;
+        }
 
     @Override
     public Artiste rechArtiste(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
+       
     }
+
+    
+
+
+    
     
 }

@@ -14,21 +14,24 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Utilisateur;
 import utils.connexionDB;
+import java.sql.PreparedStatement;
 
 /**
  *
  * @author Ranim Ahmadi
  */
 public class UtilisateurController implements IutilisateurController{
-    Statement ste ;
-    Connection conn = connexionDB.getInstance().getConnexion();
+  Connection conn;
+    PreparedStatement ste;
+    public UtilisateurController(){
+        conn=connexionDB.getInstance().getConnexion();}
     
 
     @Override
     public void ajouterUtilisateur(Utilisateur u) {
          try {
             String req = "INSERT INTO `utilisateur`( `login`, `password`, `nom`, `prenom`, `email`) VALUES ('" + u.getLogin() + "','" + u.getPassword() + "','" + u.getNom() + "','" + u.getPrenom() + "','" + u.getEmail() + "')";
-            ste = conn.createStatement();
+            ste = conn.prepareStatement(req);
             ste.executeUpdate(req);
             System.out.println("utilisateur ajouté!!!");
         } catch (SQLException ex) {
@@ -38,16 +41,26 @@ public class UtilisateurController implements IutilisateurController{
     }
 
     @Override
-    public void modifierUtilisateur(Utilisateur u, int id) {
-        try {
+    public void modifierUtilisateur(Utilisateur u,int id) {
+        
             
-            String req = "UPDATE `utilisateur` SET `email` = '" + u.getEmail() + "', `login` = '" + u.getLogin() + "'WHERE `id` = " + id ;
-            Statement st = conn.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Utilisateur updated !");
+            String req = "UPDATE utilisateur SET login = ? ,  nom = ? , prenom = ? , email = ? WHERE id=?";
+          try {
+            ste=conn.prepareStatement(req);
+            ste.setString(1, u.getLogin());
+            ste.setString(2, u.getNom());
+            ste.setString(3, u.getPrenom());
+             ste.setString(4, u.getEmail());
+            
+            ste.setInt(5, id);
+               
+            
+            ste.executeUpdate();
+            System.out.println("compte updated ");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        } 
+
     }
 
 
@@ -62,34 +75,33 @@ public class UtilisateurController implements IutilisateurController{
             System.out.println(ex.getMessage());
         }
     }
+ @Override
+ 
 
     public List<Utilisateur> afficherUtilisateur() {
-        List<Utilisateur> list = new ArrayList<>();
-        try {
-            String req = "Select * from utilisateur";
-            Statement st = conn.createStatement();
+        List<Utilisateur> ulist = new ArrayList<>();
+        try{
+        Statement st= conn.createStatement();
+        String query = "select * from utilisateur";
+        
+        ResultSet rs;
+        rs = st.executeQuery(query);
+        Utilisateur utilisateur;
+        while (rs.next()) {
+           utilisateur = new Utilisateur(rs.getInt("id"),rs.getString("login")
+                   ,rs.getString("password"),rs.getString("nom"),rs.getString("prenom"),rs.getString("email"));
+                   
+            ulist.add(utilisateur);
 
-            ResultSet RS = st.executeQuery(req);
-            while (RS.next()) {
-                Utilisateur u = new Utilisateur();
-                u.setId(RS.getInt(1));
-                u.setLogin(RS.getString("login"));
-                u.setPassword(RS.getString("password"));
-                u.setNom(RS.getString("nom"));
-                u.setPrenom(RS.getString("prenom"));
-                u.setEmail(RS.getString("email"));
-                
-                
-               
-                list.add(u);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
         }
+         return ulist;    
+         }catch(SQLException ex){
+                         System.out.println(ex.getMessage());
 
-        return list;
+         }
+        return ulist;
+        
     }
-
     @Override
     public Utilisateur rechUtilisateur(int id) {
         Utilisateur utili = new Utilisateur();
@@ -118,9 +130,12 @@ public class UtilisateurController implements IutilisateurController{
         return utili ;
     }
 
-    @Override
-    public List<Utilisateur> afficherCatalogue() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
+    
+
+    
+
+   
 
 }

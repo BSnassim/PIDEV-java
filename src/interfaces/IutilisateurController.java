@@ -16,11 +16,11 @@ public interface IutilisateurController {
     
     public void ajouterUtilisateur(Utilisateur u);
 
-    public void modifierUtilisateur(Utilisateur u, int id);
+    public void modifierUtilisateur(Utilisateur u,int id);
 
     public void supprimerUtilisateur(int id);
 
-    public List<Utilisateur> afficherCatalogue();
+    List<Utilisateur> afficherUtilisateur();
 
     public Utilisateur rechUtilisateur(int id);
     

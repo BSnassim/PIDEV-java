@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.sql.Date;
+
 
 
 
@@ -16,6 +16,10 @@ import java.sql.Date;
  * @author Ranim Ahmadi
  */
 public class Utilisateur {
+
+    public static void ajouterUtilisateur(Utilisateur utilisateur) {
+       
+    }
     private  int id ;
     private String login;
     private String  password;

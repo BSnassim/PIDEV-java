@@ -10,7 +10,7 @@ package model;
  * @author Ranim Ahmadi
  */
 public class Artiste {
-    private int id ;
+    private int id_user ;
     private String description ;
     private String origine ;
     private String photo;
@@ -24,12 +24,16 @@ public class Artiste {
         this.photo = photo;
     }
 
-    public Artiste(String artiste, String chanteur, String music, int i) {
+    public Artiste(String description, String origine, String photo, int id_user) {
+         this.description = description;
+        this.origine = origine;
+        this.photo = photo;
+        this.id_user = id_user;
        
     }
 
-    public int getId() {
-        return id;
+    public int getId_user() {
+        return id_user;
     }
 
     public String getDescription() {
@@ -44,8 +48,8 @@ public class Artiste {
         return photo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
     public void setDescription(String description) {
@@ -62,7 +66,7 @@ public class Artiste {
 
     @Override
     public String toString() {
-        return "Artiste{" + "id=" + id + ", description=" + description + ", origine=" + origine + ", photo=" + photo + '}';
+        return "Artiste{" + "id_user=" + id_user + ", description=" + description + ", origine=" + origine + ", photo=" + photo + '}';
     }
     
     

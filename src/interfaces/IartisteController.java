@@ -19,7 +19,7 @@ public interface IartisteController {
 
     public void modifierArtiste(Artiste a, int id);
 
-    public void supprimerArtiste(int id);
+    public void supprimerArtiste(int id_user);
 
     public List<Artiste> afficherArtiste();
 
