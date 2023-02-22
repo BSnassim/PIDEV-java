@@ -57,7 +57,7 @@ public class Pidev {
         //System.out.println(cc1.filterCatalogue("id_categorie","6"));
         //cc1.ajouterCatalogue(c5);     
        //cc1.modifierCatalogue(c4, 6);
-       cc1.ajouterCatalogue(c2);
+       //cc1.ajouterCatalogue(c2);
     }
     
 }

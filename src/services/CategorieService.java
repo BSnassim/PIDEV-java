@@ -43,7 +43,8 @@ public class CategorieService implements IcategorieController {
             });
         if (nomCategorie.contains(ca.getNom())) {
             throw new Exception("Le login est déjà utilisé !");
-        }
+        } 
+        
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Categorie ajouté!!!");
@@ -127,7 +128,5 @@ public class CategorieService implements IcategorieController {
     }
 
    
-
-
     
 }

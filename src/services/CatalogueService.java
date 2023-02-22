@@ -52,7 +52,7 @@ public class CatalogueService implements IcatalogueController {
     @Override
     public void modifierCatalogue(Catalogue c, int id) {
         try {
-            String req = "UPDATE `catalogue` SET `nom` = '" + c.getNom() + "', `id_categorie` = '" + c.getId_categorie() + "' WHERE `id` = " + id;
+            String req = "UPDATE `catalogue` SET `nom` = '" + c.getNom() + "' WHERE `id` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Catalogue updated !");
