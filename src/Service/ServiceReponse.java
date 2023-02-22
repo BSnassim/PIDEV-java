@@ -16,8 +16,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -34,12 +35,13 @@ public class ServiceReponse implements IService<Reponse>{
 
     @Override
     public void add(Reponse r) {
-        String sql = "insert into reponse(message,dateCreation,idReclamation) Values(?,?,?)";
+        String sql = "insert into reponse(message,dateCreation,idReclamation,idUser) Values(?,?,?,?)";
         try {
             ste=conn.prepareStatement(sql);
             ste.setString(1, r.getMessage());
             ste.setDate(2, new Date(System.currentTimeMillis()));
             ste.setInt(3, r.getReclamation().getId());
+            ste.setInt(4,r.getIdUser());
             ste.executeUpdate();
             System.out.println("reponse Ajouté");
         } catch (SQLException ex) {
@@ -73,8 +75,8 @@ public class ServiceReponse implements IService<Reponse>{
     }
 
     @Override
-    public List<Reponse> Show() {
-        List<Reponse> Reponselist = new ArrayList<>();
+    public ObservableList<Reponse> Show() {
+        ObservableList<Reponse> Reponselist = FXCollections.observableArrayList();
         try{
         Statement st= conn.createStatement();
         String query = "select * from reponse";
@@ -86,7 +88,31 @@ public class ServiceReponse implements IService<Reponse>{
            ServiceReclamation ser=new ServiceReclamation();
             Reclamation rec=new Reclamation();
             rec=ser.getById(rs.getInt("idReclamation"));
-           reponse = new Reponse(rs.getInt("id"),rs.getString("message"),rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rec); 
+           reponse = new Reponse(rs.getInt("id"),rs.getString("message"),rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rec,rs.getInt("idUser")); 
+           Reponselist.add(reponse);
+        }
+         return Reponselist;    
+         }catch(SQLException ex){
+                         System.out.println(ex.getMessage());
+
+         }
+        return Reponselist;    }
+    
+    
+    public ObservableList<Reponse> ShowByRec(int id) {
+        ObservableList<Reponse> Reponselist = FXCollections.observableArrayList();
+        try{
+        Statement st= conn.createStatement();
+        String query = "select * from reponse where idReclamation="+id +"";
+        
+        ResultSet rs;
+        rs = st.executeQuery(query);
+        Reponse reponse;
+        while (rs.next()) {
+           ServiceReclamation ser=new ServiceReclamation();
+            Reclamation rec=new Reclamation();
+            rec=ser.getById(rs.getInt("idReclamation"));
+           reponse = new Reponse(rs.getInt("id"),rs.getString("message"),rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rec,rs.getInt("idUser")); 
            Reponselist.add(reponse);
         }
          return Reponselist;    
@@ -107,8 +133,8 @@ public class ServiceReponse implements IService<Reponse>{
         while (rs.next()) {
             ServiceReclamation ser=new ServiceReclamation();
             Reclamation rec=new Reclamation();
-            rec=ser.getById(rs.getInt("idReclamation"));
-           r = new Reponse(rs.getInt("id"),rs.getString("message"),rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rec); 
+            rec=ser.getById(rs.getInt("idReclmation"));
+           r = new Reponse(rs.getInt("id"),rs.getString("message"),rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rec,rs.getInt("idUser")); 
         }
          return r;    
          }catch(SQLException ex){

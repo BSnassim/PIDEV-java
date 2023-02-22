@@ -9,7 +9,7 @@ import java.sql.Date;
 
 /**
  *
- * @author houss
+ * @author saida
  */
 public class Reclamation {
     public int id;

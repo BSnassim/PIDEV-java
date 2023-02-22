@@ -7,7 +7,7 @@ package Entities;
 
 /**
  *
- * @author houss
+ * @author saida
  */
 public enum TypeEnum {
     User,

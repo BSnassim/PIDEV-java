@@ -15,7 +15,7 @@ import utils.connexionDB;
 
 /**
  *
- * @author Siwar Ahmadi
+ * @author Saida
  */
 public class Pidev {
 
@@ -24,24 +24,19 @@ public class Pidev {
      */
     public static void main(String[] args) {
          Reclamation r= new Reclamation("tesssssssst",EtatEnum.En_Cours,TypeEnum.Song,1);
-        ServiceReclamation sr=new ServiceReclamation();
+        ServiceReclamation sr=new ServiceReclamation(); // ISTANCE MEN CLASSE SERVICE BECH NAJEMNESTAMEL LES SERVICES MTEOU 
+       
         sr.add(r);
-        
-        
-        
-        
-        /*
-        
         for(int i = 0 ;i<sr.Show().size();i++){
             System.out.println(sr.Show().get(i).toString());
         } 
         
-       */
+      
         
         
       
         /*
-        r.setId(1);
+        r.setId(9);
         r.setEtat(EtatEnum.Traité);
         sr.update(r);
         for(int i = 0 ;i<sr.Show().size();i++){
@@ -54,16 +49,19 @@ public class Pidev {
        
         /*r.setId(1);
       sr.Delete(r);
+         for(int i = 0 ;i<sr.Show().size();i++){
+            System.out.println(sr.Show().get(i).toString());
+        } 
       */
         
         
-       
+       // reponse 
       // Reclamation rec=sr.getById(2);
       //  Reponse rep=new Reponse("test",rec);
       // ServiceReponse serp=new ServiceReponse();
        // serp.add(rep);
        
-      // Reponse rep=serp.getById(1);
+      // Reponse rep=serp.getById(1); // jebt reponse bel id mteeha 
       // rep.setMessage("noooooo");
        // serp.update(rep);
        

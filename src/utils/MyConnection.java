@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author houss
+ * @author saida
  */
 public class MyConnection {
     private String url="jdbc:mysql://localhost:3306/spotify";

@@ -18,6 +18,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -45,7 +47,7 @@ public class ServiceReclamation implements IService<Reclamation>{
             ste.setInt(5, r.getId_User());
                
             
-            ste.executeUpdate(); // exucution de requete sql 
+            ste.executeUpdate();
             System.out.println("reclamation Ajouté");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -54,14 +56,15 @@ public class ServiceReclamation implements IService<Reclamation>{
 
     @Override
     public void update(Reclamation r) {
-         String sql = "UPDATE reclamation SET description=?, etat=?,type=?,dateUpdate=? WHERE id=?";
+         String sql = "UPDATE reclamation SET description=?, etat=?,type=?,dateUpdate=?,id_User=? WHERE id=?";
 try {
             ste=conn.prepareStatement(sql);
             ste.setString(1, r.getDescription());
             ste.setString(2, r.getEtat().toString());
             ste.setString(3, r.getType().toString());
             ste.setDate(4, new Date(System.currentTimeMillis()));
-            ste.setInt(5, r.getId());
+            ste.setInt(5, r.getId_User());
+            ste.setInt(6, r.getId());
                
             
             ste.executeUpdate();
@@ -88,11 +91,35 @@ try {
         }       }
 
     @Override
-    public List<Reclamation> Show() {
-        List<Reclamation> Reclamationlist = new ArrayList<>();
+    public ObservableList<Reclamation> Show() {
+        ObservableList<Reclamation> Reclamationlist = FXCollections.observableArrayList();
         try{
         Statement st= conn.createStatement();
         String query = "select * from reclamation";
+        
+        ResultSet rs;
+        rs = st.executeQuery(query);
+        Reclamation reclamation;
+        while (rs.next()) {
+           reclamation = new Reclamation(rs.getInt("id"),rs.getString("description")
+                   ,EtatEnum.valueOf(rs.getString("etat")),TypeEnum.valueOf(rs.getString("type"))
+                   ,rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rs.getInt("id_user")); 
+            Reclamationlist.add(reclamation);
+
+        }
+         return Reclamationlist;    
+         }catch(SQLException ex){
+                         System.out.println(ex.getMessage());
+
+         }
+        return Reclamationlist;
+    }
+    
+    public ObservableList<Reclamation> ShowByUser(int id) {
+        ObservableList<Reclamation> Reclamationlist = FXCollections.observableArrayList();
+        try{
+        Statement st= conn.createStatement();
+        String query = "select * from reclamation where id_user="+id+"";
         
         ResultSet rs;
         rs = st.executeQuery(query);

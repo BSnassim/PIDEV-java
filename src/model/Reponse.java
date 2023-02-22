@@ -17,28 +17,32 @@ public class Reponse {
     private Date dateCreation;
     private Date dateUpdate;
     private Reclamation reclamation;
+    private int idUser;
 
     public Reponse() {
     }
 
-    public Reponse(int id, String message, Date dateCreation, Date dateUpdate, Reclamation reclamation) {
+    public Reponse(int id, String message, Date dateCreation, Date dateUpdate, Reclamation reclamation,int idUser) {
         this.id = id;
         this.message = message;
         this.dateCreation = dateCreation;
         this.dateUpdate = dateUpdate;
         this.reclamation = reclamation;
+        this.idUser=idUser;
     }
 
-    public Reponse(String message, Date dateCreation, Date dateUpdate, Reclamation reclamation) {
+    public Reponse(String message, Date dateCreation, Date dateUpdate, Reclamation reclamation,int idUser) {
         this.message = message;
         this.dateCreation = dateCreation;
         this.dateUpdate = dateUpdate;
         this.reclamation = reclamation;
+        this.idUser=idUser;
     }
 
-    public Reponse(String message, Reclamation reclamation) {
+    public Reponse(String message, Reclamation reclamation,int idUser) {
         this.message = message;
         this.reclamation = reclamation;
+        this.idUser=idUser;
     }
     
     
@@ -82,6 +86,16 @@ public class Reponse {
     public void setReclamation(Reclamation reclamation) {
         this.reclamation = reclamation;
     }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+    
+    
 
     @Override
     public String toString() {
