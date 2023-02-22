@@ -1,19 +1,20 @@
-package controller;
+package repositories;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import interfaces.IMusiqueController;
+import interfaces.IMusiqueRepository;
 import model.Musique;
 import utils.connexionDB;
 
-public class MusiqueController implements IMusiqueController {
+public class MusiqueRepository implements IMusiqueRepository {
 
 	Statement ste;
 	Connection conn = connexionDB.getInstance().getConnexion();
@@ -38,6 +39,7 @@ public class MusiqueController implements IMusiqueController {
 	public void createMusique(Musique m) {
 		try {
 			m.setChemin("C:\\uploadedFiles\\Music\\"+m.getFileName());
+			m.setDateCreation(new Date(System.currentTimeMillis()));
 			String req = "INSERT INTO `musique`( `nom`, `chemin`, `dateCreation`, `longueur`, `id_artiste`,`id_categorie`) VALUES ('"
 					+ m.getNom() + "','" + m.getChemin() + "','" + m.getDateCreation() + "','" + m.getLongueur() + "','"
 					+ m.getId_Artiste() + "','" + m.getId_Categorie() + "')";

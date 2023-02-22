@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.Musique;
 
-public interface IMusiqueController {
+public interface IMusiqueRepository {
 	
 	public void createMusique(Musique m);
 	public void updateMusique(Musique m, int id);

@@ -79,6 +79,29 @@ public class Musique {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	public String nomProperty() {
+		return this.nom;
+	}
+	public String cheminProperty() {
+		return this.chemin;
+	}
+	public Date dateCreationProperty() {
+		return this.dateCreation;
+	}
+	public String longueurProperty() {
+		return this.longueur;
+	}
+	public int id_ArtisteProperty() {
+		return this.id_Artiste;
+	}
+	public int id_CategorieProperty() {
+		return this.id_Categorie;
+	}
+	@Override
+	public String toString() {
+		return "Musique [id=" + id + ", nom=" + nom + ", chemin=" + chemin + ", dateCreation=" + dateCreation
+				+ ", longueur=" + longueur + ", id_Artiste=" + id_Artiste + ", id_Categorie=" + id_Categorie + "]";
+	}
 	
 	
 
