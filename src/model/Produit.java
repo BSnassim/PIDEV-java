@@ -11,7 +11,7 @@ package model;
  */
 public class Produit {
     private int id;
-    private int prix;
+    private Float prix;
     private String image;
     private String libelle;
     private String type;
@@ -26,11 +26,11 @@ public class Produit {
         this.id = id;
     }
 
-    public int getPrix() {
+    public Float getPrix() {
         return prix;
     }
 
-    public void setPrix(int prix) {
+    public void setPrix(Float prix) {
         this.prix = prix;
     }
 
@@ -77,7 +77,7 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(int prix, String image, String libelle, String type, String descr, int id_Artiste) {
+    public Produit(Float prix, String image, String libelle, String type, String descr, int id_Artiste) {
         this.prix = prix;
         this.image = image;
         this.libelle = libelle;
@@ -88,7 +88,7 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" + "prix=" + prix + ", image=" + image + ", libelle=" + libelle + ", type=" + type + ", descr=" + descr + ", id_Artiste=" + id_Artiste + '}';
+        return "Produit{ ID = "+id + " prix=" + prix + ", image=" + image + ", libelle=" + libelle + ", type=" + type + ", descr=" + descr + ", id_Artiste=" + id_Artiste + '}';
     }
 
     

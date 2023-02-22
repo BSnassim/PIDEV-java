@@ -29,9 +29,9 @@ public class Pidev {
         Date DateCommande =new Date(now); 
         
         //connexionDB db1 = connexionDB.getInstance(); 
-        ProduitController ps=new ProduitController();
-        Produit p= new Produit(1,"moh","xxxxxxx","zzz","type",1);
-         ps.ajouterProduit(p);
+        //ProduitController ps=new ProduitController();
+        //Produit p= new Produit(1,"moh","xxxxxxx","zzz","type",1);
+        // ps.ajouterProduit(p);
         //connexionDB db2 = connexionDB.getInstance(); 
         
       //  Produit p= new Produit(20,"image","mohsen","type",8888);

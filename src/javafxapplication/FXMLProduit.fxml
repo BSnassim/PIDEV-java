@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -15,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #CCFB5D;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication.FXMLProduitController">
    <children>
-      <VBox layoutX="31.0" layoutY="37.0" prefHeight="336.0" prefWidth="147.0">
+      <VBox layoutX="31.0" layoutY="62.0" prefHeight="336.0" prefWidth="147.0">
          <children>
             <Label text="Nom de Produit">
                <VBox.margin>
@@ -49,10 +50,14 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnupload" mnemonicParsing="false" onAction="#uploadimg" prefHeight="26.0" prefWidth="105.0" text="uplimg">
+            <Button fx:id="btnupload" mnemonicParsing="false" onAction="#uploadimg" prefHeight="26.0" prefWidth="105.0" stylesheets="@../values/style.css" text="uplimg">
                <VBox.margin>
                   <Insets left="30.0" top="10.0" />
                </VBox.margin>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="comboBox" />
+               </styleClass>
             </Button>
             <Label text="Price">
                <VBox.margin>
@@ -64,18 +69,34 @@
             </Label>
          </children>
       </VBox>
-      <TextField fx:id="nomp" layoutX="181.0" layoutY="53.0" promptText="nmp" />
-      <TextField fx:id="descrp" layoutX="158.0" layoutY="102.0" promptText="descr" />
-      <ComboBox fx:id="typep" layoutX="149.0" layoutY="147.0" prefWidth="150.0" promptText="typep" />
-      <TextField fx:id="prixp" layoutX="145.0" layoutY="279.0" promptText="prixp" />
+      <TextField fx:id="nomp" layoutX="195.0" layoutY="84.0" promptText="nmp" stylesheets="@../values/style.css">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="add-btn" />
+         </styleClass></TextField>
+      <TextField fx:id="descrp" layoutX="158.0" layoutY="136.0" promptText="descr" stylesheets="@../values/style.css">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="add-btn" />
+         </styleClass></TextField>
+      <ComboBox fx:id="typep" layoutX="132.0" layoutY="181.0" prefWidth="150.0" promptText="typep" stylesheets="@../values/style.css">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="comboBox" />
+         </styleClass></ComboBox>
+      <TextField fx:id="prixp" layoutX="149.0" layoutY="313.0" promptText="prixp" stylesheets="@../values/style.css">
+         <styleClass>
+            <String fx:value="add-btn" />
+            <String fx:value="shadow" />
+         </styleClass></TextField>
       <TableView fx:id="tableprod" layoutX="381.0" layoutY="84.0" onMouseClicked="#prodclick" prefHeight="415.0" prefWidth="589.0">
          <columns>
             <TableColumn fx:id="tvi" prefWidth="80.79998779296875" text="Id" />
-            <TableColumn fx:id="tvn" prefWidth="75.99993896484375" text="Nom" />
-            <TableColumn fx:id="tvd" prefWidth="142.4000244140625" text="Description" />
-            <TableColumn fx:id="tvt" prefWidth="125.5999755859375" text="Type" />
+            <TableColumn fx:id="tvn" onEditCommit="#onproduitNomEdit" prefWidth="75.99993896484375" text="Nom" />
+            <TableColumn fx:id="tvd" onEditCommit="#onproduitDescrEdit" prefWidth="142.4000244140625" text="Description" />
+            <TableColumn fx:id="tvt" onEditCommit="#onproduitTypeEdit" prefWidth="125.5999755859375" text="Type" />
             <TableColumn fx:id="tvimg" minWidth="0.0" prefWidth="87.0" text="Image" />
-            <TableColumn fx:id="tvprix" onEditCommit="#prix_edit" prefWidth="85.0" text="Prix" />
+            <TableColumn fx:id="tvprix" onEditCommit="#onproduitPrixEdit" prefWidth="85.0" text="Prix" />
          </columns>
       </TableView>
       <Button fx:id="btninsert" layoutX="59.0" layoutY="548.0" mnemonicParsing="false" onAction="#insertproduit" style="-fx-background-color: #66ccff;" text="Insert" />
@@ -96,6 +117,25 @@
             <Image url="@../img/icons8-trash-48.png" />
          </image>
       </ImageView>
-      <TextField fx:id="imgp" layoutX="149.0" layoutY="199.0" />
+      <TextField fx:id="imgp" layoutX="149.0" layoutY="230.0" stylesheets="@../values/style.css">
+         <styleClass>
+            <String fx:value="add-btn" />
+            <String fx:value="shadow" />
+         </styleClass></TextField>
+      <Label layoutX="388.0" layoutY="14.0" text="Gestion Produit" textFill="RED">
+         <font>
+            <Font name="Arial Black" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="53.0" fitWidth="63.0" layoutX="316.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/shopping-cart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="141.0" fitWidth="263.0" layoutX="67.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/324220204_750785826237495_5572317254833852929_n%20(1).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

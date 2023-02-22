@@ -74,14 +74,14 @@ try {
                 Produit pa = new Produit();
                 pa.setImage(RS.getString("image"));
                 pa.setLibelle(RS.getString("libelle"));
-                pa.setPrix(RS.getInt("prix"));
+                pa.setPrix(RS.getFloat("prix"));
                 pa.setType(RS.getString("type"));
                 pa.setId_Artiste(RS.getInt("id_Artiste"));
                 pa.setId(RS.getInt(1));
                 pa.setDescr(RS.getString("description"));
 
                 list.add(pa);
-                System.out.println(pa);
+               // System.out.println(pa);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -101,7 +101,7 @@ try {
             RS.first();
             pa.setImage(RS.getString("image"));
                 pa.setLibelle(RS.getString("libelle"));
-                pa.setPrix(RS.getInt("prix"));
+                pa.setPrix(RS.getFloat("prix"));
                 pa.setType(RS.getString("type"));
                 pa.setId_Artiste(RS.getInt("id_Artiste"));
             pa.setId(RS.getInt(1));
