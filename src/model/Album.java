@@ -4,26 +4,30 @@ import java.sql.Date;
 
 public class Album {
 	
-	private int id;
+	private Integer id;
 	private String nom;
 	private Date dateCreation;
-	private int id_artiste;
+	private Integer id_artiste;
 	
 	public Album() {
 	}
 
-	public Album(String nom, Date dateCreation, int id_artiste) {
-		super();
+	public Album(String nom, Date dateCreation, Integer id_artiste) {
 		this.nom = nom;
 		this.dateCreation = dateCreation;
 		this.id_artiste = id_artiste;
 	}
 
-	public int getId() {
+	public Album(String nom, Integer id_artiste) {
+		this.nom = nom;
+		this.id_artiste = id_artiste;
+	}
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -43,12 +47,18 @@ public class Album {
 		this.dateCreation = dateCreation;
 	}
 
-	public int getId_artiste() {
+	public Integer getId_artiste() {
 		return id_artiste;
 	}
 
-	public void setId_artiste(int id_artiste) {
+	public void setId_artiste(Integer id_artiste) {
 		this.id_artiste = id_artiste;
+	}
+
+	@Override
+	public String toString() {
+		return "Album [id=" + id + ", nom=" + nom + ", dateCreation=" + dateCreation + ", id_artiste=" + id_artiste
+				+ "]";
 	}
 	
 	

@@ -15,12 +15,13 @@
          <children>
             <TableView fx:id="musicList" layoutX="11.0" prefHeight="494.0" prefWidth="637.0">
               <columns>
-                <TableColumn fx:id="colNom" prefWidth="67.20002746582031" text="Nom" />
-                <TableColumn fx:id="colChemin" prefWidth="223.20004272460938" text="Chemin" />
-                  <TableColumn fx:id="colDate" prefWidth="120.79998779296875" text="Date du creation" />
-                  <TableColumn fx:id="colLongueur" prefWidth="67.99993896484375" text="Longueur" />
-                  <TableColumn fx:id="colArtiste" prefWidth="62.39990234375" text="Artiste" />
-                  <TableColumn fx:id="colCategorie" prefWidth="88.8001708984375" text="Categorie" />
+                <TableColumn fx:id="colNom" prefWidth="83.199951171875" text="Nom" />
+                <TableColumn fx:id="colChemin" prefWidth="152.0" text="Chemin" />
+                  <TableColumn fx:id="colDate" prefWidth="101.60000610351562" text="Date du creation" />
+                  <TableColumn fx:id="colLongueur" prefWidth="64.00006103515625" text="Longueur" />
+                  <TableColumn fx:id="colArtiste" prefWidth="68.00006103515625" text="Artiste" />
+                  <TableColumn fx:id="colCategorie" minWidth="0.0" prefWidth="69.5999755859375" text="Categorie" />
+                  <TableColumn fx:id="colAlbum" prefWidth="100.800048828125" text="Album" />
               </columns>
             </TableView>
          </children>
@@ -83,7 +84,7 @@
                   <Image url="@ressources/images/catalog.png" />
                </image>
             </ImageView>
-            <Button fx:id="albumButton" layoutX="54.0" layoutY="236.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Album" />
+            <Button fx:id="albumButton" layoutX="54.0" layoutY="236.0" mnemonicParsing="false" onAction="#onActionAlbumButton" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Album" />
             <ImageView fitHeight="33.0" fitWidth="49.0" layoutX="13.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ressources/images/album.png" />
@@ -121,8 +122,13 @@
          </children>
       </AnchorPane>
       <Text fill="#d4d4d4" layoutX="494.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.sound'on.com" wrappingWidth="138.40000000000003" />
-      <Button fx:id="addMusic" layoutX="264.0" layoutY="58.0" mnemonicParsing="false" onAction="#onActionAddMusic" text="Ajouter" />
-      <Button fx:id="editMusic" layoutX="331.0" layoutY="58.0" mnemonicParsing="false" onAction="#onActionEditMusic" text="Modifier" />
-      <Button fx:id="deleteMusic" layoutX="405.0" layoutY="58.0" mnemonicParsing="false" text="Supprimer" />
+      <Button fx:id="addMusic" layoutX="246.0" layoutY="71.0" mnemonicParsing="false" onAction="#onActionAddMusic" text="Ajouter" />
+      <Button fx:id="editMusic" layoutX="319.0" layoutY="71.0" mnemonicParsing="false" onAction="#onActionEditMusic" text="Modifier" />
+      <Button fx:id="deleteMusic" layoutX="394.0" layoutY="71.0" mnemonicParsing="false" text="Supprimer" />
+      <Text fill="WHITE" layoutX="438.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste de Musique">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

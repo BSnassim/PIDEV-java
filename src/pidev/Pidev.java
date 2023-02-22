@@ -8,6 +8,8 @@ package pidev;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import repositories.AlbumRepository;
+
 /**
  *
  * @author Siwar Ahmadi
@@ -18,9 +20,7 @@ public class Pidev {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    	
-//    	Date d = new Date(System.currentTimeMillis());
-//    	System.out.println(d);
+
     }
     
 }

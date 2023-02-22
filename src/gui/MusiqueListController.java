@@ -6,7 +6,6 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,11 +19,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Musique;
+import repositories.MusiqueRepository;
 
 public class MusiqueListController implements Initializable {
-
+	
+	MusiqueRepository musicRepo = new MusiqueRepository();
 	@FXML
 	private Button userButton;
+	@FXML
+	private Button albumButton;
 	@FXML
 	private Button addMusic;
 	@FXML
@@ -43,24 +46,39 @@ public class MusiqueListController implements Initializable {
 	private TableColumn<Musique, Integer> colArtiste;
 	@FXML
 	private TableColumn<Musique, Integer> colCategorie;
+	@FXML
+	private TableColumn<Musique, Integer> colAlbum;
 
 	@FXML
 	private void onActionUserButton(ActionEvent event) {
 		System.out.println("go to user");
 	}
-
-	private ObservableList<Musique> musicRows = FXCollections.observableArrayList();
+	
+	@FXML
+	private void onActionAlbumButton(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("AlbumList.fxml"));
+			Parent root = loader.load();
+			Scene scene = new Scene(root);
+			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			stage.setScene(scene);
+			stage.show();
+			stage.toFront();
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-//		musicRows.add( new Musique("song1", "path/to/song", Date.valueOf("21-02-2023"), "2:05", 1, 1));
-		colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-		colChemin.setCellValueFactory(new PropertyValueFactory<>("chemin"));
-		colDate.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));
-		colLongueur.setCellValueFactory(new PropertyValueFactory<>("longueur"));
-		colArtiste.setCellValueFactory(new PropertyValueFactory<>("id_Artiste"));
-		colCategorie.setCellValueFactory(new PropertyValueFactory<>("id_Categorie"));
-		musicList.setItems(musicRows);
+		colNom.setCellValueFactory(new PropertyValueFactory<Musique,String>("nom"));
+		colChemin.setCellValueFactory(new PropertyValueFactory<Musique,String>("chemin"));
+		colDate.setCellValueFactory(new PropertyValueFactory<Musique,Date>("dateCreation"));
+		colLongueur.setCellValueFactory(new PropertyValueFactory<Musique,String>("longueur"));
+		colArtiste.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_Artiste"));
+		colCategorie.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_Categorie"));
+		colAlbum.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_album"));
+		musicList.setItems(FXCollections.observableArrayList(musicRepo.findAllMusique()));
 	}
 
 	@FXML
@@ -69,7 +87,7 @@ public class MusiqueListController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusiqueInsert.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.show();
 			stage.toFront();
