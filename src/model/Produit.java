@@ -15,20 +15,8 @@ public class Produit {
     private String image;
     private String libelle;
     private String type;
+    private String descr;
     private int id_Artiste;
-
-    public Produit(int prix, String image, String libelle, String type, int id_Artiste) {
-        this.prix = prix;
-        this.image = image;
-        this.libelle = libelle;
-        this.type = type;
-        this.id_Artiste = id_Artiste;
-    }
-
-    public Produit() {
-    }
-
-
 
     public int getId() {
         return id;
@@ -38,7 +26,7 @@ public class Produit {
         this.id = id;
     }
 
-    public float getPrix() {
+    public int getPrix() {
         return prix;
     }
 
@@ -70,6 +58,14 @@ public class Produit {
         this.type = type;
     }
 
+    public String getDescr() {
+        return descr;
+    }
+
+    public void setDescr(String descr) {
+        this.descr = descr;
+    }
+
     public int getId_Artiste() {
         return id_Artiste;
     }
@@ -78,16 +74,22 @@ public class Produit {
         this.id_Artiste = id_Artiste;
     }
 
+    public Produit() {
+    }
+
+    public Produit(int prix, String image, String libelle, String type, String descr, int id_Artiste) {
+        this.prix = prix;
+        this.image = image;
+        this.libelle = libelle;
+        this.type = type;
+        this.descr = descr;
+        this.id_Artiste = id_Artiste;
+    }
+
     @Override
     public String toString() {
-        return "Produit{" + "id=" + id + ", prix=" + prix + ", image=" + image + ", libelle=" + libelle + ", type=" + type + ", id_Artiste=" + id_Artiste + '}';
+        return "Produit{" + "prix=" + prix + ", image=" + image + ", libelle=" + libelle + ", type=" + type + ", descr=" + descr + ", id_Artiste=" + id_Artiste + '}';
     }
 
-    public void getImage(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-    
     
 }

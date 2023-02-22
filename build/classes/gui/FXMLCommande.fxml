@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="215.0" prefWidth="225.0" stylesheets="@../values/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui.FXMLProduitController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="69.0" prefWidth="215.0">
+               <children>
+                  <Label fx:id="nameLabel" prefHeight="57.0" prefWidth="150.0" text="Blue Sweat">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Cambria" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="priceLabel" prefHeight="57.0" prefWidth="88.0" text="\$59.99">
+                     <font>
+                        <Font name="Calisto MT" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </HBox>
+            <ImageView fx:id="img" fitHeight="115.0" fitWidth="205.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/kisspng-long-sleeved-t-shirt-hoodie-clothing-black-diamonds-are-girl39s-best-friends-hoodies-5bae7c8ec573a0.4028864215381618068088.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="fruit-item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

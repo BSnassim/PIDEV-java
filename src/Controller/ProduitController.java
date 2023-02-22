@@ -26,7 +26,7 @@ public class ProduitController implements IproduitController {
     @Override
     public void ajouterProduit(Produit pa) {
         try {
-            String req = "INSERT INTO `produit`( `image`,`prix`,`libelle`,`type`,`id_Artiste`) VALUES ('" + pa.getImage() + "','" + pa.getPrix() + "','" + pa.getLibelle() + "','" + pa.getType() + "','" + pa.getId_Artiste()+ "')";
+            String req = "INSERT INTO `produit`( `image`,`prix`,`libelle`,`type`,`description`,`id_Artiste`) VALUES ('" + pa.getImage() + "','" + pa.getPrix() + "','" + pa.getLibelle() + "','" + pa.getType() + "','" + pa.getDescr()+ "','" + pa.getId_Artiste()+ "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Produit ajouté!!!");
@@ -40,7 +40,7 @@ public class ProduitController implements IproduitController {
     @Override
     public void modifierProduit(Produit pa, int id) {
         try {
-            String req = "UPDATE `produit` SET `image` = '" + pa.getImage() + "' ,`libelle`='" +pa.getLibelle() +"' ,`prix`='" +pa.getPrix() +"' ,`type`='" +pa.getType() +"' WHERE `id` = " + id;
+            String req = "UPDATE `produit` SET `image` = '" + pa.getImage() + "' ,`libelle`='" +pa.getLibelle() +"' ,`description`='" +pa.getDescr()+"' ,`prix`='" +pa.getPrix() +"' ,`type`='" +pa.getType() +"' WHERE `id` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Produit updated !");
@@ -78,8 +78,10 @@ try {
                 pa.setType(RS.getString("type"));
                 pa.setId_Artiste(RS.getInt("id_Artiste"));
                 pa.setId(RS.getInt(1));
+                pa.setDescr(RS.getString("description"));
 
                 list.add(pa);
+                System.out.println(pa);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
