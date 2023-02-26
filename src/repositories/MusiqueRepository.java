@@ -36,7 +36,7 @@ public class MusiqueRepository implements IMusiqueRepository {
 	@Override
 	public void createMusique(Musique m) {
 		try {
-			m.setChemin("C:\\uploadedFiles\\"+ m.getId_Artiste() +"\\Music\\" + m.getFileName());
+			m.setChemin("C:\\uploadedFiles\\" + m.getId_Artiste() + "\\Music\\" + m.getFileName());
 			m.setDateCreation(new Date(System.currentTimeMillis()));
 			String req = "INSERT INTO `musique`( `nom`, `chemin`, `dateCreation`, `longueur`, `id_artiste`,`id_categorie`,`id_album`) VALUES ('"
 					+ m.getNom() + "','" + m.getChemin() + "','" + m.getDateCreation() + "','" + m.getLongueur() + "','"
@@ -55,8 +55,7 @@ public class MusiqueRepository implements IMusiqueRepository {
 	@Override
 	public void updateMusique(Musique m, int id) {
 		try {
-			String req = "UPDATE `musique` SET `nom` = '" + m.getNom() + "', `chemin` = '" + m.getChemin()
-					+ "', `dateCreation` = '" + m.getDateCreation() + "', `longueur` = '" + m.getLongueur()
+			String req = "UPDATE `musique` SET `nom` = '" + m.getNom() + "', `longueur` = '" + m.getLongueur()
 					+ "', `id_Artiste` = '" + m.getId_Artiste() + "', `id_Categorie` = '" + m.getId_Categorie()
 					+ "', `id_album` = '" + m.getId_album() + "'WHERE `id` = " + id;
 			ste = conn.createStatement();
@@ -109,7 +108,7 @@ public class MusiqueRepository implements IMusiqueRepository {
 			System.err.println("Probleme lors de lecture des Musique");
 			System.out.println(ex.getMessage());
 		}
-		return list;
+		return (list != null) ? list : null;
 	}
 
 	@Override
@@ -135,7 +134,7 @@ public class MusiqueRepository implements IMusiqueRepository {
 			System.out.println(ex.getMessage());
 		}
 
-		return m;
+		return (m != null) ? m : null;
 	}
 
 }

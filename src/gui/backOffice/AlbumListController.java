@@ -1,4 +1,4 @@
-package gui;
+package gui.backOffice;
 
 import java.io.IOException;
 import java.net.URL;

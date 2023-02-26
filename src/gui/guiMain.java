@@ -11,7 +11,7 @@ public class guiMain extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-        Parent root = FXMLLoader.load(getClass().getResource("MusiqueList.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("backOffice/MusiqueList.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 		} catch(Exception e) {

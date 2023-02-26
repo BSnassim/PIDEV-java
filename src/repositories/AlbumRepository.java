@@ -83,7 +83,7 @@ public class AlbumRepository implements IAlbumRepository {
 			System.err.println("Probleme lors de lecture des Albums");
 			System.out.println(ex.getMessage());
 		}
-		return list;
+		return (list != null) ? list : null;
 	}
 
 	@Override
@@ -105,7 +105,7 @@ public class AlbumRepository implements IAlbumRepository {
 			System.out.println(ex.getMessage());
 		}
 
-		return a;
+		return (a != null) ? a : null;
 	}
 
 }

@@ -1,10 +1,12 @@
-package gui;
+package gui.backOffice;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,15 +17,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.Musique;
+import repositories.AlbumRepository;
 import repositories.MusiqueRepository;
 
 public class MusiqueListController implements Initializable {
-	
+
 	MusiqueRepository musicRepo = new MusiqueRepository();
+	AlbumRepository albumRepo = new AlbumRepository();
 	@FXML
 	private Button userButton;
 	@FXML
@@ -49,24 +57,33 @@ public class MusiqueListController implements Initializable {
 	@FXML
 	private TableColumn<Musique, Integer> colCategorie;
 	@FXML
-	private TableColumn<Musique, Integer> colAlbum;
+	private TableColumn<Musique, String> colAlbum;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		colNom.setCellValueFactory(new PropertyValueFactory<Musique,String>("nom"));
-		colChemin.setCellValueFactory(new PropertyValueFactory<Musique,String>("chemin"));
-		colDate.setCellValueFactory(new PropertyValueFactory<Musique,Date>("dateCreation"));
-		colLongueur.setCellValueFactory(new PropertyValueFactory<Musique,String>("longueur"));
-		colArtiste.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_Artiste"));
-		colCategorie.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_Categorie"));
-		colAlbum.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_album"));
+		colNom.setCellValueFactory(new PropertyValueFactory<Musique, String>("nom"));
+		colChemin.setCellValueFactory(new PropertyValueFactory<Musique, String>("chemin"));
+		colDate.setCellValueFactory(new PropertyValueFactory<Musique, Date>("dateCreation"));
+		colLongueur.setCellValueFactory(new PropertyValueFactory<Musique, String>("longueur"));
+		colArtiste.setCellValueFactory(new PropertyValueFactory<Musique, Integer>("id_Artiste"));
+		colCategorie.setCellValueFactory(new PropertyValueFactory<Musique, Integer>("id_Categorie"));
+//		colAlbum.setCellValueFactory(new PropertyValueFactory<Musique, Integer>("id_album"));
+		colAlbum.setCellValueFactory(new Callback<CellDataFeatures<Musique, String>, ObservableValue<String>>() {
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Musique, String> param) {
+				return (param.getValue().getId_album() != 0)
+						? new SimpleStringProperty(albumRepo.findAlbum(param.getValue().getId_album()).getNom())
+						: null;
+			}
+		});
 		loadData();
 	}
-	
+
 	public void loadData() {
 		musicList.setItems(FXCollections.observableArrayList(musicRepo.findAllMusique()));
 	}
-	
+
 	/*
 	 * Side menu buttons
 	 */
@@ -74,7 +91,7 @@ public class MusiqueListController implements Initializable {
 	private void onActionUserButton(ActionEvent event) {
 		System.out.println("go to user");
 	}
-	
+
 	@FXML
 	private void onActionAlbumButton(ActionEvent event) {
 		try {
@@ -89,10 +106,10 @@ public class MusiqueListController implements Initializable {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
-/*
- * Crud related buttons
- */
+
+	/*
+	 * Crud related buttons
+	 */
 
 	@FXML
 	private void onActionAddMusic(ActionEvent event) {
@@ -108,30 +125,32 @@ public class MusiqueListController implements Initializable {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
+
 	@FXML
 	private void onActionEditMusic(ActionEvent event) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusiqueInsert.fxml"));
-			Parent root = loader.load();
-			Scene scene = new Scene(root);
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			stage.setScene(scene);
-			stage.show();
-			stage.toFront();
-			stage.setOnCloseRequest(e -> {
-				
-			});
+			if (musicList.getSelectionModel().getSelectedItem() != null) {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("MusiqueInsert.fxml"));
+				Parent root = loader.load();
+				Scene scene = new Scene(root);
+				Musique m = musicList.getSelectionModel().getSelectedItem();
+				MusiqueInsertController mic = loader.getController();
+				mic.editableData(m);
+				Stage stage = new Stage();
+				stage.setScene(scene);
+				stage.show();
+				stage.toFront();
+			}
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
-	@FXML 
+
+	@FXML
 	private void onActionDeleteMusic(ActionEvent event) {
 		Musique m = musicList.getSelectionModel().getSelectedItem();
-        musicRepo.deleteMusique(m.getId());
-        loadData();
+		musicRepo.deleteMusique(m.getId());
+		loadData();
 	}
 
 }
