@@ -36,6 +36,20 @@ public class AlbumListController implements Initializable{
 	@FXML
 	private TableColumn<Album, Integer> colArtiste;
 	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		colNom.setCellValueFactory(new PropertyValueFactory<Album,String>("nom"));
+		colDate.setCellValueFactory(new PropertyValueFactory<Album,Date>("dateCreation"));
+		colArtiste.setCellValueFactory(new PropertyValueFactory<Album,Integer>("id_artiste"));
+		loadData();
+	}
+	public void loadData() {
+		albumList.setItems(FXCollections.observableArrayList(albumRepo.findAllAlbum()));
+	}
+	
+	/*
+	 * Side menu buttons
+	 */
 	@FXML
 	private void onActionMusicButton(ActionEvent event) {
 		try {
@@ -51,13 +65,9 @@ public class AlbumListController implements Initializable{
 		}
 	}
 	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		colNom.setCellValueFactory(new PropertyValueFactory<Album,String>("nom"));
-		colDate.setCellValueFactory(new PropertyValueFactory<Album,Date>("dateCreation"));
-		colArtiste.setCellValueFactory(new PropertyValueFactory<Album,Integer>("id_artiste"));
-		albumList.setItems(FXCollections.observableArrayList(albumRepo.findAllAlbum()));
-	}
+	/*
+	 * Crud related buttons
+	 */
 	
 	@FXML
 	private void onActionAddAlbum(ActionEvent event) {
@@ -90,6 +100,13 @@ public class AlbumListController implements Initializable{
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
+	}
+	
+	@FXML
+	private void onActionDeleteAlbum(ActionEvent event) {
+		Album a = albumList.getSelectionModel().getSelectedItem();
+        albumRepo.deleteAlbum(a.getId());
+        loadData();
 	}
 
 }

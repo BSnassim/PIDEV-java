@@ -120,7 +120,7 @@
       <Text fill="#d4d4d4" layoutX="494.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.sound'on.com" wrappingWidth="138.40000000000003" />
       <Button fx:id="addAlbum" layoutX="255.0" layoutY="71.0" mnemonicParsing="false" onAction="#onActionAddAlbum" text="Ajouter" />
       <Button fx:id="editAlbum" layoutX="323.0" layoutY="71.0" mnemonicParsing="false" onAction="#onActionEditAlbum" text="Modifier" />
-      <Button fx:id="deleteMusic" layoutX="395.0" layoutY="71.0" mnemonicParsing="false" text="Supprimer" />
+      <Button fx:id="deleteMusic" layoutX="395.0" layoutY="71.0" mnemonicParsing="false" onAction="#onActionDeleteAlbum" text="Supprimer" />
       <Text fill="WHITE" layoutX="426.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des Albums">
          <font>
             <Font size="25.0" />

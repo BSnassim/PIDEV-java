@@ -33,6 +33,8 @@ public class MusiqueListController implements Initializable {
 	@FXML
 	private Button editMusic;
 	@FXML
+	private Button deleteMusic;
+	@FXML
 	private TableView<Musique> musicList;
 	@FXML
 	private TableColumn<Musique, String> colNom;
@@ -49,6 +51,25 @@ public class MusiqueListController implements Initializable {
 	@FXML
 	private TableColumn<Musique, Integer> colAlbum;
 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		colNom.setCellValueFactory(new PropertyValueFactory<Musique,String>("nom"));
+		colChemin.setCellValueFactory(new PropertyValueFactory<Musique,String>("chemin"));
+		colDate.setCellValueFactory(new PropertyValueFactory<Musique,Date>("dateCreation"));
+		colLongueur.setCellValueFactory(new PropertyValueFactory<Musique,String>("longueur"));
+		colArtiste.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_Artiste"));
+		colCategorie.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_Categorie"));
+		colAlbum.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_album"));
+		loadData();
+	}
+	
+	public void loadData() {
+		musicList.setItems(FXCollections.observableArrayList(musicRepo.findAllMusique()));
+	}
+	
+	/*
+	 * Side menu buttons
+	 */
 	@FXML
 	private void onActionUserButton(ActionEvent event) {
 		System.out.println("go to user");
@@ -68,18 +89,10 @@ public class MusiqueListController implements Initializable {
 			System.out.println(ex.getMessage());
 		}
 	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		colNom.setCellValueFactory(new PropertyValueFactory<Musique,String>("nom"));
-		colChemin.setCellValueFactory(new PropertyValueFactory<Musique,String>("chemin"));
-		colDate.setCellValueFactory(new PropertyValueFactory<Musique,Date>("dateCreation"));
-		colLongueur.setCellValueFactory(new PropertyValueFactory<Musique,String>("longueur"));
-		colArtiste.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_Artiste"));
-		colCategorie.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_Categorie"));
-		colAlbum.setCellValueFactory(new PropertyValueFactory<Musique,Integer>("id_album"));
-		musicList.setItems(FXCollections.observableArrayList(musicRepo.findAllMusique()));
-	}
+	
+/*
+ * Crud related buttons
+ */
 
 	@FXML
 	private void onActionAddMusic(ActionEvent event) {
@@ -112,6 +125,13 @@ public class MusiqueListController implements Initializable {
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
+	}
+	
+	@FXML 
+	private void onActionDeleteMusic(ActionEvent event) {
+		Musique m = musicList.getSelectionModel().getSelectedItem();
+        musicRepo.deleteMusique(m.getId());
+        loadData();
 	}
 
 }
