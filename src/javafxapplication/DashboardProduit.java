@@ -23,10 +23,11 @@ import javafx.stage.Stage;
  */
 public class DashboardProduit extends Application {
     
+    
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader.setDefaultClassLoader(getClass().getClassLoader());
-Parent root = FXMLLoader.load(getClass().getResource("FXMLProduit.fxml"));
+Parent root = FXMLLoader.load(getClass().getResource("../gui/FXMLMenu1.fxml"));
 Scene scene = new Scene(root);
 primaryStage.setTitle("Hello World!");
 primaryStage.setScene(scene);

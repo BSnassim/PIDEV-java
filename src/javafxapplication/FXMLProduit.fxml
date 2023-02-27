@@ -59,6 +59,22 @@
                   <String fx:value="comboBox" />
                </styleClass>
             </Button>
+            <Label text="Taille">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Quantite">
+               <font>
+                  <Font name="Arial Black" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </VBox.margin>
+            </Label>
             <Label text="Price">
                <VBox.margin>
                   <Insets left="10.0" top="20.0" />
@@ -84,19 +100,21 @@
             <String fx:value="shadow" />
             <String fx:value="comboBox" />
          </styleClass></ComboBox>
-      <TextField fx:id="prixp" layoutX="149.0" layoutY="313.0" promptText="prixp" stylesheets="@../values/style.css">
+      <TextField fx:id="prixp" layoutX="149.0" layoutY="378.0" promptText="prixp" stylesheets="@../values/style.css">
          <styleClass>
             <String fx:value="add-btn" />
             <String fx:value="shadow" />
          </styleClass></TextField>
-      <TableView fx:id="tableprod" layoutX="381.0" layoutY="84.0" onMouseClicked="#prodclick" prefHeight="415.0" prefWidth="589.0">
+      <TableView fx:id="tableprod" layoutX="359.0" layoutY="84.0" onMouseClicked="#prodclick" prefHeight="415.0" prefWidth="612.0">
          <columns>
-            <TableColumn fx:id="tvi" prefWidth="80.79998779296875" text="Id" />
-            <TableColumn fx:id="tvn" onEditCommit="#onproduitNomEdit" prefWidth="75.99993896484375" text="Nom" />
-            <TableColumn fx:id="tvd" onEditCommit="#onproduitDescrEdit" prefWidth="142.4000244140625" text="Description" />
-            <TableColumn fx:id="tvt" onEditCommit="#onproduitTypeEdit" prefWidth="125.5999755859375" text="Type" />
-            <TableColumn fx:id="tvimg" minWidth="0.0" prefWidth="87.0" text="Image" />
-            <TableColumn fx:id="tvprix" onEditCommit="#onproduitPrixEdit" prefWidth="85.0" text="Prix" />
+            <TableColumn fx:id="tvi" prefWidth="60.0" text="Id" />
+            <TableColumn fx:id="tvn" onEditCommit="#onproduitNomEdit" prefWidth="74.4000244140625" text="Nom" />
+            <TableColumn fx:id="tvd" onEditCommit="#onproduitDescrEdit" prefWidth="112.800048828125" text="Description" />
+            <TableColumn fx:id="tvt" onEditCommit="#onproduitTypeEdit" prefWidth="56.800048828125" text="Type" />
+            <TableColumn fx:id="tvimg" minWidth="0.0" prefWidth="80.79998779296875" text="Image" />
+            <TableColumn fx:id="tvprix" onEditCommit="#onproduitPrixEdit" prefWidth="73.59991455078125" text="Prix" />
+            <TableColumn fx:id="qte" prefWidth="75.0" text="Quantite" />
+            <TableColumn fx:id="taille" prefWidth="75.0" text="Taille" />
          </columns>
       </TableView>
       <Button fx:id="btninsert" layoutX="59.0" layoutY="548.0" mnemonicParsing="false" onAction="#insertproduit" style="-fx-background-color: #66ccff;" text="Insert" />
@@ -132,10 +150,12 @@
             <Image url="@../img/shopping-cart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="141.0" fitWidth="263.0" layoutX="67.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="190.0" layoutX="89.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/324220204_750785826237495_5572317254833852929_n%20(1).png" />
          </image>
       </ImageView>
+      <TextField fx:id="taillep" layoutX="158.0" layoutY="292.0" />
+      <TextField fx:id="qtep" layoutX="159.0" layoutY="332.0" />
    </children>
 </AnchorPane>

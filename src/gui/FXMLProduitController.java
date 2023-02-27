@@ -12,8 +12,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import model.Produit;
@@ -28,50 +32,71 @@ public class FXMLProduitController implements Initializable {
     /**
      * Initializes the controller class.
      */
+     @FXML
+    private Button add;
+
     @FXML
     private VBox chosenFruitCard;
 
     @FXML
-    private ImageView fruitImg;
+    private ComboBox<String> colortxt;
 
     @FXML
-    private Label fruitNameLable;
+    private javafx.scene.control.Label namalabel;
 
     @FXML
-    private Label fruitPriceLabel;
+    private javafx.scene.control.Label prixlabel;
 
     @FXML
-    private ScrollPane scroll;
-    
-    private ProduitController produitcontroller;
-    
-    private List<Produit> produits = new ArrayList<>();
-    
-    private List<Produit> getData(){
-      //  List<Produit> produits = new ArrayList<>();
-       // Produit produit;
-       //scroll.(produitcontroller.afficherProduit());
-        return produitcontroller.afficherProduit();
-        
-       /* for(int i=0; i<20; i++){
-            produit = new Produit();
-            produit.setId(i);
-            produit.setPrix(49);
-            produit.setImage("/img/pullnoir.png");
-            produit.setLibelle("pull");
-            produit.setType("0C090A");
-          //  produit.*/
-          
-        
-        
-        
+    private ImageView prodimg;
+
+    @FXML
+    private javafx.scene.control.ScrollPane scroll;
+
+    @FXML
+    private TextField searchtxt;
+
+    @FXML
+    private ComboBox<String> taillecombo;
+    @FXML
+    private ComboBox<String> cbcact;
+    @FXML
+    private ComboBox<Float> cbprix;
+    @FXML
+    private ComboBox<String> cbcolor;
+    @FXML
+    private Button filter;
+    @FXML
+    private Button refresh;
+
+    @FXML
+    void addToCart(ActionEvent event) {
         
     }
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void selectcat(ActionEvent event) {
+    }
+
+    @FXML
+    private void selectprix(ActionEvent event) {
+    }
+
+    @FXML
+    private void selectcolor(ActionEvent event) {
+    }
+
+    @FXML
+    private void filteraction(ActionEvent event) {
+    }
+
+    @FXML
+    private void refreshaction(ActionEvent event) {
+    }
     
 }

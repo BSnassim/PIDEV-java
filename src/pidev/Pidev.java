@@ -30,18 +30,18 @@ public class Pidev {
         
         //connexionDB db1 = connexionDB.getInstance(); 
         //ProduitController ps=new ProduitController();
-        //Produit p= new Produit(1,"moh","xxxxxxx","zzz","type",1);
-        // ps.ajouterProduit(p);
+       // Produit p= new Produit(40.5f, "yyy", "xxuuux", "ooo", "ppp", 5, "M", 1);
+         //ps.ajouterProduit(p);
         //connexionDB db2 = connexionDB.getInstance(); 
         
       //  Produit p= new Produit(20,"image","mohsen","type",8888);
-     //   ProduitController p1=new ProduitController();
-        //p1.ajouterProduit(p);
+        //ProduitController p1=new ProduitController();
+       // p1.ajouterProduit(p);
        // p1.modifierProduit(p, 2);
        //System.out.println(p1.afficherProduit());
 
         //System.out.println(p1.rechProduit(2));
-        //p1.supprimerProduit(2);
+       // p1.supprimerProduit(2);
         
         
       //  Commande c= new Commande(300,DateCommande,4444);

@@ -16,6 +16,28 @@ public class Produit {
     private String libelle;
     private String type;
     private String descr;
+    private int qte;
+    private String taille;
+
+    public Produit(float parseFloat, String text, String text0, String get, String text1, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getQte() {
+        return qte;
+    }
+
+    public void setQte(int qte) {
+        this.qte = qte;
+    }
+
+    public String getTaille() {
+        return taille;
+    }
+
+    public void setTaille(String taille) {
+        this.taille = taille;
+    }
     private int id_Artiste;
 
     public int getId() {
@@ -77,18 +99,36 @@ public class Produit {
     public Produit() {
     }
 
-    public Produit(Float prix, String image, String libelle, String type, String descr, int id_Artiste) {
+    public Produit(Float prix, String image, String libelle, String type, String descr, int qte,String taille , int id_Artiste) {
         this.prix = prix;
         this.image = image;
         this.libelle = libelle;
         this.type = type;
         this.descr = descr;
+        this.qte=qte;
+        this.taille=taille;
         this.id_Artiste = id_Artiste;
     }
 
     @Override
     public String toString() {
-        return "Produit{ ID = "+id + " prix=" + prix + ", image=" + image + ", libelle=" + libelle + ", type=" + type + ", descr=" + descr + ", id_Artiste=" + id_Artiste + '}';
+        return "Produit{ ID = "+id + " prix=" + prix + ", image=" + image + ", libelle=" + libelle + ", type=" + type + ", descr=" + descr + ", qte=" + qte+ ", taille=" + taille+ ", id_Artiste=" + id_Artiste + '}';
+    }
+
+    public void getPrix(int i, float f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setPrix(int i, float f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void getQte(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void ajouterProduit(Produit produit) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

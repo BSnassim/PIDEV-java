@@ -38,7 +38,7 @@ import model.Produit;
  */
 public class FXMLProduitController implements Initializable {
 
-    ObservableList<String> types =FXCollections.observableArrayList("xx","yyy","zzz");
+    ObservableList<String> types =FXCollections.observableArrayList("Type","vetements","cd");
     ProduitController ps = new ProduitController();
     @FXML
     private TableView<Produit> tableprod;
@@ -60,6 +60,17 @@ public class FXMLProduitController implements Initializable {
     private TableColumn<Produit, String> tvimg;
     @FXML
     private TableColumn<Produit, Float> tvprix;
+    @FXML
+    private TableColumn<Produit, Integer> qte;
+    @FXML
+    private TableColumn<Produit, String> taille;
+
+    @FXML
+    private TextField taillep;
+
+
+    @FXML
+    private TextField qtep;
     @FXML
     private Button btnupload;
     @FXML
@@ -112,6 +123,10 @@ public class FXMLProduitController implements Initializable {
     tvt.setCellValueFactory(new PropertyValueFactory<Produit,String>("type"));
     tvt.setEditable(true);
     tvt.setCellFactory(TextFieldTableCell.forTableColumn());
+    taille.setCellValueFactory(new PropertyValueFactory<Produit,String>("taille"));
+    taille.setEditable(true);
+    qte.setCellValueFactory(new PropertyValueFactory<Produit,Integer>("qte"));
+    qte.setEditable(true);
     tvn.setCellValueFactory(new PropertyValueFactory<Produit,String>("libelle"));
     tvn.setEditable(true);
     tvn.setCellFactory(TextFieldTableCell.forTableColumn()); // use TextFieldTableCell for libelle column
@@ -168,9 +183,10 @@ alert.showAndWait();
         else
         {
             //float x = parseFloat(prixp.getText());
-            Produit p = new Produit(Float.parseFloat((prixp.getText())),imgp.getText(),nomp.getText(),types.get(typep.getSelectionModel().getSelectedIndex()),descrp.getText(),1);
+            Produit p = new Produit(Float.parseFloat((prixp.getText())),imgp.getText(),nomp.getText(),types.get(typep.getSelectionModel().getSelectedIndex()),descrp.getText(),Integer.parseInt(qtep.getText()),taillep.getText(),1);
             System.out.println(p);
             ps.ajouterProduit(p);
+            senddata();
             
         }
     }

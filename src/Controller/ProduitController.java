@@ -26,7 +26,7 @@ public class ProduitController implements IproduitController {
     @Override
     public void ajouterProduit(Produit pa) {
         try {
-            String req = "INSERT INTO `produit`( `image`,`prix`,`libelle`,`type`,`description`,`id_Artiste`) VALUES ('" + pa.getImage() + "','" + pa.getPrix() + "','" + pa.getLibelle() + "','" + pa.getType() + "','" + pa.getDescr()+ "','" + pa.getId_Artiste()+ "')";
+            String req = "INSERT INTO `produit`( `image`,`prix`,`libelle`,`type`,`description`,`qte`,`taille`,`id_Artiste`) VALUES ('" + pa.getImage() + "','" + pa.getPrix() + "','" + pa.getLibelle() + "','" + pa.getType() + "','" + pa.getDescr()+ "','"+ pa.getQte() + "','" + pa.getTaille()+ "','"  + pa.getId_Artiste()+ "')";
             ste = conn.createStatement();
             ste.executeUpdate(req);
             System.out.println("Produit ajouté!!!");
@@ -40,7 +40,7 @@ public class ProduitController implements IproduitController {
     @Override
     public void modifierProduit(Produit pa, int id) {
         try {
-            String req = "UPDATE `produit` SET `image` = '" + pa.getImage() + "' ,`libelle`='" +pa.getLibelle() +"' ,`description`='" +pa.getDescr()+"' ,`prix`='" +pa.getPrix() +"' ,`type`='" +pa.getType() +"' WHERE `id` = " + id;
+            String req = "UPDATE `produit` SET `image` = '" + pa.getImage() + "' ,`libelle`='" +pa.getLibelle() +"' ,`description`='" +pa.getDescr()+"' ,`prix`='" +pa.getPrix() +"' ,`type`='" +pa.getType()+"' ,`qte`='" +pa.getQte() +"' ,`taille`='" +pa.getTaille() +"' WHERE `id` = " + id;
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Produit updated !");
@@ -79,6 +79,8 @@ try {
                 pa.setId_Artiste(RS.getInt("id_Artiste"));
                 pa.setId(RS.getInt(1));
                 pa.setDescr(RS.getString("description"));
+                pa.setQte(RS.getInt("qte"));
+                pa.setTaille(RS.getString("taille"));
 
                 list.add(pa);
                // System.out.println(pa);
@@ -103,6 +105,8 @@ try {
                 pa.setLibelle(RS.getString("libelle"));
                 pa.setPrix(RS.getFloat("prix"));
                 pa.setType(RS.getString("type"));
+                pa.setQte(RS.getInt("qte"));
+                pa.setTaille(RS.getString("taille"));
                 pa.setId_Artiste(RS.getInt("id_Artiste"));
             pa.setId(RS.getInt(1));
             
