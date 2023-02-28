@@ -47,6 +47,14 @@ public class Musique {
 		this.id_Categorie = id_Categorie;
 		this.id_album = id_album;
 	}
+	
+	public Musique(String nom, String longueur, Integer id_Artiste, Integer id_Categorie) {
+		this.nom = nom;
+		this.longueur = longueur;
+		this.id_Artiste = id_Artiste;
+		this.id_Categorie = id_Categorie;
+	}
+
 
 	public String getNom() {
 		return nom;

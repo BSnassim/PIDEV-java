@@ -19,28 +19,37 @@ public class MusiqueRepository implements IMusiqueRepository {
 	Statement ste;
 	Connection conn = connexionDB.getInstance().getConnexion();
 
-	public void uploadFile(String name, byte[] content) {
+	public void uploadFile(String name, byte[] content, int artistId) {
 		try {
-			String path = "C:\\uploadedFiles\\Music\\";
+			String path = "C:/uploadedFiles/Music/" + artistId + "/";
 			File dir = new File(path);
 			dir.mkdirs();
-			FileOutputStream fos = new FileOutputStream(dir + "\\" + name);
+			FileOutputStream fos = new FileOutputStream(dir + "/" + name);
 			fos.write(content);
 			fos.flush();
 			fos.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			System.out.println("Problem uploading audio file");
 		}
 	}
 
 	@Override
 	public void createMusique(Musique m) {
 		try {
-			m.setChemin("C:\\uploadedFiles\\" + m.getId_Artiste() + "\\Music\\" + m.getFileName());
+			uploadFile(m.getFileName(), m.getFileContent(), m.getId_Artiste());
+			m.setChemin("C:/uploadedFiles/" + m.getId_Artiste() + "/Music/" + m.getFileName());
 			m.setDateCreation(new Date(System.currentTimeMillis()));
-			String req = "INSERT INTO `musique`( `nom`, `chemin`, `dateCreation`, `longueur`, `id_artiste`,`id_categorie`,`id_album`) VALUES ('"
-					+ m.getNom() + "','" + m.getChemin() + "','" + m.getDateCreation() + "','" + m.getLongueur() + "','"
-					+ m.getId_Artiste() + "','" + m.getId_Categorie() + "','" + m.getId_album() + "')";
+			String req;
+			if (m.getId_album() == null) {
+				req = "INSERT INTO `musique`( `nom`, `chemin`, `dateCreation`, `longueur`, `id_artiste`,`id_categorie`) VALUES ('"
+						+ m.getNom() + "','" + m.getChemin() + "','" + m.getDateCreation() + "','" + m.getLongueur()
+						+ "','" + m.getId_Artiste() + "','" + m.getId_Categorie() + "')";
+			} else {
+				req = "INSERT INTO `musique`( `nom`, `chemin`, `dateCreation`, `longueur`, `id_artiste`,`id_categorie`,`id_album`) VALUES ('"
+						+ m.getNom() + "','" + m.getChemin() + "','" + m.getDateCreation() + "','" + m.getLongueur()
+						+ "','" + m.getId_Artiste() + "','" + m.getId_Categorie() + "','" + m.getId_album() + "')";
+			}
 			ste = conn.createStatement();
 			ste.executeUpdate(req);
 			System.out.println("Musique ajouté");
@@ -55,9 +64,16 @@ public class MusiqueRepository implements IMusiqueRepository {
 	@Override
 	public void updateMusique(Musique m, int id) {
 		try {
-			String req = "UPDATE `musique` SET `nom` = '" + m.getNom() + "', `longueur` = '" + m.getLongueur()
-					+ "', `id_Artiste` = '" + m.getId_Artiste() + "', `id_Categorie` = '" + m.getId_Categorie()
-					+ "', `id_album` = '" + m.getId_album() + "'WHERE `id` = " + id;
+			String req;
+			if (m.getId_album() == null) {
+				req = "UPDATE `musique` SET `nom` = '" + m.getNom() + "', `longueur` = '" + m.getLongueur()
+						+ "', `id_Artiste` = '" + m.getId_Artiste() + "', `id_Categorie` = '" + m.getId_Categorie()
+						+ "'WHERE `id` = " + id;
+			} else {
+				req = "UPDATE `musique` SET `nom` = '" + m.getNom() + "', `longueur` = '" + m.getLongueur()
+						+ "', `id_Artiste` = '" + m.getId_Artiste() + "', `id_Categorie` = '" + m.getId_Categorie()
+						+ "', `id_album` = '" + m.getId_album() + "'WHERE `id` = " + id;
+			}
 			ste = conn.createStatement();
 			ste.executeUpdate(req);
 			System.out.println("Musique mis à jour");

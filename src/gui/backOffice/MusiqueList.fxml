@@ -124,7 +124,7 @@
       <Text fill="#d4d4d4" layoutX="494.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.sound'on.com" wrappingWidth="138.40000000000003" />
       <Button fx:id="addMusic" layoutX="246.0" layoutY="71.0" mnemonicParsing="false" onAction="#onActionAddMusic" text="Ajouter" />
       <Button fx:id="editMusic" layoutX="319.0" layoutY="71.0" mnemonicParsing="false" onAction="#onActionEditMusic" text="Modifier" />
-      <Button fx:id="deleteMusic" layoutX="394.0" layoutY="71.0" mnemonicParsing="false" text="Supprimer" />
+      <Button fx:id="deleteMusic" layoutX="394.0" layoutY="71.0" mnemonicParsing="false" onAction="#onActionDeleteMusic" text="Supprimer" />
       <Text fill="WHITE" layoutX="438.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste de Musique">
          <font>
             <Font size="25.0" />

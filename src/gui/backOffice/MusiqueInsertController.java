@@ -1,7 +1,9 @@
 package gui.backOffice;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -24,11 +26,12 @@ import repositories.MusiqueRepository;
 
 public class MusiqueInsertController implements Initializable {
 
-	private int id=0;
+	private int id = 0;
 	private MusiqueRepository musicRepo = new MusiqueRepository();
 	private AlbumRepository albumRepo = new AlbumRepository();
 	private List<Album> albumList = new ArrayList<Album>();
 	private byte[] fileContent;
+	private String fileName;
 	@FXML
 	private Button annuler;
 	@FXML
@@ -98,17 +101,25 @@ public class MusiqueInsertController implements Initializable {
 			alert.setHeaderText("Erreur lors de l'insertion");
 			alert.setContentText("Tous les champs sauf album doivent étre rempli !");
 			alert.showAndWait();
-		} /*   if editing    */ else if (this.id != 0) {
+		} /* if editing */ else if (this.id != 0) {
 			Musique m = new Musique(nomField.getText(), longueurField.getText(),
-					Integer.parseInt(artisteField.getText()), Integer.parseInt(categorieField.getText()),
-					(albumField.getSelectionModel().getSelectedItem().getId()));
-			musicRepo.updateMusique(m,this.id);
+					Integer.parseInt(artisteField.getText()), Integer.parseInt(categorieField.getText()));
+			if (albumField.getSelectionModel().getSelectedItem() != null) {
+				m.setId_album(albumField.getSelectionModel().getSelectedItem().getId());
+			}
+			m.setFileContent(fileContent);
+			m.setFileName(fileName);
+			musicRepo.updateMusique(m, this.id);
 			Stage stage = (Stage) ajouter.getScene().getWindow();
 			stage.close();
-		}/*  if inserting   */ else {
+		} /* if inserting */ else {
 			Musique m = new Musique(nomField.getText(), longueurField.getText(),
-					Integer.parseInt(artisteField.getText()), Integer.parseInt(categorieField.getText()),
-					(albumField.getSelectionModel().getSelectedItem().getId()));
+					Integer.parseInt(artisteField.getText()), Integer.parseInt(categorieField.getText()));
+			if (albumField.getSelectionModel().getSelectedItem() != null) {
+				m.setId_album(albumField.getSelectionModel().getSelectedItem().getId());
+			}
+			m.setFileContent(fileContent);
+			m.setFileName(fileName);
 			musicRepo.createMusique(m);
 			Stage stage = (Stage) ajouter.getScene().getWindow();
 			stage.close();
@@ -125,7 +136,12 @@ public class MusiqueInsertController implements Initializable {
 		fileChooser.getExtensionFilters().addAll(extFilterAudio);
 
 		File f = fileChooser.showOpenDialog(new Stage());
-
+		try {
+			this.fileContent = Files.readAllBytes(f.toPath());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		this.fileName = f.getName();
 		cheminField.setText(f.getAbsoluteFile().toURI().toString());
 	}
 
