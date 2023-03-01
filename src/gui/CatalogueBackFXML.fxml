@@ -30,25 +30,25 @@
          <children>
             <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="17.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/user.png" />
+                  <Image url="@ressources/image/account.png" />
                </image>
             </ImageView>
             <Button layoutX="49.0" layoutY="197.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Music" textFill="WHITE" />
             <ImageView fitHeight="33.0" fitWidth="36.0" layoutX="13.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/music.png" />
+                  <Image url="@ressources/image/music.png" />
                </image>
             </ImageView>
             <Button layoutX="45.0" layoutY="275.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Event" textFill="WHITE" />
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/event1.png" />
+                  <Image url="@ressources/image/event1.png" />
                </image>
             </ImageView>
             <Button layoutX="45.0" layoutY="313.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Reservation" textFill="#fcfcfc" />
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/reservation.png" />
+                  <Image url="@ressources/image/reservation.png" />
                </image>
             </ImageView>
             <Button layoutX="52.0" layoutY="117.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="137.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Artist" textFill="WHITE">
@@ -58,7 +58,7 @@
             </Button>
             <ImageView fitHeight="33.0" fitWidth="26.0" layoutX="17.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/artiste%20(1).png" />
+                  <Image url="@ressources/image/artiste%20(1).png" />
                </image>
             </ImageView>
             <Button layoutX="52.0" layoutY="155.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="137.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="favorites" textFill="WHITE">
@@ -68,54 +68,54 @@
             </Button>
             <ImageView fitHeight="33.0" fitWidth="26.0" layoutX="17.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/favorite.png" />
+                  <Image url="@ressources/image/favorite.png" />
                </image>
             </ImageView>
             <Button layoutX="49.0" layoutY="360.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Artist Category" textFill="WHITE" />
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/categories.png" />
+                  <Image url="@ressources/image/categories.png" />
                </image>
             </ImageView>
             <Button layoutX="45.0" layoutY="400.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Catalog" textFill="WHITE" />
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/catalogue.png" />
+                  <Image url="@ressources/image/catalogue.png" />
                </image>
             </ImageView>
             <Button layoutX="54.0" layoutY="236.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Album" textFill="WHITE" />
             <ImageView fitHeight="33.0" fitWidth="49.0" layoutX="13.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/folder.png" />
+                  <Image url="@ressources/image/folder.png" />
                </image>
             </ImageView>
             <Button layoutX="45.0" layoutY="442.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Claim" textFill="WHITE" />
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/claim.png" />
+                  <Image url="@ressources/image/claim.png" />
                </image>
             </ImageView>
             <Button layoutX="48.0" layoutY="482.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Answer" textFill="WHITE" />
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/question.png" />
+                  <Image url="@ressources/image/question.png" />
                </image>
             </ImageView>
             <Button layoutX="48.0" layoutY="521.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Product Category" textFill="WHITE" />
             <ImageView fitHeight="26.0" fitWidth="61.0" layoutX="16.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/categories%20(1).png" />
+                  <Image url="@ressources/image/categories%20(1).png" />
                </image>
             </ImageView>
             <Button layoutX="44.0" layoutY="561.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Product" textFill="WHITE" />
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/store.png" />
+                  <Image url="@ressources/image/store.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="52.0" fitWidth="102.0" layoutX="74.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/logo_sound'on.png" />
+                  <Image url="@ressources/image/logo_sound'on.png" />
                </image>
             </ImageView>
             <Text fill="#4a6dd8" layoutX="99.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sound'On">
@@ -141,7 +141,7 @@
                      <children>
                         <ImageView fitHeight="29.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Downloads/search.png" />
+                              <Image url="@ressources/image/search.png" />
                            </image>
                         </ImageView>
                         <TextField prefHeight="28.0" prefWidth="226.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: #D9B54A; -fx-border-width: 0px 0px 2px 0px;" />

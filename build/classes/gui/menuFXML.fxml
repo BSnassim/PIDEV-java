@@ -7,14 +7,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="751.0" style="-fx-background-color: #4a6dd8;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="gui.MenuFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="751.0" style="-fx-background-color: #4a6dd8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuFXMLController">
    <children>
       <AnchorPane layoutX="-28.0" layoutY="-17.0" prefHeight="586.0" prefWidth="200.0" style="-fx-background-color: #D9B54A;">
          <children>
             <ImageView fitHeight="67.0" fitWidth="117.0" layoutX="52.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/logo_sound'on.png" />
+                  <Image url="@ressources/image/logo_sound'on.png" />
                </image>
             </ImageView>
             <Text fill="#4a6dd8" layoutX="86.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sound'on" />
@@ -26,7 +25,7 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Text>
-      <Text fill="#d9b54a" layoutX="554.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catalog">
+      <Text fill="#d9b54a" layoutX="522.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catalog">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
@@ -35,5 +34,15 @@
       <Button layoutX="189.0" layoutY="335.0" mnemonicParsing="false" onAction="#add_category" prefHeight="26.0" prefWidth="129.0" styleClass="choiceBox" stylesheets="@../values/style.css" text="Add" />
       <Button layoutX="537.0" layoutY="230.0" mnemonicParsing="false" onAction="#display_catalog" prefHeight="26.0" prefWidth="137.0" styleClass="choiceBox" stylesheets="@../values/style.css" text="Display" />
       <Button layoutX="541.0" layoutY="335.0" mnemonicParsing="false" onAction="#add_catalog" prefHeight="26.0" prefWidth="138.0" styleClass="choiceBox" stylesheets="@../values/style.css" text="Add" />
+      <ImageView fitHeight="101.0" fitWidth="71.0" layoutX="326.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ressources/image/categories.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="71.0" fitWidth="71.0" layoutX="633.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ressources/image/catalogue.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
