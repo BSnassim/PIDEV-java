@@ -138,6 +138,77 @@ try {
          }
         return Reclamationlist;
     }
+    
+    
+    // tekhou id user connecter date debut et date fin
+    public ObservableList<Reclamation> ShowByDateUser(String begin,String Fin,int id) {
+        String query="";
+        if(begin.equals("") && Fin.equals("")){
+             query = "select * from reclamation where id_user="+id+"";
+        }else if(!begin.equals("") && Fin.equals("")){
+         query = "select * from reclamation where id_user="+id+" and dateCreation>='"+begin+"'";
+    }else if(begin.equals("") && !Fin.equals("")){
+         query = "select * from reclamation where id_user="+id+" and dateCreation<='"+Fin+"'";
+    }else{
+         query = "select * from reclamation where id_user="+id+" and dateCreation<='"+Fin+"'"+" and dateCreation>='"+begin+"'";
+    }
+        ObservableList<Reclamation> Reclamationlist = FXCollections.observableArrayList();
+        try{
+        Statement st= conn.createStatement();
+        
+        
+        ResultSet rs;
+        rs = st.executeQuery(query);
+        Reclamation reclamation;
+        while (rs.next()) {
+           reclamation = new Reclamation(rs.getInt("id"),rs.getString("description")
+                   ,EtatEnum.valueOf(rs.getString("etat")),TypeEnum.valueOf(rs.getString("type"))
+                   ,rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rs.getInt("id_user")); 
+            Reclamationlist.add(reclamation);
+
+        }
+         return Reclamationlist;    
+         }catch(SQLException ex){
+                         System.out.println(ex.getMessage());
+
+         }
+        return Reclamationlist;
+    }
+    
+    public ObservableList<Reclamation> ShowByDate(String begin,String Fin) {
+        String query="";
+        if(begin.equals("") && Fin.equals("")){
+             query = "select * from reclamation ";
+        }else if(!begin.equals("") && Fin.equals("")){
+         query = "select * from reclamation where dateCreation>='"+begin+"'";
+    }else if(begin.equals("") && !Fin.equals("")){
+         query = "select * from reclamation where dateCreation<='"+Fin+"'";
+    }else{
+         query = "select * from reclamation where dateCreation<='"+Fin+"'"+" and dateCreation>='"+begin+"'";
+    }
+        ObservableList<Reclamation> Reclamationlist = FXCollections.observableArrayList();
+        try{
+        Statement st= conn.createStatement();
+        
+        
+        ResultSet rs;
+        rs = st.executeQuery(query);
+        Reclamation reclamation;
+        while (rs.next()) {
+           reclamation = new Reclamation(rs.getInt("id"),rs.getString("description")
+                   ,EtatEnum.valueOf(rs.getString("etat")),TypeEnum.valueOf(rs.getString("type"))
+                   ,rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rs.getInt("id_user")); 
+            Reclamationlist.add(reclamation);
+
+        }
+         return Reclamationlist;    
+         }catch(SQLException ex){
+                         System.out.println(ex.getMessage());
+
+         }
+        return Reclamationlist;
+    }
+
 
     @Override
     public Reclamation getById(int id) {

@@ -23,13 +23,16 @@ import Entities.TypeEnum;
 import Service.ServiceReclamation;
 import Service.ServiceReponse;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -120,6 +123,16 @@ public class ReclamationFrontController implements Initializable {
     private VBox vboxDesc;
     @FXML
     private HBox hboxButtonRec;
+    @FXML
+    private ComboBox<String> cbEtat;
+    @FXML
+    private ComboBox<String> cbType;
+    @FXML
+    private DatePicker dpStart;
+    @FXML
+    private DatePicker dpEND;
+    @FXML
+    private Button btnsearchDate;
 
     /**
      * Initializes the controller class.
@@ -133,6 +146,22 @@ public class ReclamationFrontController implements Initializable {
             valuesList.add(value.toString());
         }
         tfType.setItems(valuesList);
+        valuesList = FXCollections.observableArrayList();
+        valuesList.add("");
+        for (TypeEnum value : TypeEnum.values()) {
+            valuesList.add(value.toString());
+        }
+        cbType.setItems(valuesList);
+        
+        ObservableList<String> valuesListEtat = FXCollections.observableArrayList();
+        valuesListEtat.add("");
+        for (EtatEnum value : EtatEnum.values()) {
+            valuesListEtat.add(value.toString());
+        }
+        
+        cbEtat.setItems(valuesListEtat);
+        
+       
     }    
     
     public void fnReclamationShow(){
@@ -145,7 +174,58 @@ public class ReclamationFrontController implements Initializable {
      colDateCreation.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));   
 
         
-     tvReclamation.setItems(list);}
+     tvReclamation.setItems(list);
+    tvReclamation.setRowFactory(tv -> new TableRow<Reclamation>() {
+    @Override
+    protected void updateItem(Reclamation item, boolean empty) {
+        super.updateItem(item, empty);
+        
+    }
+});
+      
+    FilteredList<Reclamation> filteredData = new FilteredList<>(list, b -> true);
+		
+		cbEtat.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Reclamation -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Reclamation.getEtat().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false; 
+			});
+		});
+                
+                
+                cbType.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Reclamation -> {
+				
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Reclamation.getType().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false; 
+			});
+		});
+		
+		SortedList<Reclamation> sortedData = new SortedList<>(filteredData);
+		
+		sortedData.comparatorProperty().bind(tvReclamation.comparatorProperty());
+		
+		tvReclamation.setItems(sortedData);}
 
     @FXML
     private void fnMenuReclamation(MouseEvent event) {
@@ -176,13 +256,6 @@ public class ReclamationFrontController implements Initializable {
     private void fnEnvoyer(ActionEvent event) {
         Reclamation r = new Reclamation();
         r.setId_User(1);
-        if("".equals(tfDesc.getText()) || tfType.getValue()==null){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Champs vide !!");
-        alert.setHeaderText("Veuillez entrer votre texte ");
-        if(alert.showAndWait().get() == ButtonType.OK) {
-        }
-        }else{
         r.setEtat(EtatEnum.En_Cours);
         r.setDescription(tfDesc.getText());
         r.setType(TypeEnum.valueOf(tfType.getValue()));
@@ -193,7 +266,7 @@ public class ReclamationFrontController implements Initializable {
         fnReclamationShow();
         vboxDesc.setVisible(false);
        hboxButtonRec.setVisible(false);
-        pnMesReclamations.toFront();}
+        pnMesReclamations.toFront();
         
     }
 
@@ -276,19 +349,11 @@ public class ReclamationFrontController implements Initializable {
         Reclamation r=sr.getById(Integer.parseInt(lbidRecla.getText()));
         Reponse re=new Reponse();
         re.setReclamation(r);
-        re.setIdUser(1);
-        System.out.println(tfReponseAEnv.getText());
-        if("".equals(tfReponseAEnv.getText())){
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Champs vide !!");
-        alert.setHeaderText("Veuillez entrer votre texte ");
-        if(alert.showAndWait().get() == ButtonType.OK) {
-        }
-        }else{
+        re.setIdUser(2);
         re.setMessage(tfReponseAEnv.getText());
         sre.add(re);
         fnShowReponse();
-        pnDetails.toFront();}
+        pnDetails.toFront();
     }
 
     @FXML
@@ -313,5 +378,82 @@ public class ReclamationFrontController implements Initializable {
 
         
      tvReponse.setItems(list);    }
+
+    @FXML
+    private void fnRechercher(ActionEvent event) {
+        cbEtat.setValue("");
+        cbType.setValue("");
+        String begin="";
+        if(dpStart.getValue()!=null){
+           begin=Date.valueOf(dpStart.getValue()).toString(); 
+        }
+        String  Fin="";
+        if(dpEND.getValue()!=null){
+            Fin=Date.valueOf(dpEND.getValue()).toString();
+        }
+         
+        
+        ServiceReclamation sr=new ServiceReclamation();
+         ObservableList<Reclamation> list = FXCollections.observableArrayList(sr.ShowByDateUser(begin,Fin,1));;
+    
+     colEtat.setCellValueFactory(new PropertyValueFactory<>("Etat"));       
+     colType.setCellValueFactory(new PropertyValueFactory<>("Type"));        
+     colDateUpdate.setCellValueFactory(new PropertyValueFactory<>("dateUpdate"));   
+     colDateCreation.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));   
+
+        
+     tvReclamation.setItems(list);
+    tvReclamation.setRowFactory(tv -> new TableRow<Reclamation>() {
+    @Override
+    protected void updateItem(Reclamation item, boolean empty) {
+        super.updateItem(item, empty);
+        
+    }
+});
+      
+    FilteredList<Reclamation> filteredData = new FilteredList<>(list, b -> true);
+		
+		cbEtat.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Reclamation -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Reclamation.getEtat().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false; 
+			});
+		});
+                
+                
+                cbType.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Reclamation -> {
+				
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Reclamation.getType().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false; 
+			});
+		});
+		
+		SortedList<Reclamation> sortedData = new SortedList<>(filteredData);
+		
+		sortedData.comparatorProperty().bind(tvReclamation.comparatorProperty());
+		
+		tvReclamation.setItems(sortedData);
+    }
     
 }
