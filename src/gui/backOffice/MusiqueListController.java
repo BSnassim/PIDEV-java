@@ -8,6 +8,9 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +22,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Musique;
@@ -42,6 +44,8 @@ public class MusiqueListController implements Initializable {
 	private Button editMusic;
 	@FXML
 	private Button deleteMusic;
+	@FXML
+	private TextField searchBar;
 	@FXML
 	private TableView<Musique> musicList;
 	@FXML
@@ -67,7 +71,6 @@ public class MusiqueListController implements Initializable {
 		colLongueur.setCellValueFactory(new PropertyValueFactory<Musique, String>("longueur"));
 		colArtiste.setCellValueFactory(new PropertyValueFactory<Musique, Integer>("id_Artiste"));
 		colCategorie.setCellValueFactory(new PropertyValueFactory<Musique, Integer>("id_Categorie"));
-//		colAlbum.setCellValueFactory(new PropertyValueFactory<Musique, Integer>("id_album"));
 		colAlbum.setCellValueFactory(new Callback<CellDataFeatures<Musique, String>, ObservableValue<String>>() {
 
 			@Override
@@ -81,7 +84,25 @@ public class MusiqueListController implements Initializable {
 	}
 
 	public void loadData() {
-		musicList.setItems(FXCollections.observableArrayList(musicRepo.findAllMusique()));
+		ObservableList<Musique> oList = FXCollections.observableArrayList(musicRepo.findAllMusique());
+		FilteredList<Musique> filteredData = new FilteredList<Musique>(oList, b -> true);
+		searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate( m -> {
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (m.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				} else
+					return false;
+			});
+		});
+		SortedList<Musique> sortedList = new SortedList<Musique>(filteredData);
+		sortedList.comparatorProperty().bind(musicList.comparatorProperty())	;
+		musicList.setItems(sortedList);
 	}
 
 	/*

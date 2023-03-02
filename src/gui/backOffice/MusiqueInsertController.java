@@ -8,16 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.controlsfx.control.Notifications;
+
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.util.StringConverter;
 import model.Album;
 import model.Musique;
@@ -121,6 +126,19 @@ public class MusiqueInsertController implements Initializable {
 			m.setFileContent(fileContent);
 			m.setFileName(fileName);
 			musicRepo.createMusique(m);
+//			Notifications notificationBuilder = Notifications.create()
+//			        .title("Musique ajouté")
+//			        .text("Musique ajouté avec succées")
+//			        .graphic(null)
+//			        .hideAfter(Duration.seconds(5))
+//			        .position(Pos.BOTTOM_RIGHT)
+//			        .onAction(new EventHandler<ActionEvent>() {
+//			            @Override
+//			            public void handle(ActionEvent event) {
+//			                System.out.println("Success");
+//			            }
+//			               });
+//			        notificationBuilder.showConfirm();
 			Stage stage = (Stage) ajouter.getScene().getWindow();
 			stage.close();
 		}

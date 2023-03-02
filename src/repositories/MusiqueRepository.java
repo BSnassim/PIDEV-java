@@ -1,7 +1,10 @@
 package repositories;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -38,7 +41,7 @@ public class MusiqueRepository implements IMusiqueRepository {
 	public void createMusique(Musique m) {
 		try {
 			uploadFile(m.getFileName(), m.getFileContent(), m.getId_Artiste());
-			m.setChemin("C:/uploadedFiles/" + m.getId_Artiste() + "/Music/" + m.getFileName());
+			m.setChemin("C:/uploadedFiles/Music/" + m.getId_Artiste() + "/" + m.getFileName());
 			m.setDateCreation(new Date(System.currentTimeMillis()));
 			String req;
 			if (m.getId_album() == null) {
@@ -117,12 +120,19 @@ public class MusiqueRepository implements IMusiqueRepository {
 				m.setId_Artiste(RS.getInt("id_artiste"));
 				m.setId_Categorie(RS.getInt("id_categorie"));
 				m.setId_album(RS.getInt("id_album"));
+				FileInputStream fis = new FileInputStream(m.getChemin());
+				m.setFileContent(fis.readAllBytes());
+				fis.close();
 				list.add(m);
 			}
 			ste.close();
-		} catch (SQLException ex) {
+		} catch (SQLException e) {
 			System.err.println("Probleme lors de lecture des Musique");
-			System.out.println(ex.getMessage());
+			System.out.println(e.getMessage());
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage()+" file not found");
+		} catch (IOException e) {
+			System.out.println(e.getMessage()+" problem loading file content");
 		}
 		return (list != null) ? list : null;
 	}
@@ -144,10 +154,17 @@ public class MusiqueRepository implements IMusiqueRepository {
 			m.setId_Artiste(RS.getInt("id_artiste"));
 			m.setId_Categorie(RS.getInt("id_categorie"));
 			m.setId_album(RS.getInt("id_album"));
+			FileInputStream fis = new FileInputStream(m.getChemin());
+			m.setFileContent(fis.readAllBytes());
+			fis.close();
 			ste.close();
 		} catch (SQLException ex) {
 			System.err.println("Probleme lors du lecture d'un Musique");
 			System.out.println(ex.getMessage());
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
 		}
 
 		return (m != null) ? m : null;
