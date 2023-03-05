@@ -105,7 +105,7 @@
             <String fx:value="add-btn" />
             <String fx:value="shadow" />
          </styleClass></TextField>
-      <TableView fx:id="tableprod" layoutX="359.0" layoutY="84.0" onMouseClicked="#prodclick" prefHeight="415.0" prefWidth="612.0">
+      <TableView fx:id="tableprod" layoutX="360.0" layoutY="76.0" onMouseClicked="#prodclick" prefHeight="415.0" prefWidth="612.0">
          <columns>
             <TableColumn fx:id="tvi" prefWidth="60.0" text="Id" />
             <TableColumn fx:id="tvn" onEditCommit="#onproduitNomEdit" prefWidth="74.4000244140625" text="Nom" />
@@ -157,5 +157,11 @@
       </ImageView>
       <TextField fx:id="taillep" layoutX="158.0" layoutY="292.0" />
       <TextField fx:id="qtep" layoutX="159.0" layoutY="332.0" />
+      <Button fx:id="pdfp" layoutX="822.0" layoutY="526.0" mnemonicParsing="false" onAction="#onactionpdf" text="Generer pdf" />
+      <TextField fx:id="rech" layoutX="627.0" layoutY="527.0" />
+      <Label layoutX="526.0" layoutY="531.0" text="Recherche" />
+      <Button fx:id="qrcode" layoutX="822.0" layoutY="556.0" mnemonicParsing="false" onAction="#onQRcode" prefHeight="26.0" prefWidth="80.0" text="QR code" />
+      <Button fx:id="tri" layoutX="822.0" layoutY="497.0" mnemonicParsing="false" onAction="#onactiontri" prefHeight="22.0" prefWidth="80.0" text="Trier" />
+      <ImageView fx:id="qrcodee" fitHeight="73.0" fitWidth="74.0" layoutX="912.0" layoutY="503.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

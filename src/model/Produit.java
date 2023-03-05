@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Marwen.M
@@ -128,6 +130,14 @@ public class Produit {
     }
 
     public void ajouterProduit(Produit produit) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getlibelle() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Connection getConnection() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -5,6 +5,7 @@
  */
 package gui;
 
+import Interfaces.MyListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -23,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import model.Produit;
+import sun.applet.Main;
 
 /**
  * FXML Controller class
@@ -44,35 +46,37 @@ public class FXMLitemController implements Initializable {
     @FXML
     private VBox vbox;
     
-    //private Listner listner;
-    
-    
-//    private void click(MouseEvent mouseEvent)
-//    {
-//        listner.onClickListener(produit);
-//    }
-//    
-//    public void  refresh()
-//     {
-//         vbox.getChildren().removeAll(vbox.getChildren());
-//     }
-//    public void setData(Produit prod, Listner listner) 
-//    {
-//       
-//        this.produit=produit;
-//        this.listner=listner;
-//        namelabel1.setText(prod.getLibelle());
-//        prixlabel1.setText(prod.getPrix()+ "DT");
-//        Image image;
-//            image = new Image(new FileInputStream(Badge.url_upload +prod.getImage()));
-//            prodimg1.setImage(image);
-//        
-//        }
+     @FXML
+    private void click(MouseEvent mouseEvent) {
+        
+        myListener.onClickListener(fruit);
+        
        
+    }
+
+    private Produit fruit;
+    
+    private MyListener myListener;
+
+    public void setData(Produit fruit, MyListener myListener) {
+        this.fruit = fruit;
+        this.myListener = myListener;
+        namelabel1.setText(fruit.getLibelle());
+        prixlabel1.setText(""+fruit.getPrix());
+        
+        Image x = new Image(fruit.getImage());
+        prodimg1.setImage(x);
+    }
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    private static class pidev {
+
+        public pidev() {
+        }
+    }
     
 }

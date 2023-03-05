@@ -22,8 +22,8 @@
       <Label layoutX="14.0" layoutY="139.0" text="Numero Tel" />
       <TableView layoutX="289.0" layoutY="81.0" prefHeight="238.0" prefWidth="287.0">
         <columns>
-          <TableColumn prefWidth="147.99993896484375" text="C1" />
-          <TableColumn prefWidth="178.4000244140625" text="C2" />
+          <TableColumn prefWidth="147.99993896484375" text="Numero" />
+          <TableColumn prefWidth="178.4000244140625" text="Date" />
         </columns>
       </TableView>
       <TextField layoutX="101.0" layoutY="134.0" prefHeight="26.0" prefWidth="128.0" stylesheets="@../values/style.css">

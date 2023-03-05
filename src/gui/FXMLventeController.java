@@ -13,9 +13,11 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,7 +30,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Produit;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -108,7 +112,19 @@ alert.showAndWait();
             Produit p = new Produit(Float.parseFloat((prixt.getText())),imgt.getText(),nomt.getText(),types.get(typet.getSelectionModel().getSelectedIndex()),descrt.getText(),Integer.parseInt(qtet.getText()),taillet.getText(),1);
             System.out.println(p);
             ps.ajouterProduit(p);
-            
+            Notifications notificationBuilder = Notifications.create()
+        .title("Produit vendu")
+        .text("votre produit a été vendu avec succes!!!!")
+        .graphic(null)
+        .hideAfter(Duration.seconds(5))
+        .position(Pos.BOTTOM_RIGHT)
+        .onAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("vendu avec succes");
+            }
+               });
+        notificationBuilder.showConfirm();
             
         }
     }
