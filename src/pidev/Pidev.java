@@ -5,8 +5,8 @@
  */
 package pidev;
 
-import Controller.CommandeController;
-import Controller.ProduitController;
+import services.CommandeController;
+import services.ProduitController;
 import java.sql.Date;
 import model.Commande;
 import model.Produit;
