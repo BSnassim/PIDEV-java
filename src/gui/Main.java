@@ -34,14 +34,26 @@ public class Main extends Application {
             }
         });
 
-
+Parent root;
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MenuFXML.fxml"));
+             root = FXMLLoader.load(getClass().getResource("backOffice/menuFXML.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Hello World!");
             primaryStage.setScene(scene);
             primaryStage.show();
 
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        try {
+            
+             root = FXMLLoader.load(getClass().getResource("frontOffice/CategorieFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage primaryStage2 = new Stage();
+            primaryStage2.setTitle("Offre");
+            primaryStage2.setScene(scene);
+            primaryStage2.setScene(scene);
+            primaryStage2.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }

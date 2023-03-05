@@ -13,12 +13,26 @@ public class Catalogue {
       private int id ;
     private String nom;
     private  int id_categorie;
+    private String image;
 
     public Catalogue(String nom, int id_categorie) {
         this.nom = nom;
         this.id_categorie = id_categorie; 
     } 
-
+    public Catalogue(String nom, int id_categorie,String image) {
+        this.nom = nom;
+        this.id_categorie = id_categorie; 
+        this.image=image;
+    } 
+    public Catalogue(int id , String nom) {
+        this.nom = nom;
+        this.id = id; 
+    } 
+public Catalogue(int id ,String nom, int id_categorie) {
+    this.id=id;
+        this.nom = nom;
+        this.id_categorie = id_categorie; 
+    } 
     public Catalogue(String nom) {
         this.nom = nom;
     }
@@ -54,6 +68,14 @@ public class Catalogue {
     @Override
     public String toString() {
         return "Catalogue{" + "id=" + id + ", nom=" + nom + ", id_categorie=" + id_categorie + '}';
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     

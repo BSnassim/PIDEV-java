@@ -3,19 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/interfaces/IcatalogueController.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/gui/UpdateCatalogueFXMLController.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/gui/CatalogueBackFXMLController.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/model/Categorie.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/gui/AddCategorieFXMLController.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/gui/UpdateCategorieFXMLController.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/gui/AddCatalogueFXMLController.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/services/CategorieService.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/gui/AddCatalogueFXML.fxml</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/gui/Main.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/model/Catalogue.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/gui/CategorieBackFXMLController.java</file>
-            <file>file:/C:/Users/21628/Documents/NetBeansProjects/SOUND-ON-Desktop/src/services/CatalogueService.java</file>
+            <file>file:/C:/Users/21628/Documents/NetBeansProjects/Sound'On%20-%20Copie/SOUND-ON-Desktop/src/gui/backOffice/menuFXML.fxml</file>
+            <file>file:/C:/Users/21628/Documents/NetBeansProjects/Sound'On%20-%20Copie/SOUND-ON-Desktop/src/gui/Main.java</file>
         </group>
     </open-files>
 </project-private>

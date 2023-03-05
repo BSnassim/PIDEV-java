@@ -15,15 +15,16 @@ import model.Catalogue;
 public interface IcatalogueController { 
      public void ajouterCatalogue(Catalogue c);
 
-    public void modifierCatalogue(Catalogue c, int id);
+    public void modifierCatalogue(Catalogue c);
 
     public void supprimerCatalogue(int id);
 
     public List<Catalogue> afficherCatalogue();
 
-    public Catalogue rechCatalogue(int id); 
+    public List<Catalogue> rechCatalogue(String mot); 
     
     public List<Catalogue> filterCatalogue(String S,String SS);
+
 
     
 }

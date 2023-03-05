@@ -7,6 +7,7 @@ package services;
 
 import interfaces.IcatalogueController;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,18 +29,13 @@ public class CatalogueService implements IcatalogueController {
     @Override
     public void ajouterCatalogue(Catalogue c) {
         try {
-            String req = "INSERT INTO `catalogue`( `nom`, `id_categorie`) VALUES ('" + c.getNom() + "','" + c.getId_categorie() + "')";
-            //verifier que le champ nom n'est pas vide
-           if (c.getNom().trim().isEmpty()) {
-            throw new Exception("Le champs est obligatoires !");
-        }  
-            //verifier que le champ  id_categorie n'est pas vide
-           
-          else if (c.getId_categorie()== 0){  
-             throw new IllegalArgumentException("Le champ id_categorie ne peut pas être vide !");
-}
-            ste = conn.createStatement();
-            ste.executeUpdate(req);
+            System.out.println(c.getImage());
+            String req = "INSERT INTO `catalogue`( `nom`, `id_categorie`,`image`) VALUES (?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setString(1, c.getNom());
+            ps.setInt(2, c.getId_categorie());
+            ps.setString(3, c.getImage());
+            ps.executeUpdate();
             System.out.println("Catalogue ajouté!!!");
         } catch (SQLException ex) {
             System.out.println("Catalogue non ajouté");
@@ -50,9 +46,9 @@ public class CatalogueService implements IcatalogueController {
     }
 
     @Override
-    public void modifierCatalogue(Catalogue c, int id) {
+    public void modifierCatalogue(Catalogue c) {
         try {
-            String req = "UPDATE `catalogue` SET `nom` = '" + c.getNom() + "' WHERE `id` = " + id;
+            String req = "UPDATE `catalogue` SET `nom` = '" + c.getNom() + "' WHERE `id` = " + c.getId();
             Statement st = conn.createStatement();
             st.executeUpdate(req);
             System.out.println("Catalogue updated !");
@@ -84,8 +80,9 @@ public class CatalogueService implements IcatalogueController {
             while (RS.next()) {
                 Catalogue c = new Catalogue();
                 c.setNom(RS.getString("nom"));
+                c.setImage(RS.getString("image"));
                 c.setId(RS.getInt(1));
-                c.setId_categorie(RS.getInt(1));
+                c.setId_categorie(RS.getInt("id_categorie"));
                 list.add(c);
             }
         } catch (SQLException ex) {
@@ -96,19 +93,23 @@ public class CatalogueService implements IcatalogueController {
     }
 
     @Override
-    public Catalogue rechCatalogue(int id) {
-        Catalogue ca = new Catalogue();
+    public List<Catalogue> rechCatalogue(String mot) {
+        
+        List<Catalogue> ca = new ArrayList<Catalogue>();
         try {
-            String req = "Select * from catalogue where id =" + id;
+            String req = "Select * from catalogue where nom like '%" + mot+"%'";
             Statement st = conn.createStatement();
 
             ResultSet RS = st.executeQuery(req);
-            RS.first();
-
-            ca.setNom(RS.getString("nom"));
-            ca.setId(RS.getInt(1));
-            ca.setId_categorie(RS.getInt(1));
-
+            while(RS.next()){
+                Catalogue c = new Catalogue();
+            c.setNom(RS.getString("nom"));
+            c.setId(RS.getInt(1));
+            c.setImage(RS.getString("image"));
+            c.setId_categorie(RS.getInt(1));
+            ca.add(c);
+            }
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -153,5 +154,6 @@ public class CatalogueService implements IcatalogueController {
 
         return list;
     }
+
     
 }

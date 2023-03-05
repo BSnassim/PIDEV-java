@@ -20,7 +20,7 @@ public class Pidev {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Catalogue c = new Catalogue("Artiste", 1);
+        Catalogue c = new Catalogue("Artiste", 1);
         Categorie ca = new Categorie("Classique");
         Categorie ca2 = new Categorie("rap");
         Categorie ca3 = new Categorie("Arabesque");
@@ -50,7 +50,7 @@ public class Pidev {
         //System.out.println(cc1.afficherCatalogue());
         //System.out.println(cc.afficherCategorie());
        // System.out.println(cc1.rechCatalogue(9)); 
-        //System.out.println(cc.rechCatalogue(2));
+        //System.out.println(cc.rechCatalogue(30));
         
         
         //System.out.println(cc1.filterCatalogue("id","9"));

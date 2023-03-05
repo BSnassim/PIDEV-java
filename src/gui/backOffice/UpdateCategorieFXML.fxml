@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="575.0" style="-fx-background-color: #4a6dd8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.backOffice.UpdateCategorieFXMLController">
+   <children>
+      <AnchorPane layoutX="80.0" layoutY="33.0" prefHeight="513.0" prefWidth="415.0" style="-fx-background-color: #D9B54A;">
+         <children>
+            <Text fill="#4a6dd8" layoutX="128.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update your:">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <TextField fx:id="name_TF" layoutX="146.0" layoutY="256.0" promptText="NAME" style="-fx-background-color: #878787; -fx-border-color: #4a6dd8; -fx-border-width: 0px 0px 2px 0px;" styleClass="choiceBox" />
+            <Text fill="#4a6dd8" layoutX="54.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fill="#878787" layoutX="156.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.sound'on.com" />
+            <Button layoutX="287.0" layoutY="368.0" mnemonicParsing="false" onAction="#valider" prefHeight="52.0" prefWidth="96.0" styleClass="choiceBox" stylesheets="@../../values/style.css" text="Update" />
+            <Button layoutX="48.0" layoutY="378.0" mnemonicParsing="false" onAction="#back" prefHeight="52.0" prefWidth="96.0" styleClass="choiceBox" stylesheets="@../../values/style.css" text="back" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

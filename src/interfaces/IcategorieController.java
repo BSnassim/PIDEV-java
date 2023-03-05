@@ -14,10 +14,11 @@ import model.Categorie;
  */
 public interface IcategorieController {
      public void ajouterCategorie(Categorie ca);
-    public void modifierCategorie(Categorie ca, int id);
+    public void modifierCategorie(Categorie ca);
     public void supprimerCategorie(int id) ;
     public List<Categorie> afficherCategorie();
     public Categorie rechCatalogue(int id); 
+
    
     
     
