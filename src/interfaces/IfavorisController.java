@@ -16,13 +16,22 @@ public interface IfavorisController {
     
     public void ajouterFavoris(Favoris f);
 
-    public void modifierFavoris(Favoris f,int id_user,int id_musique);
+    /**
+     *
+     * @param f
+     */
+    public void modifierFavoris(Favoris f);
 
-    public void supprimerFavoris(int id_user,int id_musique);
+    public void supprimerFavoris(Favoris f);
 
     List<Favoris> afficherFavoris();
 
-    public Favoris rechFavoris(int id_user,int id_musique);
+    /**
+     *
+     * @param id_user
+     * @return
+     */
+    public Favoris rechFavoris(int id_user);
     
     
 }

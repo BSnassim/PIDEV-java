@@ -14,22 +14,26 @@ import java.sql.SQLException;
  * @author Siwar Ahmadi
  */
 public class connexionDB { 
-    final String url ="jdbc:mysql://localhost:3306/soundon";
-    final String login ="root";
-    final String pwd="";
+     private static String HOST = "localhost";
+        private static int PORT = 3306;
+        private static String DB_NAME = "soundon";
+        private static String USERNAME = "root";
+        private static String PASSWORD = "";
+        private static Connection conn ;
+        
     private static connexionDB instance;
-    Connection connexion;
     
     
-    private connexionDB(){
+    
+    public static Connection connexionDB(){
         
         try {
-            connexion =  DriverManager.getConnection(url, login, pwd);
+            conn = DriverManager.getConnection(String.format("jdbc:mysql://%s:%d/%s", HOST,PORT,DB_NAME),USERNAME,PASSWORD);
             System.out.println("Connexion établie!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
+ return  conn;
     }
     
     public static connexionDB getInstance(){
@@ -39,7 +43,7 @@ public class connexionDB {
     }
 
     public Connection getConnexion() {
-        return connexion;
+        return conn;
     }
     
 }

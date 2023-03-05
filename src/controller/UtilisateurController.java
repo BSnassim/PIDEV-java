@@ -19,16 +19,17 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author Ranim Ahmadi
  */
 public class UtilisateurController implements IutilisateurController{
-  Connection conn;
+  Connection conn =connexionDB.connexionDB();
     PreparedStatement ste;
-    public UtilisateurController(){
-        conn=connexionDB.getInstance().getConnexion();}
+    public UtilisateurController(){}
     
     // Méthode pour valider une adresse email
     public static boolean isEmailValid(String email) {
@@ -95,7 +96,24 @@ public class UtilisateurController implements IutilisateurController{
         } 
 
     }
+    public void modifierUtilisateurPassword(Utilisateur u,int id) {
+        
+            
+            String req = "UPDATE utilisateur SET password=? WHERE id=?";
+          try {
+            ste=conn.prepareStatement(req);
+            ste.setString(1, u.getPassword());
+            
+            ste.setInt(2, id);
+               
+            
+            ste.executeUpdate();
+            System.out.println("compte updated ");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } 
 
+    }
 
     @Override
     public void supprimerUtilisateur(int id) {
@@ -161,6 +179,93 @@ public class UtilisateurController implements IutilisateurController{
         }
 
         return utili ;
+    }
+    public ObservableList<Utilisateur> rechUtilisateurByLogin2(String login) {
+        ObservableList<Utilisateur> utilis = FXCollections.observableArrayList();
+        try {
+            String req = "Select * from utilisateur where login ='"+login+"'";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            if (RS.next()){
+                Utilisateur utili = new Utilisateur();
+                
+                utili.setId(RS.getInt(1));   
+            utili.setLogin(RS.getString("login"));
+            utili.setPassword(RS.getString("password"));
+            utili.setNom(RS.getString("nom"));
+            utili.setPrenom(RS.getString("prenom"));
+            utili.setEmail(RS.getString("email"));
+            utilis.add(utili);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return utilis;
+    }
+    public Utilisateur getUserLogin(String login, String password) {
+        Utilisateur utili = new Utilisateur();
+        try {
+            String req = "Select * from utilisateur where login ='"+login+"' and password='"+password+"'";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            RS.first();
+            if (RS.first()){
+                utili.setId(RS.getInt(1));   
+            utili.setLogin(RS.getString("login"));
+            utili.setPassword(RS.getString("password"));
+            utili.setNom(RS.getString("nom"));
+            utili.setPrenom(RS.getString("prenom"));
+            utili.setEmail(RS.getString("email"));
+            }
+            else return null;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return utili;
+    }
+
+    public Utilisateur rechUtilisateurByLogin(String login) {
+        Utilisateur utili = new Utilisateur();
+        try {
+            String req = "Select * from utilisateur where login ='"+login+"'";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            RS.first();
+            if (RS.first()){
+                utili.setId(RS.getInt(1));   
+            utili.setLogin(RS.getString("login"));
+            utili.setPassword(RS.getString("password"));
+            utili.setNom(RS.getString("nom"));
+            utili.setPrenom(RS.getString("prenom"));
+            utili.setEmail(RS.getString("email"));
+            }
+            else return null;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return utili;
+    }
+
+    public Utilisateur getUserByLogin(String login) {
+        Utilisateur utili = new Utilisateur();
+        try {
+            String req = "Select * from utilisateur where login ='"+login+"'";
+            Statement st = conn.createStatement();
+            ResultSet RS = st.executeQuery(req);
+            RS.first();
+            if (RS.first()){
+                utili.setId(RS.getInt(1));   
+            utili.setLogin(RS.getString("login"));
+            utili.setPassword(RS.getString("password"));
+            utili.setNom(RS.getString("nom"));
+            utili.setPrenom(RS.getString("prenom"));
+            utili.setEmail(RS.getString("email"));
+            }
+            else return null;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return utili;
     }
 
     

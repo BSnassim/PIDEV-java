@@ -58,6 +58,10 @@ public class Favoris {
     public String toString() {
         return "Favoris{" + "id_user=" + id_user + ", id_musique=" + id_musique + ", dateFav=" + dateFav + '}';
     }
+
+    public void setDate(Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

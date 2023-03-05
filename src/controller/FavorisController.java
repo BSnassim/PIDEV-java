@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Favoris;
@@ -38,13 +39,21 @@ public class FavorisController implements IfavorisController {
         }
     }
 
+    /**
+     *
+     * @param f
+     */
     
-
+    
     @Override
-    public void supprimerFavoris(int id_user, int id_musique) {
+    public void supprimerFavoris(Favoris f) {
+        
         try {
-            String req = "DELETE FROM `favoris` WHERE id_user , id_musique = " + id_user , id_musique;
-            Statement st = conn.createStatement();
+            String req = "DELETE FROM favoris where id_user=?";
+            
+            PreparedStatement st = connexionDB.getInstance().getConnexion().prepareStatement(req);
+             
+            st.setInt(1, f.getId_user());
             st.executeUpdate(req);
             System.out.println("favoris deleted !");
         } catch (SQLException ex) {
@@ -52,39 +61,86 @@ public class FavorisController implements IfavorisController {
         }
     }
 
+   
+    
     @Override
     public List<Favoris> afficherFavoris() {
-         try{
+         List<Favoris> favorisList = new ArrayList();
+        try{
         Statement st= conn.createStatement();
         String query = "select * from favoris";
         
         ResultSet rs;
         rs = st.executeQuery(query);
-        Favoris favoris;
+        Favoris f = new Favoris ();
         while (rs.next()) {
-           favoris = new Favoris(rs.getInt("id_user"),rs.getInt("id_musique")
-                   ,rs.getDate("dateFav"));
-                   
-            flist.add(favoris);
+                f.setId_user(rs.getInt("id_user"));
+                f.setId_musique(rs.getInt("id_musique"));
+                f.setDate(rs.getDate("date"));
+                
+               
+                favorisList.add(f);
 
         }
-         return flist;    
+         return favorisList;    
          }catch(SQLException ex){
                          System.out.println(ex.getMessage());
 
          }
-        return flist;
+        return favorisList;
         }
 
-    /*@Override
-    public void modifierFavoris(Favoris f, int id_user, int id_musique) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public void modifierFavoris(Favoris f) {
+       try {
+            String requete = "UPDATE favoris SET id_musique=?,dateFav=? WHERE Id_user=?";
+            PreparedStatement pst = connexionDB.getInstance().getConnexion()
+                    .prepareStatement(requete);
+            
+            
+            
+            pst.setInt(1, f.getId_musique());
+            pst.setDate(2, f.getDateFav());
+            pst.setInt(3, f.getId_user());
+           
+            pst.executeUpdate();
+            System.out.println("Favoris modifiée");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
-    public Favoris rechFavoris(int id_user, int id_musique) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Favoris rechFavoris(int id_user) {
+          String requete="select * from favoris where id_user=?";
+        ResultSet rs=null;
+        
+        List<Favoris> list=new ArrayList();
+        try{
+            PreparedStatement ps = connexionDB.getInstance().getConnexion()
+                    .prepareStatement(requete);
+            ps.setInt(1, id_user);
+            rs=ps.executeQuery();
+        }catch(SQLException ex){
+            System.err.println(ex.getMessage());
+        }
+        Favoris f =new Favoris();
+        try{
+            while(rs.next()){
+               f.setId_user(rs.getInt("id_user"));
+               f.setId_musique(rs.getInt("id_musique"));
+               f.setDate(rs.getDate("date"));
+              
+                
+                
+          list.add(new Favoris (rs.getInt(1), rs.getInt(2),rs.getDate(3)));
+            }
+        }catch(SQLException exc){
+             System.err.println(exc.getMessage());
+        }
+        return (Favoris) list ;
     }
+    
 
     
     

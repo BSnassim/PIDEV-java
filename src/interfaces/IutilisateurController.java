@@ -23,5 +23,6 @@ public interface IutilisateurController {
     List<Utilisateur> afficherUtilisateur();
 
     public Utilisateur rechUtilisateur(int id);
-    
+    public Utilisateur getUserLogin(String login, String password);
+
 }
