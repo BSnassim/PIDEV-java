@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="654.0" style="-fx-background-color: #222222;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.frontOffice.MusicPlayerController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="654.0" style="-fx-background-color: #222222;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.frontOffice.Musique.MusicPlayerController">
    <children>
-      <Label fx:id="songLabel" alignment="CENTER" layoutX="-1.0" prefHeight="100.0" prefWidth="655.0" text="MP3 Player" textFill="#00ff1a">
+      <Label fx:id="songLabel" alignment="CENTER" layoutX="-1.0" prefHeight="100.0" prefWidth="655.0" text="MP3 Player" textFill="#a100ff">
          <font>
-            <Font size="65.0" />
+            <Font name="Tahoma" size="44.0" />
          </font>
       </Label>
       <ProgressBar fx:id="songProgressBar" layoutX="-1.0" layoutY="99.0" prefHeight="18.0" prefWidth="655.0" progress="0.0" />

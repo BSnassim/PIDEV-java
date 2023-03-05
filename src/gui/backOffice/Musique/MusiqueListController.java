@@ -1,4 +1,4 @@
-package gui.backOffice;
+package gui.backOffice.Musique;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,13 +27,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Musique;
-import repositories.AlbumRepository;
-import repositories.MusiqueRepository;
+import services.AlbumService;
+import services.MusiqueService;
 
 public class MusiqueListController implements Initializable {
 
-	MusiqueRepository musicRepo = new MusiqueRepository();
-	AlbumRepository albumRepo = new AlbumRepository();
+	MusiqueService musicRepo = new MusiqueService();
+	AlbumService albumRepo = new AlbumService();
 	@FXML
 	private Button userButton;
 	@FXML

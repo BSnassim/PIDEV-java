@@ -1,4 +1,4 @@
-package gui.backOffice;
+package gui.backOffice.Album;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,11 +19,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Album;
-import repositories.AlbumRepository;
+import services.AlbumService;
 
 public class AlbumListController implements Initializable{
 	
-	AlbumRepository albumRepo = new AlbumRepository();
+	AlbumService albumRepo = new AlbumService();
 	
 	@FXML
 	private Button musicButton;

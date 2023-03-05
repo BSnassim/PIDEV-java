@@ -1,4 +1,4 @@
-package gui.frontOffice;
+package gui.frontOffice.Musique;
 
 import java.io.File;
 import java.net.URL;

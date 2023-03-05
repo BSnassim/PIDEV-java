@@ -8,7 +8,7 @@ package pidev;
 import java.sql.Date;
 import java.time.LocalDate;
 
-import repositories.AlbumRepository;
+import services.AlbumService;
 
 /**
  *

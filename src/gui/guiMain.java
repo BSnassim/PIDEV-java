@@ -16,8 +16,8 @@ public class guiMain extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-//        Parent root = FXMLLoader.load(getClass().getResource("frontOffice/MusicList.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("backOffice/MusiqueList.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("frontOffice/Musique/MusicList.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("backOffice/Musique/MusiqueList.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

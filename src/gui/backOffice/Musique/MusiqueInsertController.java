@@ -1,4 +1,4 @@
-package gui.backOffice;
+package gui.backOffice.Musique;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
@@ -26,14 +27,14 @@ import javafx.util.Duration;
 import javafx.util.StringConverter;
 import model.Album;
 import model.Musique;
-import repositories.AlbumRepository;
-import repositories.MusiqueRepository;
+import services.AlbumService;
+import services.MusiqueService;
 
 public class MusiqueInsertController implements Initializable {
 
 	private int id = 0;
-	private MusiqueRepository musicRepo = new MusiqueRepository();
-	private AlbumRepository albumRepo = new AlbumRepository();
+	private MusiqueService musicRepo = new MusiqueService();
+	private AlbumService albumRepo = new AlbumService();
 	private List<Album> albumList = new ArrayList<Album>();
 	private byte[] fileContent;
 	private String fileName;
@@ -126,6 +127,9 @@ public class MusiqueInsertController implements Initializable {
 			m.setFileContent(fileContent);
 			m.setFileName(fileName);
 			musicRepo.createMusique(m);
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusiqueList.fxml"));
+//			MusiqueListController mlc = loader.getController();
+//			mlc.loadData();
 //			Notifications notificationBuilder = Notifications.create()
 //			        .title("Musique ajouté")
 //			        .text("Musique ajouté avec succées")

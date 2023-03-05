@@ -1,4 +1,4 @@
-package repositories;
+package services;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,7 +12,7 @@ import interfaces.IAlbumRepository;
 import model.Album;
 import utils.connexionDB;
 
-public class AlbumRepository implements IAlbumRepository {
+public class AlbumService implements IAlbumRepository {
 
 	Statement ste;
 	Connection conn = connexionDB.getInstance().getConnexion();

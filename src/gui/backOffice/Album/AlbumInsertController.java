@@ -1,4 +1,4 @@
-package gui.backOffice;
+package gui.backOffice.Album;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,11 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Album;
-import repositories.AlbumRepository;
+import services.AlbumService;
 
 public class AlbumInsertController {
 
-	AlbumRepository musicRepo = new AlbumRepository();
+	AlbumService musicRepo = new AlbumService();
 	@FXML
 	private Button annuler;
 	@FXML

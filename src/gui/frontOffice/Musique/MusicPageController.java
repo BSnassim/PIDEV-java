@@ -1,4 +1,4 @@
-package gui.frontOffice;
+package gui.frontOffice.Musique;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Musique;
-import repositories.MusiqueRepository;
+import services.MusiqueService;
 
 public class MusicPageController implements Initializable{
 	
@@ -48,7 +48,7 @@ public class MusicPageController implements Initializable{
 	}
 	
 	public void setData(int id) {
-		MusiqueRepository musicRepo = new MusiqueRepository();
+		MusiqueService musicRepo = new MusiqueService();
 		this.song = musicRepo.findMusique(id);
 		this.titre.setText(song.getNom());
 		this.artiste.setText(song.getId_Artiste().toString());

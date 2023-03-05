@@ -1,4 +1,4 @@
-package gui.frontOffice;
+package gui.frontOffice.Musique;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import repositories.MusiqueRepository;
+import services.MusiqueService;
 
 public class MusicListController implements Initializable {
 
@@ -23,7 +23,7 @@ public class MusicListController implements Initializable {
 	private VBox musicVBox;
 
 	List<Button> musicList = new ArrayList<>();
-	MusiqueRepository musicRepo = new MusiqueRepository();
+	MusiqueService musicRepo = new MusiqueService();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

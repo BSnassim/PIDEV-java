@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="636.0" prefWidth="897.0" style="-fx-background-color: #D9B54A; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.frontOffice.MusicListController">
+<AnchorPane prefHeight="636.0" prefWidth="897.0" style="-fx-background-color: #D9B54A; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.frontOffice.Musique.MusicListController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="140.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../ressources/images/soundon_logo.png" />
+            <Image url="@../../ressources/images/soundon_logo.png" />
          </image>
       </ImageView>
       <TextField layoutX="280.0" layoutY="29.0" prefHeight="26.0" prefWidth="335.0" />

@@ -1,4 +1,4 @@
-package repositories;
+package services;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +17,7 @@ import interfaces.IMusiqueRepository;
 import model.Musique;
 import utils.connexionDB;
 
-public class MusiqueRepository implements IMusiqueRepository {
+public class MusiqueService implements IMusiqueRepository {
 
 	Statement ste;
 	Connection conn = connexionDB.getInstance().getConnexion();
