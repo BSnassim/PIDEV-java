@@ -5,10 +5,10 @@
  */
 package pidev;
 
-import controller.ArtisteController;
-import controller.FavorisController;
+import services.ArtisteController;
+import services.FavorisController;
 import model.Utilisateur;
-import controller.UtilisateurController;
+import services.UtilisateurController;
 import utils.connexionDB;
 import java.sql.SQLException;
 import model.Artiste;
