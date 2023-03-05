@@ -5,6 +5,11 @@
  */
 package pidev;
 
+import services.CommandeController;
+import services.ProduitController;
+import java.sql.Date;
+import model.Commande;
+import model.Produit;
 import utils.connexionDB;
 
 /**
@@ -16,10 +21,36 @@ public class Pidev {
     /**
      * @param args the command line arguments
      */
+    
+    
+    
     public static void main(String[] args) {
-        connexionDB db1 = connexionDB.getInstance(); 
-        connexionDB db2 = connexionDB.getInstance(); 
+        long now = System.currentTimeMillis();
+        Date DateCommande =new Date(now); 
         
+        //connexionDB db1 = connexionDB.getInstance(); 
+        //ProduitController ps=new ProduitController();
+       // Produit p= new Produit(40.5f, "yyy", "xxuuux", "ooo", "ppp", 5, "M", 1);
+         //ps.ajouterProduit(p);
+        //connexionDB db2 = connexionDB.getInstance(); 
+        
+      //  Produit p= new Produit(20,"image","mohsen","type",8888);
+        //ProduitController p1=new ProduitController();
+       // p1.ajouterProduit(p);
+       // p1.modifierProduit(p, 2);
+       //System.out.println(p1.afficherProduit());
+
+        //System.out.println(p1.rechProduit(2));
+       // p1.supprimerProduit(2);
+        
+        
+      //  Commande c= new Commande(300,DateCommande,4444);
+      //  CommandeController c1=new CommandeController();
+        //c1.ajouterCommande(c);
+        //c1.modifierCommande(c, 1);
+        //System.out.println(c1.afficherCommande());
+        //System.out.println(c1.rechCommande(1));
+        //c1.supprimerCommande(1);
         
          
     }
