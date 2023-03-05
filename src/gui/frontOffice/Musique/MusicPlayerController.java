@@ -31,8 +31,6 @@ public class MusicPlayerController implements Initializable {
 	@FXML
 	private Button playButton, pauseButton, resetButton, previousButton, nextButton;
 	@FXML
-	private ComboBox<String> speedBox;
-	@FXML
 	private Slider volumeSlider;
 	@FXML
 	private ProgressBar songProgressBar;
@@ -46,58 +44,23 @@ public class MusicPlayerController implements Initializable {
 	private ArrayList<File> songs;
 
 	private int songNumber;
-	private int[] speeds = { 25, 50, 75, 100, 125, 150, 175, 200 };
 
 	private Timer timer;
 	private TimerTask task;
 
 	private boolean running;
-
+	
+	private String songPath;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		songs = new ArrayList<File>();
-
-		directory = new File("C:/uploadedFiles/Music/1/");
-
-		files = directory.listFiles();
-
-		if (files != null) {
-
-			for (File file : files) {
-
-				songs.add(file);
-			}
-		}
-
-		media = new Media(songs.get(songNumber).toURI().toString());
-		mediaPlayer = new MediaPlayer(media);
-
-		songLabel.setText(songs.get(songNumber).getName());
-
-		for (int i = 0; i < speeds.length; i++) {
-
-			speedBox.getItems().add(Integer.toString(speeds[i]) + "%");
-		}
-
-		speedBox.setOnAction(this::changeSpeed);
-
-		volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-
-				mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
-			}
-		});
-
-		songProgressBar.setStyle("-fx-accent: #00FF00;");
+		
 	}
 	@FXML
 	public void playMedia() {
 
 		beginTimer();
-		changeSpeed(null);
 		mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
 		mediaPlayer.play();
 	}
@@ -191,19 +154,6 @@ public class MusicPlayerController implements Initializable {
 		}
 	}
 
-	public void changeSpeed(ActionEvent event) {
-
-		if (speedBox.getValue() == null) {
-
-			mediaPlayer.setRate(1);
-		} else {
-
-			 mediaPlayer.setRate(Integer.parseInt(speedBox.getValue()) * 0.01);
-			mediaPlayer.setRate(
-					Integer.parseInt(speedBox.getValue().substring(0, speedBox.getValue().length() - 1)) * 0.01);
-		}
-	}
-
 	public void beginTimer() {
 
 		timer = new Timer();
@@ -231,5 +181,42 @@ public class MusicPlayerController implements Initializable {
 
 		running = false;
 		timer.cancel();
+	}
+	
+	public void setPath(String path) {
+		this.songPath = path;
+		
+		songs = new ArrayList<File>();
+
+//		directory = new File(this.songPath);
+//		directory = new File("C:/uploadedFiles/Music/1/");
+
+//		files = directory.listFiles();
+//
+//		if (files != null) {
+//
+//			for (File file : files) {
+//
+//				songs.add(file);
+//			}
+//		}
+		songs.add(new File(this.songPath));
+
+		media = new Media(songs.get(songNumber).toURI().toString());
+		mediaPlayer = new MediaPlayer(media);
+
+		songLabel.setText(songs.get(songNumber).getName());
+
+		volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+
+				mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
+			}
+		});
+
+		songProgressBar.setStyle("-fx-accent: #00FF00;");
+		
 	}
 }

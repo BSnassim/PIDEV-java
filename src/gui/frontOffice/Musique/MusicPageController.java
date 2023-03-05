@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.Musique;
 import services.MusiqueService;
 
@@ -62,11 +64,19 @@ public class MusicPageController implements Initializable{
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicPlayer.fxml"));
 			Parent root = loader.load();
+			MusicPlayerController mpc = loader.getController();
+			mpc.setPath(song.getChemin());
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.show();
 			stage.toFront();
+			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			    @Override
+			    public void handle(WindowEvent e) {
+			     mpc.pauseMedia();
+			    }
+			  });
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}
