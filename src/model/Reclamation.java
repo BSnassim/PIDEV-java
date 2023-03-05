@@ -19,6 +19,7 @@ public class Reclamation {
     public Date dateCreation;
     public Date dateUpdate;
     public int id_User;
+    public int idImage;
 
     public Reclamation() {
     }
@@ -107,6 +108,16 @@ public class Reclamation {
     public void setId_User(int id_User) {
         this.id_User = id_User;
     }
+
+    public int getIdImage() {
+        return idImage;
+    }
+
+    public void setIdImage(int idImage) {
+        this.idImage = idImage;
+    }
+    
+    
 
     @Override
     public String toString() {

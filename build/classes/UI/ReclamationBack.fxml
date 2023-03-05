@@ -133,6 +133,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="ImageViewMesReclamationDetails" fitHeight="150.0" fitWidth="235.0" layoutX="346.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <Pane fx:id="pnReponse" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
@@ -219,7 +220,10 @@
                   <ComboBox fx:id="cbType" layoutX="31.0" layoutY="145.0" prefWidth="150.0" promptText="Type:" />
                   <DatePicker fx:id="dpStart" layoutX="31.0" layoutY="108.0" prefHeight="25.0" prefWidth="150.0" promptText="De:" />
                   <DatePicker fx:id="dpEND" layoutX="192.0" layoutY="108.0" prefHeight="25.0" prefWidth="150.0" promptText="Vers:" />
-                  <Button fx:id="btnsearchDate" layoutX="380.0" layoutY="108.0" mnemonicParsing="false" onAction="#fnRechercher" style="-fx-background-color: #4a6dd8;" text="Rechercher" textFill="WHITE" />
+                  <Button fx:id="btnsearchDate" layoutX="350.0" layoutY="108.0" mnemonicParsing="false" onAction="#fnRechercher" style="-fx-background-color: #4a6dd8;" text="Rechercher" textFill="WHITE" />
+                  <ImageView fx:id="ImageViewMesReclamation" fitHeight="150.0" fitWidth="200.0" layoutX="92.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lbImageMesReclamation" layoutX="278.0" layoutY="47.0" visible="false" />
+                  <Button fx:id="btnReset" layoutX="491.0" layoutY="108.0" mnemonicParsing="false" onAction="#fnReset" style="-fx-background-color: #4a6dd8;" text="Reset" textFill="WHITE" />
                </children></Pane>
          </children>
       </StackPane>

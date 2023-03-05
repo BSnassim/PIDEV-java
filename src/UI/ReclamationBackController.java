@@ -9,6 +9,7 @@ import Entities.EtatEnum;
 import Entities.Reclamation;
 import Entities.Reponse;
 import Entities.TypeEnum;
+import Service.ServiceImage;
 import Service.ServiceReclamation;
 import Service.ServiceReponse;
 import java.net.URL;
@@ -30,6 +31,8 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -39,7 +42,7 @@ import org.controlsfx.control.Notifications;
 /**
  * FXML Controller class
  *
- * @author houss
+ * @author saida
  */
 public class ReclamationBackController implements Initializable {
 
@@ -109,6 +112,14 @@ public class ReclamationBackController implements Initializable {
     private DatePicker dpEND;
     @FXML
     private Button btnsearchDate;
+    @FXML
+    private ImageView ImageViewMesReclamation;
+    @FXML
+    private Label lbImageMesReclamation;
+    @FXML
+    private ImageView ImageViewMesReclamationDetails;
+    @FXML
+    private Button btnReset;
 
     /**
      * Initializes the controller class.
@@ -213,6 +224,12 @@ public class ReclamationBackController implements Initializable {
        lbidRecla.setText(String.valueOf(rec.getId()));
        vboxDesc.setVisible(true);
        lbDescription.setText(rec.description);
+       
+       lbImageMesReclamation.setText(rec.idImage+"");
+       ServiceImage si=new ServiceImage();
+       String img="file:///"+si.getById(rec.idImage).getPath();
+       Image image=new Image(img);
+       ImageViewMesReclamation.setImage(image);
     }
 
     @FXML
@@ -226,6 +243,11 @@ public class ReclamationBackController implements Initializable {
         lbDescripRecDetails.setText(r.getDescription().toString());
         fnShowReponse();
         btnRepondre.setVisible(true);
+        
+       ServiceImage si=new ServiceImage();
+       String img="file:///"+si.getById(Integer.parseInt(lbImageMesReclamation.getText())).getPath();
+       Image image=new Image(img);
+       ImageViewMesReclamationDetails.setImage(image);
         pnDetails.toFront();
     }
     
@@ -251,6 +273,7 @@ public class ReclamationBackController implements Initializable {
         vboxDesc.setVisible(false);
        hboxMessageReponse.setVisible(false);
         pnMesReclamations.toFront();
+        ImageViewMesReclamation.setImage(null);
     }
 
     @FXML
@@ -292,6 +315,7 @@ public class ReclamationBackController implements Initializable {
         fnShowReponse();
         fnReclamationShow();
         pnMesReclamations.toFront();
+        ImageViewMesReclamation.setImage(null);
         Service.SendSms.send("+21695607536","Vous aves une update sur une reclamation !" );
     }
 
@@ -308,6 +332,79 @@ public class ReclamationBackController implements Initializable {
             Fin=Date.valueOf(dpEND.getValue()).toString();
         }
          
+        
+        ServiceReclamation sr=new ServiceReclamation();
+         ObservableList<Reclamation> list = FXCollections.observableArrayList(sr.ShowByDate(begin,Fin));;
+    
+     colEtat.setCellValueFactory(new PropertyValueFactory<>("Etat"));       
+     colType.setCellValueFactory(new PropertyValueFactory<>("Type"));        
+     colDateUpdate.setCellValueFactory(new PropertyValueFactory<>("dateUpdate"));   
+     colDateCreation.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));   
+
+        
+     tvReclamation.setItems(list);
+    tvReclamation.setRowFactory(tv -> new TableRow<Reclamation>() {
+    @Override
+    protected void updateItem(Reclamation item, boolean empty) {
+        super.updateItem(item, empty);
+        
+    }
+});
+      
+    FilteredList<Reclamation> filteredData = new FilteredList<>(list, b -> true);
+		
+		cbEtat.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Reclamation -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Reclamation.getEtat().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false; 
+			});
+		});
+                
+                
+                cbType.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Reclamation -> {
+				
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Reclamation.getType().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false; 
+			});
+		});
+		
+		SortedList<Reclamation> sortedData = new SortedList<>(filteredData);
+		
+		sortedData.comparatorProperty().bind(tvReclamation.comparatorProperty());
+		
+		tvReclamation.setItems(sortedData);
+    }
+
+    @FXML
+    private void fnReset(ActionEvent event) {
+        cbEtat.setValue("");
+        cbType.setValue("");
+        String begin="";
+        String  Fin="";
+         
+         dpEND.setValue(null);
+         dpStart.setValue(null);
         
         ServiceReclamation sr=new ServiceReclamation();
          ObservableList<Reclamation> list = FXCollections.observableArrayList(sr.ShowByDate(begin,Fin));;

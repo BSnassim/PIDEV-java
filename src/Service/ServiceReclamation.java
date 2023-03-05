@@ -20,10 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import model.ImageReclamation;
 
 /**
  *
- * @author houss
+ * @author saida
  */
 public class ServiceReclamation implements IService<Reclamation>{
     
@@ -33,11 +34,31 @@ public class ServiceReclamation implements IService<Reclamation>{
     public ServiceReclamation() {
         conn=MyConnection.getInstance().getConnection();
     }
+    
+    public int getIdImage() {
+        int r=0;
+        try{
+        Statement st= conn.createStatement();
+        String query = "select max(id)as id from imagereclamation";
+        ResultSet rs;
+        rs = st.executeQuery(query);
+        while (rs.next()) {
+           r = rs.getInt("id"); 
+         
+
+        }
+         return r;    
+         }catch(SQLException ex){
+                         System.out.println(ex.getMessage());
+
+         }
+        return r;
+    }
 
     @Override
     public void add(Reclamation r) {
  
-        String sql = "insert into reclamation(description,etat,type,dateCreation,id_User) Values(?,?,?,?,?)";
+        String sql = "insert into reclamation(description,etat,type,dateCreation,id_User,idImage) Values(?,?,?,?,?,?)";
         try {
             ste=conn.prepareStatement(sql);
             ste.setString(1, r.getDescription());
@@ -45,6 +66,7 @@ public class ServiceReclamation implements IService<Reclamation>{
             ste.setString(3, r.getType().toString());
             ste.setDate(4, new Date(System.currentTimeMillis()));
             ste.setInt(5, r.getId_User());
+            ste.setInt(6,getIdImage() );
                
             
             ste.executeUpdate();
@@ -56,7 +78,7 @@ public class ServiceReclamation implements IService<Reclamation>{
 
     @Override
     public void update(Reclamation r) {
-         String sql = "UPDATE reclamation SET description=?, etat=?,type=?,dateUpdate=?,id_User=? WHERE id=?";
+         String sql = "UPDATE reclamation SET description=?, etat=?,type=?,dateUpdate=?,id_User=?,idImage=? WHERE id=?";
 try {
             ste=conn.prepareStatement(sql);
             ste.setString(1, r.getDescription());
@@ -64,7 +86,8 @@ try {
             ste.setString(3, r.getType().toString());
             ste.setDate(4, new Date(System.currentTimeMillis()));
             ste.setInt(5, r.getId_User());
-            ste.setInt(6, r.getId());
+            ste.setInt(7, r.getId());
+            ste.setInt(6,getIdImage() );
                
             
             ste.executeUpdate();
@@ -104,6 +127,7 @@ try {
            reclamation = new Reclamation(rs.getInt("id"),rs.getString("description")
                    ,EtatEnum.valueOf(rs.getString("etat")),TypeEnum.valueOf(rs.getString("type"))
                    ,rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rs.getInt("id_user")); 
+           reclamation.setIdImage(rs.getInt("idImage"));
             Reclamationlist.add(reclamation);
 
         }
@@ -128,6 +152,7 @@ try {
            reclamation = new Reclamation(rs.getInt("id"),rs.getString("description")
                    ,EtatEnum.valueOf(rs.getString("etat")),TypeEnum.valueOf(rs.getString("type"))
                    ,rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rs.getInt("id_user")); 
+           reclamation.setIdImage(rs.getInt("idImage"));
             Reclamationlist.add(reclamation);
 
         }
@@ -164,6 +189,7 @@ try {
            reclamation = new Reclamation(rs.getInt("id"),rs.getString("description")
                    ,EtatEnum.valueOf(rs.getString("etat")),TypeEnum.valueOf(rs.getString("type"))
                    ,rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rs.getInt("id_user")); 
+           reclamation.setIdImage(rs.getInt("idImage"));
             Reclamationlist.add(reclamation);
 
         }
@@ -198,6 +224,7 @@ try {
            reclamation = new Reclamation(rs.getInt("id"),rs.getString("description")
                    ,EtatEnum.valueOf(rs.getString("etat")),TypeEnum.valueOf(rs.getString("type"))
                    ,rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rs.getInt("id_user")); 
+           reclamation.setIdImage(rs.getInt("idImage"));
             Reclamationlist.add(reclamation);
 
         }
@@ -222,7 +249,7 @@ try {
            r = new Reclamation(rs.getInt("id"),rs.getString("description")
                    ,EtatEnum.valueOf(rs.getString("etat")),TypeEnum.valueOf(rs.getString("type"))
                    ,rs.getDate("dateCreation"),rs.getDate("DATEuPDATE"),rs.getInt("id_user")); 
-         
+         r.setIdImage(rs.getInt("idImage"));
 
         }
          return r;    

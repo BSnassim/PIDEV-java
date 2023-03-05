@@ -61,6 +61,199 @@
       </VBox>
       <StackPane layoutX="194.0" prefHeight="605.0" prefWidth="608.0">
          <children>
+            <Pane fx:id="pnReponse" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="44.0" layoutY="39.0" prefHeight="92.0" prefWidth="365.0" text="Réponse:" textFill="#4a6dd8">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="86.0" layoutY="177.0" prefHeight="281.0" prefWidth="412.0">
+                     <children>
+                        <HBox prefHeight="216.0" prefWidth="412.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="99.0" text="Message :">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="215.0" prefWidth="314.0">
+                                 <children>
+                                    <TextField fx:id="tfReponseAEnv" prefHeight="214.0" prefWidth="313.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="67.0" prefWidth="412.0" spacing="200.0">
+                           <children>
+                              <Button fx:id="btnRetourReponseAEnv" mnemonicParsing="false" onAction="#fnRetourReponseAEnv" prefHeight="40.0" prefWidth="116.0" style="-fx-background-color: #4a6dd8;" text="Retour" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnEnvReponse" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnEnvReponse" prefHeight="40.0" prefWidth="116.0" style="-fx-background-color: #4a6dd8;" text="Envoyer" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane fx:id="pnMesReclamations" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="23.0" layoutY="14.0" prefHeight="92.0" prefWidth="365.0" text="Mes Reclamations" textFill="#4a6dd8">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tvReclamation" layoutX="14.0" layoutY="178.0" onMouseClicked="#onSelectionReclamation" prefHeight="228.0" prefWidth="358.0">
+                    <columns>
+                      <TableColumn fx:id="colEtat" prefWidth="75.0" text="Etat" />
+                      <TableColumn fx:id="colType" prefWidth="75.0" text="Type" />
+                        <TableColumn fx:id="colDateCreation" prefWidth="104.0" text="DateCreation" />
+                        <TableColumn fx:id="colDateUpdate" prefWidth="104.0" text="DateUpdate" />
+                    </columns>
+                  </TableView>
+                  <VBox fx:id="vboxDesc" alignment="CENTER" layoutX="381.0" layoutY="178.0" prefHeight="228.0" prefWidth="222.0" visible="false">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="129.0" text="Description:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbDescription" prefHeight="191.0" prefWidth="230.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnDetails" mnemonicParsing="false" onAction="#fnDetails" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #4a6dd8;" text="Details" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <HBox fx:id="hboxButtonRec" alignment="CENTER" layoutX="48.0" layoutY="543.0" prefHeight="49.0" prefWidth="512.0" spacing="290.0">
+                     <children>
+                        <Button fx:id="btnSupprim" mnemonicParsing="false" onAction="#fnSupprim" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: #4a6dd8;" text="Supprimer" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnEdite" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnEdite" prefHeight="40.0" prefWidth="116.0" style="-fx-background-color: #4a6dd8;" text="Editer" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label fx:id="lbidRecla" layoutX="331.0" layoutY="80.0" visible="false" />
+                  <ComboBox fx:id="cbEtat" layoutX="13.0" layoutY="141.0" prefWidth="150.0" promptText="Etat:" />
+                  <ComboBox fx:id="cbType" layoutX="223.0" layoutY="141.0" prefWidth="150.0" promptText="Type:" />
+                  <DatePicker fx:id="dpStart" layoutX="13.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="De:" />
+                  <DatePicker fx:id="dpEND" layoutX="223.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="Vers:" />
+                  <Label layoutX="240.0" layoutY="109.0" />
+                  <Label layoutX="20.0" layoutY="144.0" />
+                  <Button fx:id="btnsearchDate" layoutX="388.0" layoutY="105.0" mnemonicParsing="false" onAction="#fnRechercher" style="-fx-background-color: #4a6dd8;" text="Rechercher" textFill="WHITE" />
+                  <Label fx:id="lbImageMesReclamation" layoutX="304.0" layoutY="35.0" visible="false" />
+                  <ImageView fx:id="ImageViewMesReclamation" fitHeight="125.0" fitWidth="200.0" layoutX="391.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="btnReset" layoutX="546.0" layoutY="106.0" mnemonicParsing="false" onAction="#fnReset" style="-fx-background-color: #4a6dd8;" text="Reset" textFill="WHITE" />
+                  
+               </children></Pane>
+            <Pane fx:id="pnReclamation" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label fx:id="lbTitreAjout" layoutX="14.0" layoutY="12.0" prefHeight="92.0" prefWidth="365.0" text="Saisie une Reclamation" textFill="#4a6dd8">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="17.0" layoutY="184.0" prefHeight="389.0" prefWidth="565.0">
+                     <children>
+                        <HBox prefHeight="281.0" prefWidth="565.0">
+                           <children>
+                              <VBox prefHeight="310.0" prefWidth="209.0">
+                                 <children>
+                                    <Label prefHeight="57.0" prefWidth="217.0" text="Type de Reclamation: ">
+                                       <font>
+                                          <Font name="System Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="57.0" prefWidth="217.0" text="Description:">
+                                       <font>
+                                          <Font name="System Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="68.0" prefHeight="57.0" prefWidth="217.0" text="Image:">
+                                       <font>
+                                          <Font name="System Bold" size="19.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="130.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="310.0" prefWidth="359.0" spacing="20.0">
+                                 <children>
+                                    <ComboBox fx:id="tfType" prefHeight="47.0" prefWidth="358.0">
+                                       <VBox.margin>
+                                          <Insets top="15.0" />
+                                       </VBox.margin></ComboBox>
+                                    <TextField fx:id="tfDesc" prefHeight="154.0" prefWidth="358.0" />
+                                    <Button fx:id="btnAjoutImage" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fnAjoutImage" prefHeight="40.0" prefWidth="231.0" style="-fx-background-color: #4a6dd8;" text="Selectionner une Image" textFill="WHITE">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="82.0" prefWidth="565.0" spacing="120.0">
+                           <children>
+                              <Button fx:id="btnAnuller" mnemonicParsing="false" onAction="#fnAnuller" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #4a6dd8;" text="Anuller" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="25.0" top="20.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnUpdate" alignment="CENTER" contentDisplay="CENTER" layoutX="444.0" layoutY="30.0" mnemonicParsing="false" onAction="#fnUpdateRec" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #4a6dd8;" text="Editer" textFill="WHITE" visible="false">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="btnEnvoyer" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnEnvoyer" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #4a6dd8;" text="Envoyer" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbTitreUpdate" layoutX="14.0" layoutY="12.0" prefHeight="92.0" prefWidth="365.0" text="Editer la Reclamation" textFill="#4a6dd8" visible="false">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="ImageViewAjout" fitHeight="150.0" fitWidth="200.0" layoutX="379.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lbNomImageAjout" layoutX="417.0" layoutY="112.0" visible="false" />
+               </children></Pane>
             <Pane fx:id="pnDetails" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
                   <HBox layoutX="21.0" layoutY="189.0" prefHeight="237.0" prefWidth="296.0">
@@ -141,180 +334,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-               </children></Pane>
-            <Pane fx:id="pnReponse" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label layoutX="44.0" layoutY="39.0" prefHeight="92.0" prefWidth="365.0" text="Réponse:" textFill="#4a6dd8">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <VBox layoutX="86.0" layoutY="177.0" prefHeight="281.0" prefWidth="412.0">
-                     <children>
-                        <HBox prefHeight="216.0" prefWidth="412.0">
-                           <children>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="99.0" text="Message :">
-                                       <font>
-                                          <Font size="22.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="215.0" prefWidth="314.0">
-                                 <children>
-                                    <TextField fx:id="tfReponseAEnv" prefHeight="214.0" prefWidth="313.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="67.0" prefWidth="412.0" spacing="200.0">
-                           <children>
-                              <Button fx:id="btnRetourReponseAEnv" mnemonicParsing="false" onAction="#fnRetourReponseAEnv" prefHeight="40.0" prefWidth="116.0" style="-fx-background-color: #4a6dd8;" text="Retour" textFill="WHITE">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="btnEnvReponse" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnEnvReponse" prefHeight="40.0" prefWidth="116.0" style="-fx-background-color: #4a6dd8;" text="Envoyer" textFill="WHITE">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </children>
-            </Pane>
-            <Pane fx:id="pnReclamation" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label fx:id="lbTitreAjout" layoutX="14.0" layoutY="12.0" prefHeight="92.0" prefWidth="365.0" text="Saisie une Reclamation" textFill="#4a6dd8">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <VBox layoutX="17.0" layoutY="184.0" prefHeight="389.0" prefWidth="565.0">
-                     <children>
-                        <HBox prefHeight="281.0" prefWidth="565.0">
-                           <children>
-                              <VBox prefHeight="310.0" prefWidth="209.0">
-                                 <children>
-                                    <Label prefHeight="57.0" prefWidth="217.0" text="Type de Reclamation: ">
-                                       <font>
-                                          <Font name="System Bold" size="19.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="57.0" prefWidth="217.0" text="Description:">
-                                       <font>
-                                          <Font name="System Bold" size="19.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="310.0" prefWidth="359.0" spacing="20.0">
-                                 <children>
-                                    <ComboBox fx:id="tfType" prefHeight="47.0" prefWidth="358.0">
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin></ComboBox>
-                                    <TextField fx:id="tfDesc" prefHeight="154.0" prefWidth="358.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="82.0" prefWidth="565.0" spacing="120.0">
-                           <children>
-                              <Button fx:id="btnAnuller" mnemonicParsing="false" onAction="#fnAnuller" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #4a6dd8;" text="Anuller" textFill="WHITE">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="20.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="btnUpdate" alignment="CENTER" contentDisplay="CENTER" layoutX="444.0" layoutY="30.0" mnemonicParsing="false" onAction="#fnUpdateRec" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #4a6dd8;" text="Editer" textFill="WHITE" visible="false">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets top="20.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button fx:id="btnEnvoyer" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnEnvoyer" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #4a6dd8;" text="Envoyer" textFill="WHITE">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets top="20.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <Label fx:id="lbTitreUpdate" layoutX="14.0" layoutY="12.0" prefHeight="92.0" prefWidth="365.0" text="Editer la Reclamation" textFill="#4a6dd8" visible="false">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-               </children></Pane>
-            <Pane fx:id="pnMesReclamations" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label layoutX="23.0" layoutY="14.0" prefHeight="92.0" prefWidth="365.0" text="Mes Reclamations" textFill="#4a6dd8">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="tvReclamation" layoutX="14.0" layoutY="178.0" onMouseClicked="#onSelectionReclamation" prefHeight="228.0" prefWidth="358.0">
-                    <columns>
-                      <TableColumn fx:id="colEtat" prefWidth="75.0" text="Etat" />
-                      <TableColumn fx:id="colType" prefWidth="75.0" text="Type" />
-                        <TableColumn fx:id="colDateCreation" prefWidth="104.0" text="DateCreation" />
-                        <TableColumn fx:id="colDateUpdate" prefWidth="104.0" text="DateUpdate" />
-                    </columns>
-                  </TableView>
-                  <VBox fx:id="vboxDesc" alignment="CENTER" layoutX="381.0" layoutY="178.0" prefHeight="228.0" prefWidth="222.0" visible="false">
-                     <children>
-                        <Label prefHeight="40.0" prefWidth="129.0" text="Description:">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbDescription" prefHeight="191.0" prefWidth="230.0">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="btnDetails" mnemonicParsing="false" onAction="#fnDetails" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #4a6dd8;" text="Details" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <HBox fx:id="hboxButtonRec" alignment="CENTER" layoutX="34.0" layoutY="459.0" prefHeight="100.0" prefWidth="512.0" spacing="290.0" visible="false">
-                     <children>
-                        <Button fx:id="btnSupprim" mnemonicParsing="false" onAction="#fnSupprim" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: #4a6dd8;" text="Supprimer" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnEdite" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnEdite" prefHeight="40.0" prefWidth="116.0" style="-fx-background-color: #4a6dd8;" text="Editer" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <Label fx:id="lbidRecla" layoutX="331.0" layoutY="80.0" visible="false" />
-                  <ComboBox fx:id="cbEtat" layoutX="13.0" layoutY="141.0" prefWidth="150.0" promptText="Etat:" />
-                  <ComboBox fx:id="cbType" layoutX="223.0" layoutY="141.0" prefWidth="150.0" promptText="Type:" />
-                  <DatePicker fx:id="dpStart" layoutX="13.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="De:" />
-                  <DatePicker fx:id="dpEND" layoutX="223.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="Vers:" />
-                  <Label layoutX="240.0" layoutY="109.0" />
-                  <Label layoutX="20.0" layoutY="144.0" />
-                  <Button fx:id="btnsearchDate" layoutX="416.0" layoutY="105.0" mnemonicParsing="false" onAction="#fnRechercher" style="-fx-background-color: #4a6dd8;" text="Rechercher" textFill="WHITE" />
+                  <ImageView fx:id="ImageViewMesReclamationDetails" fitHeight="150.0" fitWidth="200.0" layoutX="346.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
                </children></Pane>
          </children>
       </StackPane>

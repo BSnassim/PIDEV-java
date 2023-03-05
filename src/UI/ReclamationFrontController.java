@@ -20,28 +20,40 @@ import Entities.Reclamation;
 import Entities.Reponse;
 import Entities.EtatEnum;
 import Entities.TypeEnum;
+import Service.ServiceImage;
 import Service.ServiceReclamation;
 import Service.ServiceReponse;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import model.ImageReclamation;
+import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  * FXML Controller class
  *
- * @author houss
+ * @author saida
  */
 public class ReclamationFrontController implements Initializable {
 
@@ -133,6 +145,20 @@ public class ReclamationFrontController implements Initializable {
     private DatePicker dpEND;
     @FXML
     private Button btnsearchDate;
+    @FXML
+    private Button btnAjoutImage;
+    @FXML
+    private ImageView ImageViewAjout;
+    @FXML
+    private Label lbNomImageAjout;
+    @FXML
+    private Label lbImageMesReclamation;
+    @FXML
+    private ImageView ImageViewMesReclamation;
+    @FXML
+    private Button btnReset;
+    @FXML
+    private ImageView ImageViewMesReclamationDetails;
 
     /**
      * Initializes the controller class.
@@ -237,6 +263,7 @@ public class ReclamationFrontController implements Initializable {
         fnReclamationShow();
         vboxDesc.setVisible(false);
        hboxButtonRec.setVisible(false);
+       ImageViewMesReclamation.setImage(null);
         pnMesReclamations.toFront();
         
     }
@@ -249,6 +276,7 @@ public class ReclamationFrontController implements Initializable {
         fnReclamationShow();
         vboxDesc.setVisible(false);
        hboxButtonRec.setVisible(false);
+       ImageViewMesReclamation.setImage(null);
         pnMesReclamations.toFront();
     }
 
@@ -266,6 +294,8 @@ public class ReclamationFrontController implements Initializable {
         fnReclamationShow();
         vboxDesc.setVisible(false);
        hboxButtonRec.setVisible(false);
+       
+       ImageViewMesReclamation.setImage(null);
         pnMesReclamations.toFront();
         
     }
@@ -277,6 +307,12 @@ public class ReclamationFrontController implements Initializable {
        vboxDesc.setVisible(true);
        hboxButtonRec.setVisible(true);
        lbDescription.setText(rec.description);
+       lbImageMesReclamation.setText(rec.idImage+"");
+       ServiceImage si=new ServiceImage();
+       String img="file:///"+si.getById(rec.idImage).getPath();
+       Image image=new Image(img);
+       ImageViewMesReclamation.setImage(image);
+       
     }
 
     @FXML
@@ -289,6 +325,10 @@ public class ReclamationFrontController implements Initializable {
         lbDescripRecDetails.setText(r.getDescription().toString());
         fnShowReponse();
         btnRepondre.setVisible(true);
+        ServiceImage si=new ServiceImage();
+       String img="file:///"+si.getById(Integer.parseInt(lbImageMesReclamation.getText())).getPath();
+       Image image=new Image(img);
+       ImageViewMesReclamationDetails.setImage(image);
         pnDetails.toFront();
     }
 
@@ -313,6 +353,12 @@ public class ReclamationFrontController implements Initializable {
         btnEnvoyer.setVisible(false);
         btnUpdate.setVisible(true);
         
+       ServiceImage si=new ServiceImage();
+       String img="file:///"+si.getById(r.idImage).getPath();
+       Image image=new Image(img);
+       lbNomImageAjout.setText(si.getById(r.idImage).getPath());
+       ImageViewAjout.setImage(image);
+        
     }
 
     @FXML
@@ -328,6 +374,7 @@ public class ReclamationFrontController implements Initializable {
         vboxDesc.setVisible(false);
        hboxButtonRec.setVisible(false);
        hboxMessageReponse.setVisible(false);
+       ImageViewMesReclamation.setImage(null);
         pnMesReclamations.toFront();
     }
 
@@ -358,6 +405,10 @@ public class ReclamationFrontController implements Initializable {
 
     @FXML
     private void fnUpdateRec(ActionEvent event) {
+        ServiceImage si=new ServiceImage();
+            ImageReclamation ir=new ImageReclamation();
+            ir.setPath(lbNomImageAjout.getText());
+            si.add(ir);
         ServiceReclamation sr= new ServiceReclamation();
         Reclamation r=sr.getById(Integer.parseInt(lbidRecla.getText()));
         r.setType(TypeEnum.valueOf(tfType.getValue().toString()));
@@ -366,7 +417,8 @@ public class ReclamationFrontController implements Initializable {
         fnReclamationShow();
         vboxDesc.setVisible(false);
        hboxButtonRec.setVisible(false);
-        pnReclamation.toFront();
+       ImageViewMesReclamation.setImage(null);
+        pnMesReclamations.toFront();
     }
 
     private void fnShowReponse() {
@@ -392,6 +444,116 @@ public class ReclamationFrontController implements Initializable {
             Fin=Date.valueOf(dpEND.getValue()).toString();
         }
          
+        
+        ServiceReclamation sr=new ServiceReclamation();
+         ObservableList<Reclamation> list = FXCollections.observableArrayList(sr.ShowByDateUser(begin,Fin,1));;
+    
+     colEtat.setCellValueFactory(new PropertyValueFactory<>("Etat"));       
+     colType.setCellValueFactory(new PropertyValueFactory<>("Type"));        
+     colDateUpdate.setCellValueFactory(new PropertyValueFactory<>("dateUpdate"));   
+     colDateCreation.setCellValueFactory(new PropertyValueFactory<>("dateCreation"));   
+
+        
+     tvReclamation.setItems(list);
+    tvReclamation.setRowFactory(tv -> new TableRow<Reclamation>() {
+    @Override
+    protected void updateItem(Reclamation item, boolean empty) {
+        super.updateItem(item, empty);
+        
+    }
+});
+      
+    FilteredList<Reclamation> filteredData = new FilteredList<>(list, b -> true);
+		
+		cbEtat.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Reclamation -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Reclamation.getEtat().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false; 
+			});
+		});
+                
+                
+                cbType.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Reclamation -> {
+				
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Reclamation.getType().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false; 
+			});
+		});
+		
+		SortedList<Reclamation> sortedData = new SortedList<>(filteredData);
+		
+		sortedData.comparatorProperty().bind(tvReclamation.comparatorProperty());
+		
+		tvReclamation.setItems(sortedData);
+    }
+
+    @FXML
+    private void fnAjoutImage(ActionEvent event) throws IOException {
+       
+        FileChooser chooser=new FileChooser();
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JPG FILE","*.jpg"));
+        chooser.setTitle("Choose Image");
+        Stage stage=(Stage) ((Node)event.getSource()).getScene().getWindow();
+        File file=chooser.showOpenDialog(stage);
+        if(file !=null){
+        String filename=file.getAbsolutePath();
+        filename=filename.replace("\\" , "\\\\");
+        String rndchars = RandomStringUtils.randomAlphanumeric(16);
+            try {
+        
+               Path save=Paths.get("C:\\Users\\Administrateur\\Desktop\\PI\\SOUND-ON-Desktop\\src\\Imgs\\"+rndchars+"_"+rndchars+".jpg");
+                Files.copy(Paths.get(filename), save);
+        lbNomImageAjout.setVisible(false);
+        String pathbd=save.toString().replace("\\" , "\\\\");
+        lbNomImageAjout.setText(pathbd);
+            System.out.println(save); 
+            } catch (java.nio.file.FileAlreadyExistsException e) {
+               Path save=Paths.get("C:\\Users\\Administrateur\\Desktop\\PI\\SOUND-ON-Desktop\\src\\Imgs\\"+rndchars+"_"+rndchars+".jpg");
+                Files.copy(Paths.get(filename), save);
+                String pathbd=save.toString().replace("\\" , "\\\\");
+        lbNomImageAjout.setVisible(false);
+        lbNomImageAjout.setText(pathbd);
+            System.out.println(save); 
+            }
+        
+        Image img=new Image("file:///"+lbNomImageAjout.getText());
+        ImageViewAjout.setImage(img);
+            ServiceImage si=new ServiceImage();
+            ImageReclamation ir=new ImageReclamation();
+            ir.setPath(lbNomImageAjout.getText());
+            si.add(ir);
+        }
+    }
+
+    @FXML
+    private void fnReset(ActionEvent event) {cbEtat.setValue("");
+        cbEtat.setValue("");
+        cbType.setValue("");
+        String begin="";
+        String  Fin="";
+         dpEND.setValue(null);
+         dpStart.setValue(null);
         
         ServiceReclamation sr=new ServiceReclamation();
          ObservableList<Reclamation> list = FXCollections.observableArrayList(sr.ShowByDateUser(begin,Fin,1));;
