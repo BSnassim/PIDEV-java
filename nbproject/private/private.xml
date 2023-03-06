@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/21622/Desktop/SOUND-ON-Desktop%20(2)/SOUND-ON-Desktop/src/gui/imNotARobotFXML.fxml</file>
             <file>file:/C:/Users/21622/Desktop/SOUND-ON-Desktop%20(2)/SOUND-ON-Desktop/src/gui/ForgetPasswordFXMLController.java</file>
             <file>file:/C:/Users/21622/Desktop/SOUND-ON-Desktop%20(2)/SOUND-ON-Desktop/src/services/UtilisateurController.java</file>
             <file>file:/C:/Users/21622/Desktop/SOUND-ON-Desktop%20(2)/SOUND-ON-Desktop/src/gui/ImNotARobotFXMLController.java</file>
             <file>file:/C:/Users/21622/Desktop/SOUND-ON-Desktop%20(2)/SOUND-ON-Desktop/src/model/Utilisateur.java</file>
             <file>file:/C:/Users/21622/Desktop/SOUND-ON-Desktop%20(2)/SOUND-ON-Desktop/src/gui/forgetPasswordFXML.fxml</file>
+=======
+            <file>file:/C:/Users/Marwen.M/Documents/Github%5Bjava%5D/SOUND-ON-Desktop/src/gui/frontOffice/FXMLProduitController.java</file>
+            <file>file:/C:/Users/Marwen.M/Documents/Github%5Bjava%5D/SOUND-ON-Desktop/src/gui/frontOffice/FXMLMenuController.java</file>
+            <file>file:/C:/Users/Marwen.M/Documents/Github%5Bjava%5D/SOUND-ON-Desktop/src/gui/frontOffice/FXMLMenu.fxml</file>
+            <file>file:/C:/Users/Marwen.M/Documents/Github%5Bjava%5D/SOUND-ON-Desktop/src/gui/guiMain.java</file>
+            <file>file:/C:/Users/Marwen.M/Documents/Github%5Bjava%5D/SOUND-ON-Desktop/src/gui/frontOffice/FXMLMenu1Controller.java</file>
+>>>>>>> GererVente
         </group>
     </open-files>
 </project-private>
