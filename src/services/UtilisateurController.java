@@ -29,7 +29,7 @@ import javafx.collections.ObservableList;
  * @author Ranim Ahmadi
  */
 public class UtilisateurController implements IutilisateurController{
-  Connection conn =connexionDB.connexionDB();
+  Connection conn = connexionDB.getInstance().getConnexion();
     PreparedStatement ste;
     public UtilisateurController(){}
     

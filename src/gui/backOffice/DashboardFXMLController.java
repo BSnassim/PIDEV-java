@@ -5,7 +5,6 @@
  */
 package gui.backOffice;
 
-import gui.frontOffice.RegisterFXMLController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -16,6 +15,10 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import gui.frontOffice.RegisterFXMLController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

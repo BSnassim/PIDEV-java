@@ -94,7 +94,7 @@ private boolean stillok=true;
             }
         }
         System.out.println(orderOfShuffle.toString());
-        String path = "C:\\Users\\21622\\Desktop\\bus\\";
+        String path = ".\\src\\gui\\ressources\\image\\";
    
         for (int i=0;i<9;i++){
             try {
