@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationFXMLController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="269.0" style="-fx-background-color: #D9B54A;">
+         <children>
+            <Button layoutX="83.0" layoutY="110.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="123.0" text="User" />
+            <Button layoutX="83.0" layoutY="155.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="123.0" text="Artist" />
+            <Button layoutX="83.0" layoutY="203.0" mnemonicParsing="false" prefWidth="123.0" text="Favoris" />
+            <Button layoutX="83.0" layoutY="247.0" mnemonicParsing="false" prefWidth="123.0" text="Music" />
+            <Button layoutX="83.0" layoutY="290.0" mnemonicParsing="false" prefWidth="123.0" text="Album" />
+            <Button layoutX="83.0" layoutY="337.0" mnemonicParsing="false" prefWidth="123.0" text="Event" />
+            <Button layoutX="83.0" layoutY="382.0" mnemonicParsing="false" prefWidth="123.0" text="Reservation" />
+            <Button layoutX="82.0" layoutY="429.0" mnemonicParsing="false" prefWidth="123.0" text="Artist Category" />
+            <Button layoutX="83.0" layoutY="476.0" mnemonicParsing="false" prefWidth="123.0" text="Catalogue" />
+            <Button layoutX="83.0" layoutY="520.0" mnemonicParsing="false" prefWidth="123.0" text="Claim" />
+            <Button layoutX="83.0" layoutY="571.0" mnemonicParsing="false" prefWidth="123.0" text="Answer" />
+            <Button layoutX="83.0" layoutY="619.0" mnemonicParsing="false" prefWidth="123.0" text="Product Category" />
+            <Button layoutX="83.0" layoutY="660.0" mnemonicParsing="false" prefWidth="123.0" text="Product" />
+            <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="27.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/285741584_978561702830549_4290592350993273807_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="39.0" layoutX="24.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/295969843_424952453036406_3938547712114230798_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="67.0" fitWidth="117.0" layoutX="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/332156817_733732508220065_1539280547653057952_n.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="103.0" layoutY="57.0" text="SOUND'ON" textFill="#4377c9">
+               <font>
+                  <Font name="Comic Sans MS Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="26.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/250393796_605664203891551_7970789867212296646_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="41.0" layoutX="24.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/275331331_375477887737010_5574488806246985791_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="26.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/332254871_1333635527589491_2619826406166631156_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="26.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/332298535_1202866693686693_7805914857461734310_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="38.0" layoutX="24.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/331758845_592319732764751_7788909525071088032_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="41.0" fitWidth="42.0" layoutX="22.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/332202335_543720347739236_140500080770029894_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="46.0" layoutX="24.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/332380383_1187805381774078_2764768125946031726_n.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-1.0" prefHeight="710.0" prefWidth="1022.0" style="-fx-background-color: #0055FF;">
+         <children>
+            <AnchorPane layoutX="280.0" layoutY="-9.0" prefHeight="118.0" prefWidth="742.0" style="-fx-background-color: #D9B54A;">
+               <children>
+                  <Line endX="-2.441406286379788E-5" endY="32.00000762939453" layoutY="84.0" startX="-2.441406286379788E-5" startY="-84.0" />
+                  <Label layoutX="273.0" layoutY="34.0" text="Reservation" textFill="#4377c9">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="99.0" fitWidth="110.0" layoutX="35.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assests/sound-waves.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="99.0" fitWidth="117.0" layoutX="597.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assests/sound-waves.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <TableView fx:id="TableReservation" layoutX="288.0" layoutY="184.0" prefHeight="428.0" prefWidth="562.0">
+               <columns>
+                  <TableColumn fx:id="artistcol" prefWidth="128.0" text="Artist" />
+                  <TableColumn fx:id="eventcol" minWidth="8.0" prefWidth="129.60000610351562" text="Event" />
+                  <TableColumn fx:id="paycol" prefWidth="168.7999267578125" text="Payement" />
+                  <TableColumn fx:id="editcol" prefWidth="133.60009765625" text="Edit/Delete" />
+               </columns>
+            </TableView>
+            <TextField fx:id="recherche" layoutX="346.0" layoutY="141.0" prefHeight="26.0" prefWidth="451.0" />
+            <Button layoutX="372.0" layoutY="632.0" mnemonicParsing="false" onAction="#BtnAdd" prefHeight="26.0" prefWidth="152.0" text="Create" />
+            <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="310.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/search.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="612.0" layoutY="633.0" mnemonicParsing="false" onAction="#BtnStat" prefHeight="26.0" prefWidth="142.0" text="Statistique" />
+            <Button layoutX="896.0" layoutY="184.0" mnemonicParsing="false" onAction="#qrcod" prefHeight="26.0" prefWidth="72.0" text="QrCode" />
+            <ImageView fx:id="qrcod" fitHeight="150.0" fitWidth="152.0" layoutX="861.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-2.0" prefHeight="710.0" prefWidth="282.0" style="-fx-background-color: #D9B54A;">
+         <children>
+            <Button layoutX="83.0" layoutY="110.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="123.0" text="User" />
+            <Button layoutX="83.0" layoutY="155.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="123.0" text="Artist" />
+            <Button layoutX="83.0" layoutY="203.0" mnemonicParsing="false" prefWidth="123.0" text="Favoris" />
+            <Button layoutX="83.0" layoutY="247.0" mnemonicParsing="false" prefWidth="123.0" text="Music" />
+            <Button layoutX="83.0" layoutY="290.0" mnemonicParsing="false" prefWidth="123.0" text="Album" />
+            <Button layoutX="83.0" layoutY="337.0" mnemonicParsing="false" onAction="#BtnEvent" prefWidth="123.0" text="Event" />
+            <Button layoutX="83.0" layoutY="382.0" mnemonicParsing="false" prefWidth="123.0" text="Reservation" />
+            <Button layoutX="82.0" layoutY="429.0" mnemonicParsing="false" prefWidth="123.0" text="Artist Category" />
+            <Button layoutX="83.0" layoutY="476.0" mnemonicParsing="false" prefWidth="123.0" text="Catalogue" />
+            <Button layoutX="83.0" layoutY="520.0" mnemonicParsing="false" prefWidth="123.0" text="Claim" />
+            <Button layoutX="83.0" layoutY="571.0" mnemonicParsing="false" prefWidth="123.0" text="Answer" />
+            <Button layoutX="83.0" layoutY="619.0" mnemonicParsing="false" prefWidth="123.0" text="Product Category" />
+            <Button layoutX="83.0" layoutY="660.0" mnemonicParsing="false" prefWidth="123.0" text="Product" />
+            <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="27.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/285741584_978561702830549_4290592350993273807_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="39.0" layoutX="24.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/295969843_424952453036406_3938547712114230798_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="67.0" fitWidth="117.0" layoutX="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/332156817_733732508220065_1539280547653057952_n.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="103.0" layoutY="57.0" text="SOUND'ON" textFill="#4377c9">
+               <font>
+                  <Font name="Comic Sans MS Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="26.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/250393796_605664203891551_7970789867212296646_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="41.0" layoutX="24.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/275331331_375477887737010_5574488806246985791_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="26.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/332254871_1333635527589491_2619826406166631156_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="41.0" layoutX="26.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/332298535_1202866693686693_7805914857461734310_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="37.0" fitWidth="38.0" layoutX="24.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/331758845_592319732764751_7788909525071088032_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="41.0" fitWidth="42.0" layoutX="22.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/332202335_543720347739236_140500080770029894_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="46.0" layoutX="24.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/332380383_1187805381774078_2764768125946031726_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="29.0" fitWidth="34.0" layoutX="28.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/331669176_898729394503950_9048430666474540130_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="29.0" fitWidth="34.0" layoutX="28.0" layoutY="658.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/331522628_707892941059764_8058782968901844257_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="29.0" fitWidth="34.0" layoutX="28.0" layoutY="617.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/331959764_850722802668909_4164299018210784096_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="29.0" fitWidth="34.0" layoutX="28.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assests/332248867_728611932274812_2927835128923424061_n.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
