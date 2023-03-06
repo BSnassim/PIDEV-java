@@ -1,13 +1,10 @@
 package gui.frontOffice.Musique;
 
-import java.awt.Font;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import javax.swing.GroupLayout.Alignment;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import services.MusiqueService;
 
