@@ -116,7 +116,7 @@ public class MusiqueListController implements Initializable {
 	@FXML
 	private void onActionAlbumButton(ActionEvent event) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("AlbumList.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../Album/AlbumList.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

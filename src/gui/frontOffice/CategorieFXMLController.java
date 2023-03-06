@@ -9,6 +9,7 @@ import gui.backOffice.UpdateCatalogueFXMLController;
 import java.awt.Button;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -87,11 +88,11 @@ private CategorieService cs = new CategorieService();
         List<String> list = cs.getallCategorie();
         comb.setItems(FXCollections.observableArrayList(list));  
         try {
-            star1.setImage(new Image(new FileInputStream("C:\\Users\\21628\\Downloads\\SOUND-ON-Desktop\\SOUND-ON-Desktop\\src\\gui\\ressources\\image\\starS.png")));
-            star2.setImage(new Image(new FileInputStream("C:\\Users\\21628\\Downloads\\SOUND-ON-Desktop\\SOUND-ON-Desktop\\src\\gui\\ressources\\image\\starS.png")));
-            star3.setImage(new Image(new FileInputStream("C:\\Users\\21628\\Downloads\\SOUND-ON-Desktop\\SOUND-ON-Desktop\\src\\gui\\ressources\\image\\starS.png")));
-            star4.setImage(new Image(new FileInputStream("C:\\Users\\21628\\Downloads\\SOUND-ON-Desktop\\SOUND-ON-Desktop\\src\\gui\\ressources\\image\\starS.png")));
-            star5.setImage(new Image(new FileInputStream("C:\\Users\\21628\\Downloads\\SOUND-ON-Desktop\\SOUND-ON-Desktop\\src\\gui\\ressources\\image\\starS.png")));
+            star1.setImage(new Image(new FileInputStream(".\\src\\gui\\ressources\\image\\starS.png")));
+            star2.setImage(new Image(new FileInputStream(".\\src\\gui\\ressources\\image\\starS.png")));
+            star3.setImage(new Image(new FileInputStream(".\\src\\gui\\ressources\\image\\starS.png")));
+            star4.setImage(new Image(new FileInputStream(".\\src\\gui\\ressources\\image\\starS.png")));
+            star5.setImage(new Image(new FileInputStream(".\\src\\gui\\ressources\\image\\starS.png")));
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(CategorieFXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -162,7 +163,7 @@ private CategorieService cs = new CategorieService();
             List<ImageView> l = new ArrayList<ImageView>();
         l.add(star1);l.add(star2);l.add(star3);l.add(star4);l.add(star5);
         for (int i=0;i<5;i++){
-                l.get(i).setImage(new Image(new FileInputStream("C:\\Users\\21628\\Downloads\\SOUND-ON-Desktop\\SOUND-ON-Desktop\\src\\gui\\ressources\\image\\starS.png")));
+                l.get(i).setImage(new Image(new FileInputStream(".\\src\\gui\\ressources\\image\\starS.png")));
         }
         }
     }
@@ -180,10 +181,10 @@ private CategorieService cs = new CategorieService();
         String index = ((ImageView)event.getSource()).getId().substring(((ImageView)event.getSource()).getId().length()-1, ((ImageView)event.getSource()).getId().length());
         for (int i=0;i<5;i++){
             if (i<Integer.parseInt(index)){
-                l.get(i).setImage(new Image(new FileInputStream("C:\\Users\\21628\\Downloads\\SOUND-ON-Desktop\\SOUND-ON-Desktop\\src\\gui\\ressources\\image\\star.png")));
+                l.get(i).setImage(new Image(new FileInputStream(".\\src\\gui\\ressources\\image\\star.png")));
             }
             else {
-                l.get(i).setImage(new Image(new FileInputStream("C:\\Users\\21628\\Downloads\\SOUND-ON-Desktop\\SOUND-ON-Desktop\\src\\gui\\ressources\\image\\starS.png")));
+                l.get(i).setImage(new Image(new FileInputStream(".\\src\\gui\\ressources\\image\\starS.png")));
             }
         }
         }

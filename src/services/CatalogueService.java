@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Catalogue;
-import utils.ConnexionDB;
+import utils.connexionDB;
 
 /**
  *
@@ -24,7 +24,7 @@ import utils.ConnexionDB;
  */
 public class CatalogueService implements IcatalogueController { 
     Statement ste;
-    Connection conn = ConnexionDB.getInstance().getConnexion();
+    Connection conn = connexionDB.getInstance().getConnexion();
 
     @Override
     public void ajouterCatalogue(Catalogue c) {

@@ -9,36 +9,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class connexionDB {
-
-    private static String HOST = "localhost";
-    private static int PORT = 3306;
-    private static String DB_NAME = "soundon";
-    private static String USERNAME = "root";
-    private static String PASSWORD = "";
-    private static Connection conn;
-
+/**
+ *
+ * @author Siwar Ahmadi
+ */
+public class connexionDB { 
+    final String url ="jdbc:mysql://localhost:3306/soundon";
+    final String login ="root";
+    final String pwd="";
     private static connexionDB instance;
-
-    public static Connection connexionDB() {
+    Connection connexion;
+    
+    
+    private connexionDB(){
+        
         try {
-            conn = DriverManager.getConnection(String.format("jdbc:mysql://%s:%d/%s", HOST, PORT, DB_NAME), USERNAME, PASSWORD);
-            System.out.println("Connexion Ã©tablie!");
+            connexion =  DriverManager.getConnection(url, login, pwd);
+            System.out.println("Connexion établie!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return conn;
-    }
 
-    public static connexionDB getInstance() {
-        if (instance == null) {
-            instance = new connexionDB();
-        }
-        return instance;
+    }
+    
+    public static connexionDB getInstance(){
+    if (instance == null)
+        instance = new connexionDB();
+    return instance;
     }
 
     public Connection getConnexion() {
-        return conn;
+        return connexion;
     }
-
+    
 }

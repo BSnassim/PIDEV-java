@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -16,8 +17,9 @@ public class guiMain extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-        Parent root = FXMLLoader.load(getClass().getResource("frontOffice/Musique/MusicList.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("backOffice/Musique/MusiqueList.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login/menuFXML.fxml"));
+
+//        Parent root = FXMLLoader.load(getClass().getResource("frontOffice/Musique/MusicList.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

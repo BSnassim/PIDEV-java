@@ -39,7 +39,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Utilisateur;
 import services.UtilisateurController;
-import static utils.connexionDB.connexionDB;
+import utils.connexionDB;
 
 /**
  * FXML Controller class
@@ -96,7 +96,7 @@ public class DashboardFXMLController implements Initializable {
 
     public ObservableList<Utilisateur> getutilisateurList() {
         ObservableList<Utilisateur> evenementsList = FXCollections.observableArrayList();
-        Connection conn = connexionDB();
+        Connection conn = connexionDB.getInstance().getConnexion();
         String query = "SELECT * FROM utilisateur";
         Statement st;
         ResultSet rs;
@@ -162,7 +162,7 @@ public class DashboardFXMLController implements Initializable {
                                     Utilisateur utilisateurs;
                                     utilisateurs = usertab.getSelectionModel().getSelectedItem();
                                     String query = "DELETE FROM `utilisateur` WHERE id =" + utilisateurs.getId();
-                                    Connection conn = connexionDB();
+                                    Connection conn = connexionDB.getInstance().getConnexion();
                                     ps = conn.prepareStatement(query);
 
                                     ps.execute();
@@ -256,7 +256,7 @@ public class DashboardFXMLController implements Initializable {
                                     Utilisateur utilisateurs;
                                     utilisateurs = usertab.getSelectionModel().getSelectedItem();
                                     String query = "DELETE FROM `utilisateur` WHERE id =" + utilisateurs.getId();
-                                    Connection conn = connexionDB();
+                                    Connection conn = connexionDB.getInstance().getConnexion();
                                     ps = conn.prepareStatement(query);
 
                                     ps.execute();
@@ -306,7 +306,7 @@ public class DashboardFXMLController implements Initializable {
 
     }
     private void executeQuery(String query) {
-        Connection conn = connexionDB();
+        Connection conn = connexionDB.getInstance().getConnexion();
         Statement st;
         try {
             st = conn.createStatement();

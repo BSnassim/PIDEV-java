@@ -53,7 +53,7 @@ public class AlbumListController implements Initializable{
 	@FXML
 	private void onActionMusicButton(ActionEvent event) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusiqueList.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../Musique/MusiqueList.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
