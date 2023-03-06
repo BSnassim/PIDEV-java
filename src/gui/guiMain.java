@@ -8,6 +8,7 @@ package gui;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +28,7 @@ public class guiMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader.setDefaultClassLoader(getClass().getClassLoader());
-Parent root = FXMLLoader.load(getClass().getResource("frontOffice/FXMLMenu1.fxml"));
+Parent root = FXMLLoader.load(getClass().getResource("frontOffice/UtilisateurFXML.fxml"));
 //Parent root = FXMLLoader.load(getClass().getResource("backOffice/FXMLProduit.fxml"));
 Scene scene = new Scene(root);
 primaryStage.setTitle("Hello World!");
