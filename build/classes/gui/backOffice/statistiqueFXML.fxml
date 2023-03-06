@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="575.0" style="-fx-background-color: #4a6dd8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.backOffice.StatistiqueFXMLController">
+   <children>
+      <AnchorPane layoutX="80.0" layoutY="33.0" prefHeight="513.0" prefWidth="415.0" style="-fx-background-color: #D9B54A;">
+         <children>
+            <Text fill="#4a6dd8" layoutX="140.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistique">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Text>
+            <TableView fx:id="tableVieew" layoutX="10.0" layoutY="67.0" prefHeight="379.0" prefWidth="395.0" />
+            <Button layoutX="144.0" layoutY="468.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="129.0" styleClass="choiceBox" stylesheets="@../../values/style.css" text="Back" />
+         </children>
+      </AnchorPane>
+      <Text fill="#878787" layoutX="236.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="www.sound'on.com" />
+   </children>
+</AnchorPane>

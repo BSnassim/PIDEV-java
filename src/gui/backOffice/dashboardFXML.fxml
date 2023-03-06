@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="630.0" prefWidth="824.0" style="-fx-background-color: #4a6dd8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.backOffice.CategorieBackFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="630.0" prefWidth="824.0" style="-fx-background-color: #4a6dd8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.backOffice.DashboardFXMLController">
    <children>
       <AnchorPane layoutX="385.0" layoutY="135.0" prefHeight="459.0" prefWidth="426.0">
          <children>
@@ -49,7 +49,7 @@
                      <children>
                         <ImageView fitHeight="96.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Downloads/search.png" />
+                              <Image url="@../ressources/image/search.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -77,7 +77,7 @@
             </Text>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="89.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/250393796_605664203891551_7970789867212296646_n.png" />
+                  <Image url="@../ressources/image/250393796_605664203891551_7970789867212296646_n.png" />
                </image>
             </ImageView>
          </children>
@@ -86,67 +86,67 @@
          <children>
             <ImageView fitHeight="33.0" fitWidth="36.0" layoutX="13.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/music.png" />
+                  <Image url="@../ressources/image/music.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/event1.png" />
+                  <Image url="@../ressources/image/event1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="17.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/reservation.png" />
+                  <Image url="@../ressources/image/reservation.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="26.0" layoutX="17.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/artiste%20(1).png" />
+                  <Image url="@../ressources/image/artiste%20(1).png" />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="26.0" layoutX="17.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/favorite.png" />
+                  <Image url="@../ressources/image/favorite.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/categories.png" />
+                  <Image url="@../ressources/image/categories.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/catalogue.png" />
+                  <Image url="@../ressources/image/catalogue.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="33.0" fitWidth="49.0" layoutX="13.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/folder.png" />
+                  <Image url="@../ressources/image/folder.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/claim.png" />
+                  <Image url="@../ressources/image/claim.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="16.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/question.png" />
+                  <Image url="@../ressources/image/question.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="61.0" layoutX="16.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/categories%20(1).png" />
+                  <Image url="@../ressources/image/categories%20(1).png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="4.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/store.png" />
+                  <Image url="@../ressources/image/store.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="52.0" fitWidth="102.0" layoutX="74.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/logo_sound'on.png" />
+                  <Image url="@../ressources/image/logo_sound'on.png" />
                </image>
             </ImageView>
             <Text fill="#4a6dd8" layoutX="64.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sound'On">
@@ -169,72 +169,72 @@
             <Button layoutX="48.0" layoutY="620.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF21; -fx-background-radius: 30;" text="Product" />
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/250393796_605664203891551_7970789867212296646_n.png" />
+                  <Image url="@../ressources/image/250393796_605664203891551_7970789867212296646_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="11.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/295969843_424952453036406_3938547712114230798_n.png" />
+                  <Image url="@../ressources/image/295969843_424952453036406_3938547712114230798_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/285741584_978561702830549_4290592350993273807_n.png" />
+                  <Image url="@../ressources/image/285741584_978561702830549_4290592350993273807_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="11.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/331758845_592319732764751_7788909525071088032_n.png" />
+                  <Image url="@../ressources/image/331758845_592319732764751_7788909525071088032_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/332248867_728611932274812_2927835128923424061_n.png" />
+                  <Image url="@../ressources/image/332248867_728611932274812_2927835128923424061_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="11.0" layoutY="620.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/331522628_707892941059764_8058782968901844257_n.png" />
+                  <Image url="@../ressources/image/331522628_707892941059764_8058782968901844257_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/275331331_375477887737010_5574488806246985791_n.png" />
+                  <Image url="@../ressources/image/275331331_375477887737010_5574488806246985791_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="11.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/332298535_1202866693686693_7805914857461734310_n.png" />
+                  <Image url="@../ressources/image/332298535_1202866693686693_7805914857461734310_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="11.0" layoutY="382.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/332202335_543720347739236_140500080770029894_n.png" />
+                  <Image url="@../ressources/image/332202335_543720347739236_140500080770029894_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="11.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/331669176_898729394503950_9048430666474540130_n.png" />
+                  <Image url="@../ressources/image/331669176_898729394503950_9048430666474540130_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/332380383_1187805381774078_2764768125946031726_n.png" />
+                  <Image url="@../ressources/image/332380383_1187805381774078_2764768125946031726_n.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="75.0" fitWidth="30.0" layoutX="14.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/7.png" />
+                  <Image url="@../ressources/image/7.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="2.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/hhhhhhhhhhhh.png" />
+                  <Image url="@../ressources/image/hhhhhhhhhhhh.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="90.0" fitWidth="102.0" layoutX="-10.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/332156817_733732508220065_1539280547653057952_n.png" />
+                  <Image url="@../ressources/image/332156817_733732508220065_1539280547653057952_n.png" />
                </image>
             </ImageView>
          </children>

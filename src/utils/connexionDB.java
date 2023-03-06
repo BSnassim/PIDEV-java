@@ -9,10 +9,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Siwar Ahmadi
- */
 public class connexionDB {
 
     private static String HOST = "localhost";
@@ -25,7 +21,6 @@ public class connexionDB {
     private static connexionDB instance;
 
     public static Connection connexionDB() {
-
         try {
             conn = DriverManager.getConnection(String.format("jdbc:mysql://%s:%d/%s", HOST, PORT, DB_NAME), USERNAME, PASSWORD);
             System.out.println("Connexion établie!");

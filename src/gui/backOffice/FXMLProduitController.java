@@ -382,12 +382,6 @@ alert.showAndWait();
             pdf.GeneratePdf("xxx", P);
         } catch (DocumentException ex) {
             Logger.getLogger(FXMLProduitController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLProduitController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(FXMLProduitController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(FXMLProduitController.class.getName()).log(Level.SEVERE, null, ex);
         }
 }}
     

@@ -5,10 +5,6 @@
  */
 package pidev;
 
-/**
- *
- * @author Ranim Ahmadi
- */
 public class Pidev {
 
     /**
